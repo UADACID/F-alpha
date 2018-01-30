@@ -1,0 +1,3 @@
+rootProject.name = 'Fifilio_alpha'
+
+include ':app'
