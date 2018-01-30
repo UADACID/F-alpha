@@ -6,13 +6,14 @@ import { connect } from 'react-redux'
 import TabHomeScreen from './tabHome'
 import Login from '../containers/login'
 
+
 const AppNavigator = StackNavigator({
   Home : {
     screen : TabHomeScreen
   },
   Login : {
     screen : Login
-  }
+  },
 },{
   headerMode:'float'
 })

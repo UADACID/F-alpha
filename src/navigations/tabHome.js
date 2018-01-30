@@ -4,6 +4,7 @@ import CustomTab from '../components/CustomTab'
 import Category from '../containers/category'
 import Setting from '../containers/setting'
 import Notification from '../containers/notification'
+import History from '../containers/history'
 
 const tabs = TabNavigator({
   Category : {
@@ -15,6 +16,9 @@ const tabs = TabNavigator({
   Setting : {
     screen : Setting
   },
+  History : {
+    screen : History
+  }
 },{
   tabBarPosition: 'bottom',
   swipeEnabled: false,
