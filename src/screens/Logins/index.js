@@ -7,11 +7,11 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default class Notification extends Component {
+export default class Logins extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>I'm the Notification component</Text>
+        <Text>I'm the Login component</Text>
       </View>
     );
   }
@@ -20,5 +20,7 @@ export default class Notification extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent:'center',
+    alignItems:'center',
   },
 });

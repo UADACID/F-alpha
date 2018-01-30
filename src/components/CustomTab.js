@@ -61,7 +61,7 @@ class CustomTab extends Component {
   render() {
     // console.log(this.props.navigation);
     const { navigation } = this.props
-    let activeTab = navigation.state.params ? navigation.state.params.params.activeTab : 'Category'
+    let activeTab = navigation.state.params ? navigation.state.params.params.activeTab : 'Categories'
 
     const interpolateRotation = this.animatedValueRotateButton.interpolate({
       inputRange:[0,1],
@@ -77,32 +77,32 @@ class CustomTab extends Component {
         <View style={{height:50, width, flexDirection:'row', justifyContent:'space-around', alignItems:'center', borderTopWidth: 1, borderColor: '#d1d1d4'}}>
           <View style={{width:width/2, flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
             <TabItem
-              onPress={()=>this.handlePressTab('Category')}
+              onPress={()=>this.handlePressTab('Categories')}
               iconName='home'
               label='Home'
-              activeTab={activeTab == 'Category' ? true : false}
+              activeTab={activeTab == 'Categories' ? true : false}
             />
             <TabItem
               style={{marginRight:(width/4)/2}}
-              onPress={()=>this.handlePressTab('History')}
+              onPress={()=>this.handlePressTab('Histories')}
               iconName='ios-repeat-outline'
-              label='History'
-              activeTab={activeTab == 'History' ? true : false}
+              label='Histories'
+              activeTab={activeTab == 'Histories' ? true : false}
             />
           </View>
           <View style={{width:width/2, flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
             <TabItem
               style={{marginLeft:(width/4)/2}}
-              onPress={()=>this.handlePressTab('Notification')}
+              onPress={()=>this.handlePressTab('Notifications')}
               iconName='ios-notifications-outline'
-              label='Notification'
-              activeTab={activeTab == 'Notification' ? true : false}
+              label='Notifications'
+              activeTab={activeTab == 'Notifications' ? true : false}
             />
             <TabItem
-              onPress={()=>this.handlePressTab('Setting')}
+              onPress={()=>this.handlePressTab('Settings')}
               iconName='ios-cog'
-              label='Setting'
-              activeTab={activeTab == 'Setting' ? true : false}
+              label='Settings'
+              activeTab={activeTab == 'Settings' ? true : false}
             />
           </View>
         </View>

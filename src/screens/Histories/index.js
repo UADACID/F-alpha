@@ -7,14 +7,11 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default class Setting extends Component {
-  static navigationOptions = {
-    title: 'Setting',
-  }
+export default class Histories extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>I'm the Setting component</Text>
+        <Text>I'm the History component</Text>
       </View>
     );
   }
@@ -23,6 +20,5 @@ export default class Setting extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'gray'
   },
 });

@@ -1,23 +1,23 @@
 import React from 'react'
 import { TabNavigator } from 'react-navigation'
 import CustomTab from '../components/CustomTab'
-import Category from '../containers/category'
-import Setting from '../containers/setting'
-import Notification from '../containers/notification'
-import History from '../containers/history'
+import Categories from '../containers/Categories'
+import Settings from '../containers/Settings'
+import Notifications from '../containers/Notifications'
+import Histories from '../containers/Histories'
 
 const tabs = TabNavigator({
-  Category : {
-    screen : Category
+  Categories : {
+    screen : Categories
   },
-  Notification : {
-    screen : Notification
+  Notifications : {
+    screen : Notifications
   },
-  Setting : {
-    screen : Setting
+  Settings : {
+    screen : Settings
   },
-  History : {
-    screen : History
+  Histories : {
+    screen : Histories
   }
 },{
   tabBarPosition: 'bottom',

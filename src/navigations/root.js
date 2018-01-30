@@ -4,15 +4,15 @@ import { addNavigationHelpers, StackNavigator } from 'react-navigation'
 import { connect } from 'react-redux'
 
 import TabHomeScreen from './tabHome'
-import Login from '../containers/login'
+import Logins from '../containers/Logins'
 
 
 const AppNavigator = StackNavigator({
   Home : {
     screen : TabHomeScreen
   },
-  Login : {
-    screen : Login
+  Logins : {
+    screen : Logins
   },
 },{
   headerMode:'float'

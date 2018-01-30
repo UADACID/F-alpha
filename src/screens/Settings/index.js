@@ -7,11 +7,14 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default class Login extends Component {
+export default class Settings extends Component {
+  static navigationOptions = {
+    title: 'Setting',
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>I'm the Login component</Text>
+        <Text>I'm the Setting component</Text>
       </View>
     );
   }
@@ -20,7 +23,6 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent:'center',
-    alignItems:'center',
+    backgroundColor: 'gray'
   },
 });

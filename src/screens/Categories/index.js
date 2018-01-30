@@ -7,11 +7,15 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default class History extends Component {
+export default class Categories extends Component {
+  static navigationOptions = {
+    title: 'Home',
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>I'm the History component</Text>
+        <Text onPress={()=>this.props.navigation.navigate('Logins')}>I'm the Category component</Text>
       </View>
     );
   }
@@ -20,5 +24,7 @@ export default class History extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent:'center',
+    alignItems:'center',
   },
 });
