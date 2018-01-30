@@ -11,6 +11,7 @@ export default class Category extends Component {
   static navigationOptions = {
     title: 'Home',
   }
+
   render() {
     return (
       <View style={styles.container}>
