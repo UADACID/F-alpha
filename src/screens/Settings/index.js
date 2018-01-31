@@ -5,7 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Container, Content, List, ListItem, Text } from 'native-base';
-
+import { NavigationActions } from 'react-navigation'
 import { Header } from './components'
 
 export default class Settings extends Component {
@@ -18,6 +18,10 @@ export default class Settings extends Component {
       console.log(this.props);
   }
 
+  onLoginPress = () => {
+    this.props.toLoginScreen('Logins')
+  }
+
   render() {
     return (
       <Container>
@@ -27,7 +31,7 @@ export default class Settings extends Component {
             <ListItem>
               <Text>Profile</Text>
             </ListItem>
-            <ListItem onPress={()=>this.props.navigation.navigate('Logins')}>
+            <ListItem onPress={this.onLoginPress}>
               <Text>Sign In</Text>
             </ListItem>
             <ListItem onPress={()=>this.props.navigation.navigate('Registers')}>

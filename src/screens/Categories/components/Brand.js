@@ -23,7 +23,7 @@ export default class Brand extends Component {
   _keyExtractor = (item, index) => index;
 
   renderItem = (item) => {
-    console.log(item);
+    // console.log(item);
     return (
       <TouchableOpacity>
           <Card>

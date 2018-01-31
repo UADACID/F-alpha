@@ -29,7 +29,7 @@ export default class BestSelling extends Component {
   _keyExtractor = (item, index) => index;
 
   renderItem = (item) => {
-    console.log(item);
+    // console.log(item);
     return (
       <TouchableOpacity>
           <Card style={{width:width/2.5, height:width/1.5}}>

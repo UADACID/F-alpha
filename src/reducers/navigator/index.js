@@ -1,5 +1,6 @@
 import { NavigationActions } from 'react-navigation'
 import { AppNavigator } from '../../navigations/root'
+import { getCurrentRouteName, getActionRouteName } from '../../utils'
 
 const firstAction = AppNavigator.router.getActionForPathAndParams('Home');
 const tempNavState = AppNavigator.router.getStateForAction(firstAction);
@@ -9,25 +10,14 @@ const initialNavState = AppNavigator.router.getStateForAction(
 );
 
 export const navReducer = (state = initialNavState, action) => {
-  let nextState;
-    switch (action.type) {
-      case 'Login':
-        nextState = AppNavigator.router.getStateForAction(
-          NavigationActions.back(),
-          state
-        );
-        break;
-      // case 'Logout':
-      //   nextState = AppNavigator.router.getStateForAction(
-      //     NavigationActions.navigate({ routeName: 'Login' }),
-      //     state
-      //   );
-      //   break;
-      default:
-        nextState = AppNavigator.router.getStateForAction(action, state);
-        break;
+  const nextState = AppNavigator.router.getStateForAction(action, state);
+  const { type } = action;
+  if (type === NavigationActions.NAVIGATE) {
+    // Return current state if no routes have changed
+    if (getActionRouteName(action) === getCurrentRouteName(state)) {
+        return state;
     }
-
-    // Simply return the original `state` if `nextState` is null or undefined.
-    return nextState || state;
+  }
+  // Simply return the original `state` if `nextState` is null or undefined.
+  return nextState || state;
 };
