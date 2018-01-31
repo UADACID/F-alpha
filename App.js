@@ -9,12 +9,13 @@ import {
   View
 } from 'react-native';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+// import { createStore } from 'redux'
 import AppNavigator  from './src/navigations/root'
+import store from './src/store'
 
-import { appReducer } from './src/reducers'
+// import { appReducer } from './src/reducers'
 
-const store = createStore(appReducer)
+// const store = createStore(appReducer)
 
 export default class App extends Component<{}> {
   render() {

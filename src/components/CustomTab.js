@@ -73,6 +73,7 @@ class CustomTab extends Component {
     }
 
     return (
+      <View>
       <View style={styles.container}>
         <View style={{height:50, width, flexDirection:'row', justifyContent:'space-around', alignItems:'center', borderTopWidth: 1, borderColor: '#d1d1d4'}}>
           <View style={{width:width/2, flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
@@ -106,16 +107,17 @@ class CustomTab extends Component {
             />
           </View>
         </View>
-        <TouchableWithoutFeedback
-        onPress={()=>this.props.dispatch({type: 'SHOW_MODAL' })}
-        onPressIn={this.handlePressInButton}
-        onPressOut={this.handlePressOutButton}>
-        <Animated.View
-          activeOpacity={0.95}
-          style={[{backgroundColor:'#f7355d',position:'absolute', height:60, width:60, alignItems:'center',  justifyContent:'center', borderWidth:0, borderRadius:30, bottom:10, left:(width/2)-30},animatedStyleButton]}>
-          <Icon name='add' style={{color:'#ffffff'}}/>
-        </Animated.View>
-        </TouchableWithoutFeedback>
+      </View>
+      <TouchableWithoutFeedback
+      onPress={()=>this.props.dispatch({type: 'SHOW_MODAL' })}
+      onPressIn={this.handlePressInButton}
+      onPressOut={this.handlePressOutButton}>
+      <Animated.View
+        activeOpacity={0.95}
+        style={[{backgroundColor:'#f7355d',position:'absolute', height:60, width:60, alignItems:'center',  justifyContent:'center', borderWidth:0, borderRadius:30, bottom:10, left:(width/2)-30},animatedStyleButton]}>
+        <Icon name='add' style={{color:'#ffffff'}}/>
+      </Animated.View>
+      </TouchableWithoutFeedback>
       </View>
     );
   }
@@ -125,8 +127,8 @@ export default connect()(CustomTab)
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: '#ffffff00',
-    height: 50,
+    backgroundColor: '#ffffff',
+    // height: 50,
     width,
     justifyContent:'flex-end',
     // borderWidth: 1
