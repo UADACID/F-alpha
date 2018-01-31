@@ -15,6 +15,8 @@ import { connect } from 'react-redux'
 import { Icon } from 'native-base'
 import { NavigationActions } from 'react-navigation'
 
+import { AppColor } from '../utils'
+
 const { width, height } = Dimensions.get('window')
 
 class CustomTab extends Component {
@@ -114,7 +116,7 @@ class CustomTab extends Component {
       onPressOut={this.handlePressOutButton}>
       <Animated.View
         activeOpacity={0.95}
-        style={[{backgroundColor:'#f7355d',position:'absolute', height:60, width:60, alignItems:'center',  justifyContent:'center', borderWidth:0, borderRadius:30, bottom:10, left:(width/2)-30},animatedStyleButton]}>
+        style={[{backgroundColor:AppColor,position:'absolute', height:60, width:60, alignItems:'center',  justifyContent:'center', borderWidth:0, borderRadius:30, bottom:10, left:(width/2)-30},animatedStyleButton]}>
         <Icon name='add' style={{color:'#ffffff'}}/>
       </Animated.View>
       </TouchableWithoutFeedback>

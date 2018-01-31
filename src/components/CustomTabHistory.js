@@ -8,7 +8,7 @@ import {
   Platform,
   TouchableOpacity
 } from 'react-native';
-import { width, height } from '../utils'
+import { width, height, AppColor } from '../utils'
 
 export default class CustomTabHistory extends Component {
 
@@ -30,12 +30,12 @@ export default class CustomTabHistory extends Component {
           <TouchableOpacity
             onPress={()=>this.handlePressTab('Progress')}
             style={[styles.buttonLeft,{backgroundColor:activeTab == 'Progress' ? '#fff' : null}]}>
-            <Text style={{color:activeTab == 'Progress' ? '#f7355d' : '#fff'}}>in Progress</Text>
+            <Text style={{color:activeTab == 'Progress' ? AppColor : '#fff'}}>in Progress</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={()=>this.handlePressTab('Completed')}
             style={[styles.buttonRight,{backgroundColor:activeTab == 'Completed' ? '#fff' : null}]}>
-            <Text style={{color:activeTab == 'Completed' ? '#f7355d' : '#fff'}}>Completed</Text>
+            <Text style={{color:activeTab == 'Completed' ? AppColor : '#fff'}}>Completed</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     height: Platform.OS == 'ios' ? 60 : 40,
     justifyContent:'center',
     alignItems:'center',
-    backgroundColor: '#f7355d'
+    backgroundColor: AppColor
     // flex: 1,
   },
   buttonLeft:{

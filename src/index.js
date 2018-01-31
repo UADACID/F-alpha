@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux'
+import { AppColor } from './utils'
 import AppNavigator  from './navigations/root'
 
 class Main extends Component {
@@ -15,7 +16,7 @@ class Main extends Component {
     return (
       <View style={{flex:1}}>
         <StatusBar
-          backgroundColor="#f7355d"
+          backgroundColor={AppColor}
           barStyle="light-content"
         />
         <AppNavigator />

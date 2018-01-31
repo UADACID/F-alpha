@@ -8,6 +8,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { Icon } from 'native-base'
+import { AppColor } from '../utils'
 
 export default class TabItem extends Component {
   render() {
@@ -15,8 +16,8 @@ export default class TabItem extends Component {
       <TouchableOpacity
         style={[{alignItems:'center', justifyContent:'center'},this.props.style]}
         onPress={this.props.onPress} >
-        <Icon name={this.props.iconName} style={{fontSize:this.props.activeTab ? 28 : 20, color:this.props.activeTab ? '#f7355d' : 'gray'}}/>
-        <Text style={[{fontSize:10, color:this.props.activeTab ? '#f7355d' : 'gray'},this.props.textStyle]}>{this.props.label}</Text>
+        <Icon name={this.props.iconName} style={{fontSize:this.props.activeTab ? 28 : 20, color:this.props.activeTab ? AppColor : 'gray'}}/>
+        <Text style={[{fontSize:10, color:this.props.activeTab ? AppColor : 'gray'},this.props.textStyle]}>{this.props.label}</Text>
       </TouchableOpacity>
     );
   }
