@@ -7,12 +7,15 @@ import {
   BackHandler,
   StyleSheet,
 } from 'react-native';
+import { Content } from 'native-base'
+import { ImageSlider, Categories as Category, CustomNavbar, BestSelling, Brand, ModalCategories} from './components'
 
 export default class Categories extends Component {
   static navigationOptions = ({ navigation, screenProps }) => ({
     title: 'Fifilio',
     headerRight: <Text></Text>,
   });
+
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
   }
@@ -26,10 +29,17 @@ export default class Categories extends Component {
     dispatch(NavigationActions.back());
     return true;
   };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text onPress={()=>this.props.navigation.navigate('Logins')}>I'm the Category component</Text>
+        <CustomNavbar />
+        <Content>
+          <ImageSlider />
+          <Category navigation={this.props.navigation} title={'Kategori Desain'}/>
+          <BestSelling />
+          <Brand />
+        </Content>
       </View>
     );
   }
@@ -38,7 +48,5 @@ export default class Categories extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent:'center',
-    alignItems:'center',
   },
 });

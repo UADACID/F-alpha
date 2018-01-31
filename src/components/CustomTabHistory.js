@@ -28,11 +28,13 @@ export default class CustomTabHistory extends Component {
       <View style={styles.container}>
         <View style={{flexDirection:'row'}}>
           <TouchableOpacity
+            activeOpacity={0.8}
             onPress={()=>this.handlePressTab('Progress')}
             style={[styles.buttonLeft,{backgroundColor:activeTab == 'Progress' ? '#fff' : null}]}>
             <Text style={{color:activeTab == 'Progress' ? AppColor : '#fff'}}>in Progress</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            activeOpacity={0.8}
             onPress={()=>this.handlePressTab('Completed')}
             style={[styles.buttonRight,{backgroundColor:activeTab == 'Completed' ? '#fff' : null}]}>
             <Text style={{color:activeTab == 'Completed' ? AppColor : '#fff'}}>Completed</Text>
