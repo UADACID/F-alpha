@@ -19,7 +19,7 @@ export const AppNavigator = StackNavigator({
     screen : Registers
   },
 },{
-  headerMode:'float'
+  headerMode:'none'
 })
 
 

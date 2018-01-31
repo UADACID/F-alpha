@@ -4,12 +4,15 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
 } from 'react-native';
-import { Container, Header, Content, List, ListItem, Text } from 'native-base';
+import { Container, Content, List, ListItem, Text } from 'native-base';
+
+import { Header } from './components'
 
 export default class Settings extends Component {
-  static navigationOptions = {
+  static navigationOptions = ({ navigation, screenProps }) => ({
     title: 'Settings',
-  }
+    headerRight: <Text style={{marginRight:20}}>Edit</Text>,
+  });
 
   componentDidMount(){
       console.log(this.props);
@@ -19,15 +22,19 @@ export default class Settings extends Component {
     return (
       <Container>
         <Content>
-          <List>
+          <Header />
+          <List style={{backgroundColor:'#fff', marginTop:10}}>
             <ListItem>
-              <Text>Simon Mignolet</Text>
+              <Text>Profile</Text>
+            </ListItem>
+            <ListItem onPress={()=>this.props.navigation.navigate('Logins')}>
+              <Text>Sign In</Text>
+            </ListItem>
+            <ListItem onPress={()=>this.props.navigation.navigate('Registers')}>
+              <Text>Sign Up</Text>
             </ListItem>
             <ListItem>
-              <Text>Nathaniel Clyne</Text>
-            </ListItem>
-            <ListItem>
-              <Text>Dejan Lovren</Text>
+              <Text>Other</Text>
             </ListItem>
           </List>
         </Content>

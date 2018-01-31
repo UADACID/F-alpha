@@ -4,7 +4,8 @@ import CustomTab from '../components/CustomTab'
 import Categories from '../containers/Categories'
 import Settings from '../containers/Settings'
 import Notifications from '../containers/Notifications'
-import Histories from '../containers/Histories'
+// import Histories from '../containers/Histories'
+import tabHistory from './tabHistory'
 
 const tabBarOptions = {
   showIcon: true,
@@ -40,7 +41,7 @@ const tabs = TabNavigator({
     screen : Settings
   },
   Histories : {
-    screen : Histories
+    screen : tabHistory
   }
 },tabNavigatorConfig)
 
