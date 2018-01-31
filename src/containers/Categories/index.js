@@ -1,4 +1,10 @@
 import Categories from '../../screens/Categories'
 import { connect } from 'react-redux'
 
-export default connect()(Categories)
+const mapStateToProps = (state) => {
+  return {
+    nav : state.nav
+  }
+}
+
+export default connect(mapStateToProps)(Categories)

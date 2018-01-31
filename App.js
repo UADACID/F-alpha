@@ -5,23 +5,15 @@
  */
 
 import React, { Component } from 'react'
-import {
-  View
-} from 'react-native';
 import { Provider } from 'react-redux'
-// import { createStore } from 'redux'
-import AppNavigator  from './src/navigations/root'
 import store from './src/store'
-
-// import { appReducer } from './src/reducers'
-
-// const store = createStore(appReducer)
+import Main from './src'
 
 export default class App extends Component<{}> {
   render() {
     return (
       <Provider store={store}>
-        <AppNavigator />
+          <Main />
       </Provider>
     );
   }

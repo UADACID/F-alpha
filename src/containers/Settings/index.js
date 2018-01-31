@@ -1,3 +1,10 @@
+import { connect } from 'react-redux'
 import Settings from '../../screens/Settings'
 
-export default Settings
+const mapStateToProps = (state) => {
+  return {
+    nav: state.nav
+  }
+}
+
+export default connect(mapStateToProps)(Settings)

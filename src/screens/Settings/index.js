@@ -2,20 +2,36 @@
 
 import React, { Component } from 'react';
 import {
-  View,
-  Text,
   StyleSheet,
 } from 'react-native';
+import { Container, Header, Content, List, ListItem, Text } from 'native-base';
 
 export default class Settings extends Component {
   static navigationOptions = {
     title: 'Settings',
   }
+
+  componentDidMount(){
+      console.log(this.props);
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>I'm the Setting component</Text>
-      </View>
+      <Container>
+        <Content>
+          <List>
+            <ListItem>
+              <Text>Simon Mignolet</Text>
+            </ListItem>
+            <ListItem>
+              <Text>Nathaniel Clyne</Text>
+            </ListItem>
+            <ListItem>
+              <Text>Dejan Lovren</Text>
+            </ListItem>
+          </List>
+        </Content>
+      </Container>
     );
   }
 }

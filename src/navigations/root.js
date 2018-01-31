@@ -23,13 +23,14 @@ export const AppNavigator = StackNavigator({
 })
 
 
-
 const AppWithNavigationState = ({ dispatch, nav }) => (
   <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
 )
 
-const mapStateToProps = state => ({
-  nav: state.nav
-})
+const mapStateToProps = state => {
+  return {
+    nav: state.nav
+  }
+}
 
 export default connect(mapStateToProps)(AppWithNavigationState)
