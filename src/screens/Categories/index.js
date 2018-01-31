@@ -8,9 +8,10 @@ import {
 } from 'react-native';
 
 export default class Categories extends Component {
-  static navigationOptions = {
-    title: 'Home',
-  }
+  static navigationOptions = ({ navigation, screenProps }) => ({
+    title: 'Fifilio',
+    headerRight: <Text></Text>,
+  });
 
   render() {
     return (
