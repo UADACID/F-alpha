@@ -20,14 +20,13 @@ export default class Categories extends Component {
     BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
   }
 
+  componentWillUnmount() {
+    BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
+  }
+
   onBackPress = () => {
-    const { dispatch, nav } = this.props;
-    console.log(this.props);
-    if (nav.index === 0) {
-      return false;
-    }
-    dispatch(NavigationActions.back());
-    return true;
+    const { nav } = this.props;
+    this.props.handleBack(nav)
   };
 
   render() {
