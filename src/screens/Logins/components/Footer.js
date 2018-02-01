@@ -4,13 +4,14 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
+  Animated,
   StyleSheet,
 } from 'react-native';
 
 export default class Footer extends Component {
   render() {
     return (
-      <View style={[styles.container, this.props.style]}>
+      <Animated.View style={[styles.container, this.props.style]}>
         <Text>Don't have account ?
           <Text
             onPress={()=>alert('clicked')}
@@ -18,7 +19,7 @@ export default class Footer extends Component {
              .Register here
           </Text>
         </Text>
-      </View>
+      </Animated.View>
     );
   }
 }

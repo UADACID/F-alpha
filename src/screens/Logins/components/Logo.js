@@ -5,6 +5,7 @@ import {
   View,
   Text,
   Image,
+  Animated,
   StyleSheet,
 } from 'react-native';
 import { width, height} from '../../../utils'
@@ -14,11 +15,11 @@ const imageResource = require('../../../../assets/Logo.png')
 export default class Logo extends Component {
   render() {
     return (
-      <View style={[styles.container, this.props.containerStyle]}>
-        <Image
+      <Animated.View style={[styles.container, this.props.containerStyle]}>
+        <Animated.Image
           style={[styles.imageLogo, this.props.imageStyle]}
           source={imageResource}/>
-      </View>
+      </Animated.View>
     );
   }
 }
@@ -31,7 +32,8 @@ const styles = StyleSheet.create({
     height:100,
     width:100,
     position:'absolute',
-    right: (width/2)-50,
+    // right: (width/2)-50,
+    // right:20,
     top: 20
   }
 });

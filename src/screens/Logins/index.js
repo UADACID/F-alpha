@@ -6,6 +6,8 @@ import {
   BackHandler,
   StyleSheet,
   StatusBar,
+  Animated,
+  Keyboard,
   Image,
 } from 'react-native';
 import { NavigationActions } from "react-navigation";
@@ -20,12 +22,39 @@ import FormLogin from './components/FormLogin'
 
 export default class Logins extends Component {
 
+  constructor(){
+    super()
+    this.heightLogoContainer = new Animated.Value(height/4)
+    this.scaleLogo = new Animated.Value(1)
+    this.positionLogo = new Animated.Value((width/2)-50)
+    this.heightFooterContainer = new Animated.Value(50)
+    this.onAnimatedShow = this.onAnimatedShow.bind(this)
+    this.onAnimatedHide = this.onAnimatedHide.bind(this)
+  }
+
+  componentWillMount () {
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
+  }
+
+
+  _keyboardDidShow = () => {
+    // alert('Keyboard Shown');
+    // this.onAnimatedShow()
+  }
+
+  _keyboardDidHide = () =>{
+    this.onAnimatedHide()
+  }
+
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
   }
 
   componentWillUnmount() {
     BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
   }
 
   onBackPress = async () => {
@@ -33,7 +62,54 @@ export default class Logins extends Component {
     await handleBack(nav)
   }
 
+  onAnimatedShow = () => {
+    Animated.parallel([
+      Animated.timing(this.heightLogoContainer, {
+        toValue : 10,
+        duration: 300
+      }),
+      Animated.timing(this.scaleLogo, {
+        toValue : 0.3,
+        duration: 300
+      }),
+      Animated.timing(this.positionLogo, {
+        toValue : 20,
+        duration: 300
+      }),
+      Animated.timing(this.heightFooterContainer, {
+        toValue : 0,
+        duration: 300
+      }),
+    ]).start()
+  }
+
+  onAnimatedHide = () => {
+    Animated.parallel([
+      Animated.timing(this.heightLogoContainer, {
+        toValue : height/4,
+        duration: 300
+      }),
+      Animated.timing(this.scaleLogo, {
+        toValue : 1,
+        duration: 300
+      }),
+      Animated.timing(this.positionLogo, {
+        toValue : (width/2)-50,
+        duration: 300
+      }),
+      Animated.timing(this.heightFooterContainer, {
+        toValue : 50,
+        duration: 300
+      }),
+    ]).start()
+  }
+
   render() {
+
+    const animatedheightLogoContainer = {height:this.heightLogoContainer}
+    const animatedScaleLogo = {right:this.positionLogo, transform:[{scale:this.scaleLogo}]}
+    const animatedheightFooterContainer = {height:this.heightFooterContainer}
+    // const animatedPositionLogo = {right:this.positionLogo}
     return (
       <View style={styles.container}>
         <CustomHeader
@@ -43,18 +119,22 @@ export default class Logins extends Component {
         <Content>
           <View style={styles.containerBody}>
             <Logo
-              containerStyle={styles.containerlogo}
-              imageStyle={{transform:[{scale:1}]}}/>
+              containerStyle={[styles.containerlogo,animatedheightLogoContainer]}
+              imageStyle={animatedScaleLogo}/>
             <H3>Welcome to Fifilio</H3>
             <Text style={styles.subtitle}>Sign in to continue</Text>
-            <FormLogin style={{}}/>
-            <Button style={styles.button}>
+            <FormLogin
+              style={{}}
+              onAnimatedShow={this.onAnimatedShow}
+              onAnimatedHide={this.onAnimatedHide}/>
+            <Button
+              style={styles.button}>
               <Text>Login</Text>
             </Button>
           </View>
         </Content>
         <Footer
-          style={styles.footer}
+          style={[styles.footer, animatedheightFooterContainer]}
           textStyle={{color:AppColor}}
         />
       </View>
@@ -73,6 +153,7 @@ const styles = StyleSheet.create({
   containerlogo: {
     width,
     height:height/4,
+    // height: 10,
     // justifyContent:'center',
     // alignItems:'center',
     marginLeft: -20,
