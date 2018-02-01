@@ -3,7 +3,17 @@ import Logins from '../../screens/Logins'
 import { NavigationActions } from "react-navigation";
 
 
-
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+    handleBack: (nav)=>{
+      if (nav.index === 0) {
+        return false;
+      }
+      dispatch(NavigationActions.back());
+      return true;
+    }
+  }
+}
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,4 +22,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(Logins)
+export default connect(mapStateToProps, mapDispatchToProps)(Logins)

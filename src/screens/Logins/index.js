@@ -19,13 +19,9 @@ export default class Logins extends Component {
     BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
   }
 
-  onBackPress = () => {
-    const { dispatch, nav } = this.props;
-    if (nav.index === 0) {
-      return false;
-    }
-    dispatch(NavigationActions.back());
-    return true;
+  onBackPress = async () => {
+    const { handleBack, nav } = this.props;
+    await handleBack(nav)
   }
 
   render() {

@@ -19,7 +19,8 @@ export const AppNavigator = StackNavigator({
     screen : Registers
   },
 },{
-  headerMode:'none'
+  headerMode:'none',
+  initialRouteName:'Logins'
 })
 
 
