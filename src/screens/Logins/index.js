@@ -24,6 +24,9 @@ export default class Logins extends Component {
 
   constructor(){
     super()
+    this.state = {
+      showKeyboard : false
+    }
     this.heightLogoContainer = new Animated.Value(height/4)
     this.scaleLogo = new Animated.Value(1)
     this.positionLogo = new Animated.Value((width/2)-50)
@@ -39,12 +42,18 @@ export default class Logins extends Component {
 
 
   _keyboardDidShow = () => {
+    this.setState({
+      showKeyboard:true
+    })
     // alert('Keyboard Shown');
     // this.onAnimatedShow()
   }
 
   _keyboardDidHide = () =>{
     this.onAnimatedHide()
+    this.setState({
+      showKeyboard:false
+    })
   }
 
   componentDidMount() {
@@ -59,27 +68,35 @@ export default class Logins extends Component {
 
   onBackPress = async () => {
     const { handleBack, nav } = this.props;
+    if (this.state.showKeyboard) {
+      Keyboard.dismiss()
+      return setTimeout(async()=>{
+        await handleBack(nav)
+      }, 500);
+    }
+
     await handleBack(nav)
+
   }
 
   onAnimatedShow = () => {
     Animated.parallel([
       Animated.timing(this.heightLogoContainer, {
         toValue : 10,
-        duration: 300,
+        duration: 500,
       }),
       Animated.timing(this.scaleLogo, {
         toValue : 0.5,
-        duration: 300,
+        duration: 500,
         // useNativeDriver: true
       }),
       Animated.timing(this.positionLogo, {
         toValue : 20,
-        duration: 300,
+        duration: 500,
       }),
       Animated.timing(this.heightFooterContainer, {
         toValue : 0,
-        duration: 200,
+        duration: 300,
       }),
     ]).start()
   }
@@ -117,6 +134,7 @@ export default class Logins extends Component {
       <View style={styles.container}>
         <CustomHeader
           style={{backgroundColor:AppColor}}
+          onPressLeftComponent={this.onBackPress}
           iconName={'arrow-back'}
           AppColor={AppColor}/>
         <Content>

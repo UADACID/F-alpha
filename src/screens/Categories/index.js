@@ -16,18 +16,18 @@ export default class Categories extends Component {
     headerRight: <Text></Text>,
   });
 
-  componentDidMount() {
-    BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
-  }
-
-  componentWillUnmount() {
-    BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
-  }
-
-  onBackPress = () => {
-    const { nav } = this.props;
-    this.props.handleBack(nav)
-  };
+  // componentDidMount() {
+  //   BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
+  // }
+  //
+  // componentWillUnmount() {
+  //   BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
+  // }
+  //
+  // onBackPress = () => {
+  //   const { nav } = this.props;
+  //   this.props.handleBack(nav)
+  // };
 
   render() {
     return (

@@ -12,7 +12,7 @@ import CustomNavbar from '../../../components/CustomNavbar'
 export default class MyComponent extends Component {
   render() {
     const leftComponent = (
-      <Button transparent>
+      <Button transparent onPress={this.props.onPressLeftComponent}>
         <Icon name='arrow-back' style={{color:'#fff'}} />
       </Button>
     )
