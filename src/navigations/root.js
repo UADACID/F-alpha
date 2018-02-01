@@ -20,7 +20,7 @@ export const AppNavigator = StackNavigator({
   },
 },{
   headerMode:'none',
-  initialRouteName:'Logins'
+  // initialRouteName:'Logins'
 })
 
 

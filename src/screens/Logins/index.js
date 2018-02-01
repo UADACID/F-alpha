@@ -66,19 +66,20 @@ export default class Logins extends Component {
     Animated.parallel([
       Animated.timing(this.heightLogoContainer, {
         toValue : 10,
-        duration: 300
+        duration: 300,
       }),
       Animated.timing(this.scaleLogo, {
-        toValue : 0.3,
-        duration: 300
+        toValue : 0.5,
+        duration: 300,
+        // useNativeDriver: true
       }),
       Animated.timing(this.positionLogo, {
         toValue : 20,
-        duration: 300
+        duration: 300,
       }),
       Animated.timing(this.heightFooterContainer, {
         toValue : 0,
-        duration: 300
+        duration: 200,
       }),
     ]).start()
   }
@@ -87,19 +88,20 @@ export default class Logins extends Component {
     Animated.parallel([
       Animated.timing(this.heightLogoContainer, {
         toValue : height/4,
-        duration: 300
+        duration: 300,
       }),
       Animated.timing(this.scaleLogo, {
         toValue : 1,
-        duration: 300
+        duration: 300,
+        // useNativeDriver: true
       }),
       Animated.timing(this.positionLogo, {
         toValue : (width/2)-50,
-        duration: 300
+        duration: 300,
       }),
       Animated.timing(this.heightFooterContainer, {
         toValue : 50,
-        duration: 300
+        duration: 300,
       }),
     ]).start()
   }
@@ -107,7 +109,8 @@ export default class Logins extends Component {
   render() {
 
     const animatedheightLogoContainer = {height:this.heightLogoContainer}
-    const animatedScaleLogo = {right:this.positionLogo, transform:[{scale:this.scaleLogo}]}
+    const animatedScaleLogo = {transform:[{scale:this.scaleLogo}]}
+    const animatedRigthPosition = {right:this.positionLogo}
     const animatedheightFooterContainer = {height:this.heightFooterContainer}
     // const animatedPositionLogo = {right:this.positionLogo}
     return (
@@ -120,7 +123,7 @@ export default class Logins extends Component {
           <View style={styles.containerBody}>
             <Logo
               containerStyle={[styles.containerlogo,animatedheightLogoContainer]}
-              imageStyle={animatedScaleLogo}/>
+              imageStyle={[animatedScaleLogo, animatedRigthPosition]}/>
             <H3>Welcome to Fifilio</H3>
             <Text style={styles.subtitle}>Sign in to continue</Text>
             <FormLogin
@@ -145,6 +148,7 @@ export default class Logins extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff'
   },
   containerBody:{
     marginLeft:20,
