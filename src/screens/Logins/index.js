@@ -11,7 +11,7 @@ import {
   Image,
 } from 'react-native';
 import { NavigationActions } from "react-navigation";
-import { Content, H3, Text, Button} from 'native-base'
+import { Content, H3, Text, Button, Icon} from 'native-base'
 
 import { AppColor, width, height} from '../../utils'
 import CustomHeader from './components/CustomHeader'
@@ -27,9 +27,9 @@ export default class Logins extends Component {
     this.state = {
       showKeyboard : false
     }
-    this.heightLogoContainer = new Animated.Value(height/4)
-    this.scaleLogo = new Animated.Value(1)
-    this.positionLogo = new Animated.Value((width/2)-50)
+    this.heightMarginContainer = new Animated.Value(150)
+    this.sizeLogo = new Animated.Value(100)
+    this.positionLogo = new Animated.Value((width/2)-75)
     this.heightFooterContainer = new Animated.Value(50)
     this.onAnimatedShow = this.onAnimatedShow.bind(this)
     this.onAnimatedHide = this.onAnimatedHide.bind(this)
@@ -46,7 +46,7 @@ export default class Logins extends Component {
       showKeyboard:true
     })
     // alert('Keyboard Shown');
-    // this.onAnimatedShow()
+    this.onAnimatedShow()
   }
 
   _keyboardDidHide = () =>{
@@ -80,20 +80,22 @@ export default class Logins extends Component {
   }
 
   onAnimatedShow = () => {
-    Animated.parallel([
-      Animated.timing(this.heightLogoContainer, {
-        toValue : 10,
-        duration: 500,
-      }),
-      Animated.timing(this.scaleLogo, {
-        toValue : 0.5,
-        duration: 500,
-        // useNativeDriver: true
-      }),
-      Animated.timing(this.positionLogo, {
-        toValue : 20,
-        duration: 500,
-      }),
+    Animated.sequence([
+      Animated.parallel([
+        Animated.timing(this.positionLogo, {
+          toValue : 0,
+          duration: 200,
+        }),
+        Animated.timing(this.heightMarginContainer, {
+          toValue : 20,
+          duration: 200,
+        }),
+        Animated.timing(this.sizeLogo, {
+          toValue : 50,
+          duration: 200,
+          // useNativeDriver: true
+        }),
+      ]),
       Animated.timing(this.heightFooterContainer, {
         toValue : 0,
         duration: 300,
@@ -103,17 +105,17 @@ export default class Logins extends Component {
 
   onAnimatedHide = () => {
     Animated.parallel([
-      Animated.timing(this.heightLogoContainer, {
-        toValue : height/4,
+      Animated.timing(this.heightMarginContainer, {
+        toValue : 150,
         duration: 300,
       }),
-      Animated.timing(this.scaleLogo, {
-        toValue : 1,
+      Animated.timing(this.sizeLogo, {
+        toValue : 100,
         duration: 300,
         // useNativeDriver: true
       }),
       Animated.timing(this.positionLogo, {
-        toValue : (width/2)-50,
+        toValue : (width/2)-70,
         duration: 300,
       }),
       Animated.timing(this.heightFooterContainer, {
@@ -125,24 +127,30 @@ export default class Logins extends Component {
 
   render() {
 
-    const animatedheightLogoContainer = {height:this.heightLogoContainer}
-    const animatedScaleLogo = {transform:[{scale:this.scaleLogo}]}
+    const animatedheightMarginContainer = {marginTop:this.heightMarginContainer}
+    const animatedWidthHeight = {width:this.sizeLogo, height:this.sizeLogo}
     const animatedRigthPosition = {right:this.positionLogo}
     const animatedheightFooterContainer = {height:this.heightFooterContainer}
     // const animatedPositionLogo = {right:this.positionLogo}
     return (
       <View style={styles.container}>
-        <CustomHeader
+        {/*<CustomHeader
           style={{backgroundColor:AppColor}}
           onPressLeftComponent={this.onBackPress}
           iconName={'arrow-back'}
-          AppColor={AppColor}/>
+          AppColor={AppColor}/>*/}
+        <Button transparent
+          onPress={this.onBackPress}
+          style={{paddingLeft:10, paddingTop:20}}>
+          <Icon name='arrow-back' style={{color:'#000'}} />
+        </Button>
         <Content>
-          <View style={styles.containerBody}>
+          <View style={[styles.containerBody]}>
             <Logo
-              containerStyle={[styles.containerlogo,animatedheightLogoContainer]}
-              imageStyle={[animatedScaleLogo, animatedRigthPosition]}/>
-            <H3>Welcome to Fifilio</H3>
+              containerStyle={[styles.containerlogo,animatedRigthPosition]}
+              animatedRigthPosition={animatedRigthPosition}
+              imageStyle={[animatedWidthHeight]}/>
+            <Animated.Text style={[{fontSize:25},animatedheightMarginContainer]}>Welcome to Fifilio</Animated.Text>
             <Text style={styles.subtitle}>Sign in to continue</Text>
             <FormLogin
               style={{}}

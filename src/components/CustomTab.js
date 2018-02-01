@@ -10,9 +10,11 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback
 } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import TabItem from './TabItem'
 import { connect } from 'react-redux'
 import { Icon } from 'native-base'
+// import * as Animatable from 'react-native-animatable';
 import { NavigationActions } from 'react-navigation'
 
 import { AppColor } from '../utils'
@@ -20,6 +22,12 @@ import { AppColor } from '../utils'
 const { width, height } = Dimensions.get('window')
 
 class CustomTab extends Component {
+
+  componentDidMount(){
+    setTimeout(()=>{
+      this.props.dispatch({type:'HIDE_INFO'})
+    }, 6000);
+  }
 
   componentWillMount(){
     this.animatedValueScaleButton = new Animated.Value(1)
@@ -31,10 +39,11 @@ class CustomTab extends Component {
       params: { activeTab: title },
     })
     this.props.navigation.dispatch(setParamsAction)
-    this.props.navigation.navigate(title)
+    this.props.dispatch(NavigationActions.navigate({ routeName: title }))
   }
 
   handlePressInButton = () => {
+    this.props.dispatch({type:'HIDE_INFO'})
     Animated.parallel([
       Animated.spring(this.animatedValueScaleButton,{
         toValue: .7
@@ -120,12 +129,26 @@ class CustomTab extends Component {
         <Icon name='add' style={{color:'#ffffff'}}/>
       </Animated.View>
       </TouchableWithoutFeedback>
+      {this.props.StartupInfo ?
+        <Animatable.View animation="pulse" easing="ease-in-out-sine" iterationCount="infinite" style={{position:'absolute', bottom:80,width, alignItems:'center'}}>
+          <View style={{backgroundColor:'#ff6c8b', padding:10, borderRadius:20, borderWidth:1, borderColor:AppColor}}>
+          <Text style={{color:'#fff'}}>Create Your Own Design Here</Text>
+          </View>
+          <View style={[styles.triangle, {borderTopColor:AppColor}]} />
+        </Animatable.View> : false
+      }
       </View>
     );
   }
 }
 
-export default connect()(CustomTab)
+const mapStateToProps = (state) => {
+  return {
+    StartupInfo : state.StartupInfo
+  }
+}
+
+export default connect(mapStateToProps)(CustomTab)
 
 const styles = StyleSheet.create({
   container: {
@@ -135,4 +158,16 @@ const styles = StyleSheet.create({
     justifyContent:'flex-end',
     // borderWidth: 1
   },
+  triangle:{
+    width: 0,
+    height: 0,
+    borderLeftWidth: 10,
+    borderRightWidth: 10,
+    borderTopWidth: 20,
+    borderStyle: 'solid',
+    backgroundColor: 'transparent',
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderTopColor: '#000'
+  }
 });

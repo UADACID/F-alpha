@@ -15,11 +15,11 @@ export default class FormLogin extends Component {
       <View style={[styles.container, this.props.style]}>
         <Form style={{marginLeft:-15}}>
           <Item floatingLabel>
-            <Label>Username</Label>
+            <Label style={{paddingTop:10}}>Username</Label>
             <Input onFocus={this.props.onAnimatedShow}/>
           </Item>
           <Item floatingLabel>
-            <Label>Password</Label>
+            <Label style={{paddingTop:10}}>Password</Label>
             <Input onFocus={this.props.onAnimatedShow}/>
           </Item>
         </Form>
