@@ -11,7 +11,7 @@ export default class Completed extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>I'm the Completed component</Text>
+        <Text onPress={()=> this.props.toScreen('DetailOrderHistories')}>I'm the Completed component</Text>
       </View>
     );
   }

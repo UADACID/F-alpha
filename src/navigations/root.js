@@ -8,6 +8,7 @@ import Logins from '../containers/Logins'
 import Registers from '../containers/Registers'
 import Profiles from '../containers/Profiles'
 import EditProfiles from '../containers/EditProfiles'
+import DetailOrderHistories from '../containers/DetailOrderHistories'
 
 
 export const AppNavigator = StackNavigator({
@@ -20,11 +21,14 @@ export const AppNavigator = StackNavigator({
   Registers : {
     screen : Registers
   },
-  Profiles:{
+  Profiles :{
     screen : Profiles
   },
   EditProfiles: {
     screen : EditProfiles
+  },
+  DetailOrderHistories : {
+    screen : DetailOrderHistories
   }
 },{
   headerMode:'none',
