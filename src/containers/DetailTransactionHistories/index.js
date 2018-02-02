@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import DetailOrderHistories from '../../screens/DetailOrderHistories'
+import DetailTransactionHistories from '../../screens/DetailTransactionHistories'
 import { NavigationActions } from "react-navigation";
 
 
@@ -22,4 +22,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailOrderHistories)
+export default connect(mapStateToProps, mapDispatchToProps)(DetailTransactionHistories)
