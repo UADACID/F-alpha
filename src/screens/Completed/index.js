@@ -1,18 +1,72 @@
+// /* @flow */
+//
+// import React, { Component } from 'react';
+// import {
+//   View,
+//   Text,
+//   StyleSheet,
+// } from 'react-native';
+//
+// export default class Completed extends Component {
+//   render() {
+//     return (
+//       <View style={styles.container}>
+//         <Text onPress={()=> this.props.toScreen('DetailOrderHistories')}>I'm the Completed component</Text>
+//       </View>
+//     );
+//   }
+// }
+//
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+// });
 /* @flow */
 
 import React, { Component } from 'react';
 import {
   View,
-  Text,
+  FlatList,
   StyleSheet,
 } from 'react-native';
+import { Container, Header, Content, List, ListItem, Text, Card, CardItem, Body, Thumbnail, Left, Right } from 'native-base';
+import CustomNavbar from '../../components/CustomNavbar'
 
 export default class Completed extends Component {
+
+  _keyExtractor = (item, index) => index;
+
+  _renderItem = ({item}) => (
+    <Card>
+      <ListItem avatar>
+        <Left>
+          <Thumbnail small source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
+        </Left>
+        <Body>
+          <Text style={{color:'green'}}>Selesai</Text>
+        </Body>
+        <Right>
+          <Text note>13 Jan, 3:43 pm</Text>
+        </Right>
+      </ListItem>
+      <ListItem>
+         <Text note>PT. ADITAMA RAYA Jl. Sindang Laut No. 60 JAKARTA PUSAT</Text>
+       </ListItem>
+    </Card>
+  );
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text onPress={()=> this.props.toScreen('DetailOrderHistories')}>I'm the Completed component</Text>
-      </View>
+      <Container>
+           <View style={styles.container}>
+             <FlatList
+                data={[{key: 'a'}, {key: 'b'}, {key: 'c'}, {key: 'd'}, {key: 'e'}, {key: 'f'}]}
+                keyExtractor={this._keyExtractor}
+                renderItem={this._renderItem}
+              />
+          </View>
+       </Container>
     );
   }
 }
@@ -20,5 +74,7 @@ export default class Completed extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
+    padding: 5
   },
 });
