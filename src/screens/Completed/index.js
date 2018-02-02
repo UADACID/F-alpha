@@ -39,7 +39,7 @@ export default class Completed extends Component {
 
   _renderItem = ({item}) => (
     <Card>
-      <ListItem avatar>
+      <ListItem avatar onPress={()=> this.props.toScreen('DetailOrderHistories')}>
         <Left>
           <Thumbnail small source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
         </Left>
@@ -50,7 +50,7 @@ export default class Completed extends Component {
           <Text note>13 Jan, 3:43 pm</Text>
         </Right>
       </ListItem>
-      <ListItem>
+      <ListItem onPress={()=> this.props.toScreen('DetailOrderHistories')}>
          <Text note>PT. ADITAMA RAYA Jl. Sindang Laut No. 60 JAKARTA PUSAT</Text>
        </ListItem>
     </Card>

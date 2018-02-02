@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { height, width } from '../utils'
 
-const EmptyHistory = ({}) => (
+const EmptyHistory = ({props}) => (
   <View style={styles.container}>
     <Image
       resizeMode='cover'

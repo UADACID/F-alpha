@@ -5,6 +5,9 @@ import CustomTabHistory from '../components/CustomTabHistory'
 import Progress from '../containers/Progress'
 import Completed from '../containers/Completed'
 
+// const Progress = () => (<Text>Progress</Text>)
+// const Completed = () => (<Text>Completed</Text>)
+
 
 const tabNavigatorConfig = {
   tabBarPosition: 'top',

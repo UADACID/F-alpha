@@ -64,6 +64,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(null, mapDispatchToProps)(Categories)
+// export default Categories;
 
 const styles = StyleSheet.create({
   container: {

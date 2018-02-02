@@ -2,7 +2,7 @@ import { NavigationActions } from 'react-navigation'
 import { AppNavigator } from '../../navigations/root'
 import { getCurrentRouteName, getActionRouteName } from '../../utils'
 
-const firstAction = AppNavigator.router.getActionForPathAndParams('Home');
+const firstAction = AppNavigator.router.getActionForPathAndParams('Logins');
 const tempNavState = AppNavigator.router.getStateForAction(firstAction);
 
 const initialNavState = AppNavigator.router.getStateForAction(

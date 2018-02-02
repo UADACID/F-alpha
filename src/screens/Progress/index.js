@@ -15,6 +15,10 @@ export default class Progress extends Component {
         <EmptyHistory />
       </View>
     );
+    // return (
+    //   <View style={styles.container}>
+    //   </View>
+    // );
   }
 }
 

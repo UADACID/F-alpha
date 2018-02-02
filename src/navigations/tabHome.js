@@ -43,6 +43,7 @@ const tabs = TabNavigator({
   Histories : {
     screen : tabHistory
   }
+  // iki masuk kandidat tersangka
 },tabNavigatorConfig)
 
 export default tabs
