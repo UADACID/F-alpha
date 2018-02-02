@@ -19,7 +19,11 @@ export default class Settings extends Component {
   }
 
   onLoginPress = () => {
-    this.props.toLoginScreen('Logins')
+    this.props.toScreen('Logins')
+  }
+
+  onProfilePress = () => {
+    this.props.toScreen('Profiles')
   }
 
   render() {
@@ -28,7 +32,7 @@ export default class Settings extends Component {
         <Content>
           <Header />
           <List style={{backgroundColor:'#fff', marginTop:10}}>
-            <ListItem>
+            <ListItem onPress={this.onProfilePress}>
               <Text>Profile</Text>
             </ListItem>
             <ListItem onPress={this.onLoginPress}>

@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import TabHomeScreen from './tabHome'
 import Logins from '../containers/Logins'
 import Registers from '../containers/Registers'
+import Profiles from '../containers/Profiles'
 
 
 export const AppNavigator = StackNavigator({
@@ -18,6 +19,9 @@ export const AppNavigator = StackNavigator({
   Registers : {
     screen : Registers
   },
+  Profiles:{
+    screen : Profiles
+  }
 },{
   headerMode:'none',
   // initialRouteName:'Logins'
