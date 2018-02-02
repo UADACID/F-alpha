@@ -19,6 +19,10 @@ export default class Categories extends Component {
     headerRight: <Text></Text>,
   });
 
+  onRequestClose = () => {
+    this.props.dispatch({type: 'HIDE_MODAL' })
+  }
+
   render() {
 
     return (
@@ -30,6 +34,7 @@ export default class Categories extends Component {
           <BestSelling />
           <Brand />
         </Content>
+        <ModalCategories navigation={this.props.navigation} onRequestClose={this.onRequestClose} />
       </View>
     );
   }

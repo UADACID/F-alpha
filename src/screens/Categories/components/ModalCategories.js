@@ -19,6 +19,7 @@ class ModalCategories extends Component {
     super()
     this.animatedScaleValue = new Animated.Value(0.05)
     this.animatedTYValue = new Animated.Value(100)
+    this.animatedOpacity = new Animated.Value(0)
   }
 
   // componentWillMount(){
@@ -34,6 +35,10 @@ class ModalCategories extends Component {
         Animated.timing(this.animatedScaleValue,{
           toValue: 0.05,
           duration: 1000
+        }),
+        Animated.timing(this.animatedOpacity,{
+          toValue: 0,
+          duration: 500
         })
       ]).start()
   }
@@ -47,6 +52,10 @@ class ModalCategories extends Component {
       Animated.timing(this.animatedScaleValue,{
         toValue: 0.9,
         duration: 500
+      }),
+      Animated.timing(this.animatedOpacity,{
+        toValue: 1,
+        duration: 500
       })
     ]).start()
   }
@@ -59,6 +68,10 @@ class ModalCategories extends Component {
       }),
       Animated.timing(this.animatedScaleValue,{
         toValue: 0.0005,
+        duration: 200
+      }),
+      Animated.timing(this.animatedOpacity,{
+        toValue: 0,
         duration: 200
       })
     ]).start()
@@ -83,7 +96,8 @@ class ModalCategories extends Component {
       transform : [
         {translateY: this.animatedTYValue},
         {scale: this.animatedScaleValue}
-      ]
+      ],
+      opacity:this.animatedOpacity
     }
     return (
       <View style={styles.container}>
