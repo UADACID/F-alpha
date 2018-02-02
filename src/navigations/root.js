@@ -9,6 +9,7 @@ import Registers from '../containers/Registers'
 import Profiles from '../containers/Profiles'
 import EditProfiles from '../containers/EditProfiles'
 import DetailTransactionHistories from '../containers/DetailTransactionHistories'
+import Models from '../containers/Models'
 
 
 export const AppNavigator = StackNavigator({
@@ -29,6 +30,9 @@ export const AppNavigator = StackNavigator({
   },
   DetailTransactionHistories : {
     screen : DetailTransactionHistories
+  },
+  Models : {
+    screen : Models
   }
 },{
   headerMode:'none',

@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native';
+import { NavigationActions } from 'react-navigation'
 import { connect } from 'react-redux'
 import { icons } from '../../../../assets/categories/icons.js'
 
@@ -20,7 +21,7 @@ class Categories extends Component {
   handlePressCategory = () => {
     console.log(this.props);
     this.props.hideModal()
-    this.props.navigation.navigate('Categories')
+    this.props.toScreen('Models')
   }
 
   _keyExtractor = (item, index) => index;
@@ -59,7 +60,10 @@ class Categories extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    hideModal: () => {dispatch({type:'HIDE_MODAL'})}
+    hideModal: () => {dispatch({type:'HIDE_MODAL'})},
+    toScreen: (routeName)=>{
+      dispatch(NavigationActions.navigate({ routeName: routeName }))
+    }
   }
 }
 
