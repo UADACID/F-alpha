@@ -4,10 +4,11 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  Keyboard,
   BackHandler,
   StyleSheet,
 } from 'react-native';
+import { Content } from 'native-base'
+import { CustomNavbar, CustomHeader, CustomListDesign, CustomListPromote } from './components'
 
 export default class Profiles extends Component {
 
@@ -40,7 +41,13 @@ export default class Profiles extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text onPress={()=> this.props.toScreen('EditProfiles')}>I'm the Models component</Text>
+      <CustomNavbar onBackPress={this.onBackPress}/>
+      <Content>
+        <CustomHeader />
+        <CustomListDesign />
+        <CustomListPromote />
+        <Text>T-Shirt Category</Text>
+      </Content>
       </View>
     );
   }
