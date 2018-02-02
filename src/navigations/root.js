@@ -7,6 +7,7 @@ import TabHomeScreen from './tabHome'
 import Logins from '../containers/Logins'
 import Registers from '../containers/Registers'
 import Profiles from '../containers/Profiles'
+import EditProfiles from '../containers/EditProfiles'
 
 
 export const AppNavigator = StackNavigator({
@@ -21,6 +22,9 @@ export const AppNavigator = StackNavigator({
   },
   Profiles:{
     screen : Profiles
+  },
+  EditProfiles: {
+    screen : EditProfiles
   }
 },{
   headerMode:'none',

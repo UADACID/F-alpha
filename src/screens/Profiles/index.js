@@ -40,7 +40,7 @@ export default class Profiles extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>I'm the Profiles component</Text>
+        <Text onPress={()=> this.props.toScreen('EditProfiles')}>I'm the Profiles component</Text>
       </View>
     );
   }

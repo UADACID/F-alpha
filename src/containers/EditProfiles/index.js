@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Profiles from '../../screens/Profiles'
+import EditProfiles from '../../screens/EditProfiles'
 import { NavigationActions } from "react-navigation";
 
 
@@ -11,9 +11,6 @@ const mapDispatchToProps = ( dispatch ) => {
       }
       dispatch(NavigationActions.back());
       return true;
-    },
-    toScreen: (routeName)=>{
-      dispatch(NavigationActions.navigate({ routeName: routeName }))
     }
   }
 }
@@ -25,4 +22,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profiles)
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfiles)
