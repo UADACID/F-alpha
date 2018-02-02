@@ -26,7 +26,7 @@ class CustomTab extends Component {
   componentDidMount(){
     setTimeout(()=>{
       this.props.dispatch({type:'HIDE_INFO'})
-    }, 6000);
+    }, 10000);
   }
 
   componentWillMount(){
