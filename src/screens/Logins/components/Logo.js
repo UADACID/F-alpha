@@ -14,13 +14,6 @@ const imageResource = require('../../../../assets/Logo.png')
 
 export default class Logo extends Component {
   render() {
-    // return (
-    //   <Animated.View style={[styles.container, this.props.containerStyle]}>
-    //     <Animated.Image
-    //       style={[styles.imageLogo, this.props.imageStyle]}
-    //       source={imageResource}/>
-    //   </Animated.View>
-    // );
     return (
       <Animated.View style={[styles.container, this.props.animatedRigthPosition]}>
         <Animated.Image

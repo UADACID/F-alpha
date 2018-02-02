@@ -5,7 +5,9 @@ import { NavigationActions } from 'react-navigation'
 const mapDispatchToProps = ( dispatch ) => {
   return {
     toLoginScreen: (routeName)=>{
-      dispatch(NavigationActions.navigate({ routeName: routeName }))
+      dispatch(NavigationActions.navigate({ routeName: 'Logins' }))
+      // dispatch(NavigationActions.navigate({ routeName: 'Completed' }))
+      // this.props.navigation.navigate(title)
     }
   }
 }

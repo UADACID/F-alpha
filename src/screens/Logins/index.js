@@ -84,15 +84,15 @@ export default class Logins extends Component {
       Animated.parallel([
         Animated.timing(this.positionLogo, {
           toValue : 0,
-          duration: 200,
+          duration: 500,
         }),
         Animated.timing(this.heightMarginContainer, {
           toValue : 20,
-          duration: 200,
+          duration: 500,
         }),
         Animated.timing(this.sizeLogo, {
           toValue : 50,
-          duration: 200,
+          duration: 500,
           // useNativeDriver: true
         }),
       ]),
@@ -150,7 +150,7 @@ export default class Logins extends Component {
               containerStyle={[styles.containerlogo,animatedRigthPosition]}
               animatedRigthPosition={animatedRigthPosition}
               imageStyle={[animatedWidthHeight]}/>
-            <Animated.Text style={[{fontSize:25},animatedheightMarginContainer]}>Welcome to Fifilio</Animated.Text>
+            <Animated.View  style={[animatedheightMarginContainer]}><Text style={{fontSize:25}}>Welcome to Fifilio</Text></Animated.View>
             <Text style={styles.subtitle}>Sign in to continue</Text>
             <FormLogin
               style={{}}

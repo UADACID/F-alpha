@@ -1,6 +1,7 @@
 /* @flow */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import {
   View,
   Text,
@@ -8,16 +9,19 @@ import {
   Platform,
   TouchableOpacity
 } from 'react-native';
+import { NavigationActions } from 'react-navigation'
 import { width, height, AppColor } from '../utils'
 
-export default class CustomTabHistory extends Component {
+class CustomTabHistory extends Component {
 
   handlePressTab = (title) => {
+    console.log(this.props);
     const setParamsAction = this.props.navigation.setParams({
       params: { activeTabHistory: title },
     })
     this.props.navigation.dispatch(setParamsAction)
-    this.props.navigation.navigate(title)
+    this.props.dispatch(NavigationActions.navigate({ routeName: title }))
+    // this.props.navigation.navigate(title)
   }
 
   render() {
@@ -44,6 +48,8 @@ export default class CustomTabHistory extends Component {
     );
   }
 }
+
+export default connect()(CustomTabHistory)
 
 const styles = StyleSheet.create({
   container: {
