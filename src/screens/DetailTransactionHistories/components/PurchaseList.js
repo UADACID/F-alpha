@@ -16,7 +16,7 @@ export default class PurchaseList extends Component {
         </CardItem>
         <CardItem style={{borderBottomWidth:1, marginLeft:10, borderColor:'#cacacf'}}>
           <Left>
-            <Thumbnail small source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
+            <Thumbnail small source={{ uri: 'https://static1.squarespace.com/static/53bc57f0e4b00052ff4d7ccd/55875dbbe4b0403b40d16ca8/59fa186353450a6b12f4b117/1509566560930/icon-men.jpg?format=500w' }} />
             <Text>T-Shirt Oblong</Text>
           </Left>
           <Right>
@@ -26,7 +26,7 @@ export default class PurchaseList extends Component {
         </CardItem>
         <CardItem style={{borderBottomWidth:1, marginLeft:10, borderColor:'#cacacf'}}>
           <Left>
-            <Thumbnail small source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
+            <Thumbnail small source={{ uri: 'https://static1.squarespace.com/static/53bc57f0e4b00052ff4d7ccd/55875dbbe4b0403b40d16ca8/59fa186353450a6b12f4b117/1509566560930/icon-men.jpg?format=500w' }} />
             <Text>T-Shirt Oblong</Text>
           </Left>
           <Right>
