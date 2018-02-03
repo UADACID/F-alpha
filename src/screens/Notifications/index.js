@@ -18,7 +18,7 @@ export default class Notifications extends Component {
     <Card>
     <ListItem avatar>
       <Left>
-        <Thumbnail source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
+        <Thumbnail small source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
       </Left>
       <Body>
         <Text>Tagihan no. AB123XZ</Text>
@@ -38,7 +38,7 @@ export default class Notifications extends Component {
         <Icon name="md-funnel" style={{color:'#fff'}}/>
       </TouchableOpacity>
     )
-    
+
     return (
       <Container>
          <CustomNavbar
@@ -60,7 +60,7 @@ export default class Notifications extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#e1e6ef",
     padding: 5
   },
 });

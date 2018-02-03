@@ -114,30 +114,32 @@ class CustomTab extends Component {
       <View>
       <View style={styles.container}>
         <View style={{height:50, width, flexDirection:'row', justifyContent:'space-around', alignItems:'center', borderTopWidth: 1, borderColor: '#d1d1d4'}}>
-          <View style={{width:width/2, flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
+          <View style={{width:width/2-30, flexDirection:'row', justifyContent:'space-around', alignItems:'center', marginRight:30}}>
             <TabItem
+              style={{width:(width/2-30)/2}}
               onPress={()=>this.handlePressTab('Categories')}
               iconName='home'
               label='Home'
               activeTab={tabName == 'Categories' ? true : false}
             />
             <TabItem
-              style={{marginRight:(width/4)/2}}
+              style={{width:(width/2-30)/2}}
               onPress={()=>this.handlePressTab('Histories')}
               iconName='ios-repeat-outline'
               label='Histories'
               activeTab={tabName == 'Histories' ? true : false}
             />
           </View>
-          <View style={{width:width/2, flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
+          <View style={{width:width/2-30, flexDirection:'row', justifyContent:'space-around', alignItems:'center', marginLeft:30}}>
             <TabItem
-              style={{marginLeft:(width/4)/2}}
+              style={{width:(width/2-30)/2}}
               onPress={()=>this.handlePressTab('Notifications')}
               iconName='ios-notifications-outline'
               label='Notifications'
               activeTab={tabName == 'Notifications' ? true : false}
             />
             <TabItem
+              style={{width:(width/2-30)/2}}
               onPress={()=>this.handlePressTab('Settings')}
               iconName='ios-cog'
               label='Settings'

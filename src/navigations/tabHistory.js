@@ -4,16 +4,12 @@ import { View, Text } from 'react-native'
 import CustomTabHistory from '../components/CustomTabHistory'
 import Progress from '../containers/Progress'
 import Completed from '../containers/Completed'
-
-// const Progress = () => (<Text>Progress</Text>)
-// const Completed = () => (<Text>Completed</Text>)
-
-
 const tabNavigatorConfig = {
   tabBarPosition: 'top',
   swipeEnabled: true,
   lazy: true,
   animationEnabled: true,
+  useNativeDriver:true,
   tabBarComponent: (props) => <CustomTabHistory  {...props} />,
   // tabBarOptions
 }

@@ -1,5 +1,4 @@
 import { createStore, compose } from 'redux';
-// import { bindWithDispatch } from 'feathers-redux';
 
 import middleware from './middlewares';
 
@@ -12,8 +11,5 @@ const store = createStore(
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
-
-// export const services = bindWithDispatch(store.dispatch, rawServices);
-// export const services = rawServices;
 
 export default store;

@@ -14,7 +14,7 @@ import Models from '../containers/Models'
 
 export const AppNavigator = StackNavigator({
   Home : {
-    screen : TabHomeScreen
+    screen : TabHomeScreen,
   },
   Logins : {
     screen : Logins

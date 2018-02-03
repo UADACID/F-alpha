@@ -83,7 +83,7 @@ class ModalCategories extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log(nextProps);
+    // console.log(nextProps);
     //
     if (nextProps.showModal === true) {
             this.openModal()

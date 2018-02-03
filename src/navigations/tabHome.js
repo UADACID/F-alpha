@@ -26,7 +26,7 @@ const tabNavigatorConfig = {
   tabBarPosition: 'bottom',
   swipeEnabled: false,
   animationEnabled: false,
-  tabBarComponent: ({navigation}) => <CustomTab navigation={navigation} />,
+  tabBarComponent: (props) => <CustomTab {...props} />,
   tabBarOptions
 }
 

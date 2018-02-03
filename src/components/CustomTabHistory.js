@@ -33,7 +33,6 @@ class CustomTabHistory extends Component {
   }
 
   render() {
-    // console.log(this.props);
     const { navigationState } = this.props
     let activeTab = this.getActiveTabName(navigationState.index)
     // let activeTab = navigation.state.params ? navigation.state.params.params.activeTabHistory : 'Progress'

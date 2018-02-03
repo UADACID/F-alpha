@@ -5,7 +5,7 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import { Icon } from 'native-base'
 import { AppColor } from '../utils'
