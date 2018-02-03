@@ -7,10 +7,8 @@ import {
   BackHandler,
   StyleSheet,
 } from 'react-native';
-import { Content } from 'native-base'
-import { CustomNavbar, CustomHeader, CustomListDesign, CustomListPromote } from './components'
 
-export default class Profiles extends Component {
+export default class Carts extends Component {
 
   state = {
     showKeyboard : false
@@ -26,28 +24,22 @@ export default class Profiles extends Component {
 
 
   onBackPress = async () => {
-    const { handleBack, nav } = this.props;
+    const { handleResetBack, nav } = this.props;
     if (this.state.showKeyboard) {
       Keyboard.dismiss()
       return setTimeout(async()=>{
-        await handleBack(nav)
+        await handleResetBack(nav)
       }, 500);
     }
 
-    await handleBack(nav)
+    await handleResetBack(nav)
 
   }
 
   render() {
     return (
       <View style={styles.container}>
-      <CustomNavbar onBackPress={this.onBackPress}/>
-      <Content>
-        <CustomHeader />
-        <CustomListDesign />
-        <CustomListPromote />
-        <Text onPress={()=>this.props.toScreen('Carts')}>T-Shirt Category</Text>
-      </Content>
+        <Text>I'm the Carts component</Text>
       </View>
     );
   }

@@ -24,9 +24,13 @@ export default class Categories extends Component {
     this.props.dispatch({type: 'HIDE_MODAL' })
   }
 
+  handleToCarts = () => {
+    this.props.toScreen('Carts')
+  }
+
   render() {
     rightComponent = (
-      <Button transparent>
+      <Button transparent onPress={this.handleToCarts}>
         <Icon name='cart' style={{fontSize: 30, color: '#fff'}} />
       </Button>
     )

@@ -11,6 +11,9 @@ const mapDispatchToProps = ( dispatch ) => {
       }
       dispatch(NavigationActions.back());
       return true;
+    },
+    toScreen: (routeName)=>{
+      dispatch(NavigationActions.navigate({ routeName: routeName }))
     }
   }
 }

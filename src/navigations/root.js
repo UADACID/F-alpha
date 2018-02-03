@@ -10,6 +10,7 @@ import Profiles from '../containers/Profiles'
 import EditProfiles from '../containers/EditProfiles'
 import DetailTransactionHistories from '../containers/DetailTransactionHistories'
 import Models from '../containers/Models'
+import Carts from '../containers/Carts'
 
 
 export const AppNavigator = StackNavigator({
@@ -33,6 +34,9 @@ export const AppNavigator = StackNavigator({
   },
   Models : {
     screen : Models
+  },
+  Carts : {
+    screen : Carts
   }
 },{
   headerMode:'none',
