@@ -10,6 +10,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { NavigationActions } from 'react-navigation'
+import { Header, Segment, Button, Body, Left, Right, Icon } from 'native-base'
 import { width, height, AppColor } from '../utils'
 
 class CustomTabHistory extends Component {
@@ -30,7 +31,29 @@ class CustomTabHistory extends Component {
     let activeTab = navigation.state.params ? navigation.state.params.params.activeTabHistory : 'Progress'
     return (
       <View style={styles.container}>
-        <View style={{flexDirection:'row'}}>
+        <Header style={[{backgroundColor:AppColor}]} androidStatusBarColor={AppColor}>
+          <Left>
+          </Left>
+          <Body>
+            <View style={{flexDirection:'row'}}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={()=>this.handlePressTab('Progress')}
+                style={[styles.buttonLeft,{backgroundColor:activeTab == 'Progress' ? '#fff' : null}]}>
+                <Text style={{color:activeTab == 'Progress' ? AppColor : '#fff'}}>in Progress</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={()=>this.handlePressTab('Completed')}
+                style={[styles.buttonRight,{backgroundColor:activeTab == 'Completed' ? '#fff' : null}]}>
+                <Text style={{color:activeTab == 'Completed' ? AppColor : '#fff'}}>Completed</Text>
+              </TouchableOpacity>
+            </View>
+          </Body>
+          <Right>
+          </Right>
+        </Header>
+        {/*<View style={{flexDirection:'row'}}>
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={()=>this.handlePressTab('Progress')}
@@ -43,7 +66,7 @@ class CustomTabHistory extends Component {
             style={[styles.buttonRight,{backgroundColor:activeTab == 'Completed' ? '#fff' : null}]}>
             <Text style={{color:activeTab == 'Completed' ? AppColor : '#fff'}}>Completed</Text>
           </TouchableOpacity>
-        </View>
+        </View>*/}
       </View>
     );
   }
@@ -53,10 +76,10 @@ export default connect()(CustomTabHistory)
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop:Platform.OS == 'ios' ? 15 : 0,
-    height: Platform.OS == 'ios' ? 60 : 40,
-    justifyContent:'center',
-    alignItems:'center',
+    // paddingTop:Platform.OS == 'ios' ? 15 : 0,
+    // height: Platform.OS == 'ios' ? 60 : 40,
+    // justifyContent:'center',
+    // alignItems:'center',
     backgroundColor: AppColor
     // flex: 1,
   },
