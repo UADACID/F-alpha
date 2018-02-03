@@ -17,6 +17,7 @@
     "feathers-redux": "^2.0.0",
     "feathers-reduxify-authentication": "^1.0.1",
     "native-base": "^2.3.7",
+    "ramda": "^0.25.0",
     "react": "16.2.0",
     "react-native": "0.52.2",
     "react-native-animatable": "^1.2.4",

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import {services} from '../../api';
 import Models from '../../screens/Models'
 import { NavigationActions } from "react-navigation";
 
@@ -11,6 +12,9 @@ const mapDispatchToProps = ( dispatch ) => {
       }
       dispatch(NavigationActions.back());
       return true;
+    },
+    allModels: () => {
+      dispatch(services.models.find());
     },
     toScreen: (routeName)=>{
       dispatch(NavigationActions.navigate({ routeName: routeName }))

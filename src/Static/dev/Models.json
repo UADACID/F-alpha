@@ -1,0 +1,55 @@
+models
+
+[
+  {
+    "id":1,
+    "name":"Kaos Kerah O",
+    "type":"Pria",
+    "category_id":1
+  },
+  {
+    "id":2,
+    "name":"Kaos Kerah O",
+    "type":"Wanita",
+    "category_id":1
+  },
+  {
+    "id":3,
+    "name":"Topi Polos",
+    "type":"Pria",
+    "category_id":2
+  }
+]
+
+model_variant
+
+[
+  {
+    "id":1,
+    "modelId":1,
+    "price":50.000,
+    "imageTransparentUrl":"https://firebasestorage.googleapis.com/v0/b/fifilio-backend.appspot.com/o/model_variant%2Fabang%20copy.png?alt=media&token=b1311b50-cf7d-4b3a-acc7-500c986ed80b",
+    "imageUrl":"https://firebasestorage.googleapis.com/v0/b/fifilio-backend.appspot.com/o/model_variant%2FScreen%20Shot%202018-02-03%20at%206.55.16%20PM.png?alt=media&token=3a35e836-9d82-4ae4-a2ae-4b5dc78377a3",
+    "qty":6,
+    "qtySizeS":1,
+    "qtySizeM":2,
+    "qtySizeL":1,
+    "qtySizeXL":1,
+    "qtySizeXXL":1,
+    "color":"red"
+  },
+  {
+    "id":1,
+    "modelId":1,
+    "price":50.000,
+    "imageTransparentUrl":"https://firebasestorage.googleapis.com/v0/b/fifilio-backend.appspot.com/o/model_variant%2Ffront-biru.png?alt=media&token=b82c23d8-c1d9-4641-86ca-e2d1cedce064",
+    "imageUrl":"https://firebasestorage.googleapis.com/v0/b/fifilio-backend.appspot.com/o/model_variant%2Ffront.png?alt=media&token=e8162cf4-1994-473e-a6d8-90263174ed1f",
+    "qty":6,
+    "qtySizeS":1,
+    "qtySizeM":2,
+    "qtySizeL":1,
+    "qtySizeXL":1,
+    "qtySizeXXL":1,
+    "color":"blue"
+  },
+]

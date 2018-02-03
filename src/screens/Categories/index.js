@@ -11,6 +11,7 @@ import { Content, Button, Icon } from 'native-base'
 
 import { height, width, AppColor } from '../../utils'
 import { ImageSlider, Categories as Category, BestSelling, Brand, ModalCategories} from './components'
+import { services } from '../../api'
 import CustomNavbar from '../../components/CustomNavbar'
 
 export default class Categories extends Component {
@@ -20,8 +21,14 @@ export default class Categories extends Component {
     headerRight: <Text></Text>,
   });
 
+  componentDidMount(){
+    this.props.allCategories()
+    // console.log(this.props);
+    // this.props.dispatch(services.categories.find())
+  }
+
   onRequestClose = () => {
-    this.props.dispatch({type: 'HIDE_MODAL' })
+    this.props.closeModal()
   }
 
   handleToCarts = () => {

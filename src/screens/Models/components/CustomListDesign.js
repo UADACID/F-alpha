@@ -1,6 +1,7 @@
 /* @flow */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import {
   View,
   Text,
@@ -26,7 +27,7 @@ const images = [
 
 ]
 
-export default class CustomListDesign extends Component {
+class CustomListDesign extends Component {
 
 
   _keyExtractor = (item, index) => index;
@@ -62,7 +63,7 @@ export default class CustomListDesign extends Component {
   }
 
   render() {
-
+    console.log(this.props);
     const rightComponent = (
       <TouchableOpacity style={{flexDirection:'row', alignItems:'center', marginRight:10}}>
         <Text style={{padding:10, paddingRight:10, color:'#acadae'}}>Lihat Semua</Text>
@@ -85,6 +86,14 @@ export default class CustomListDesign extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    models:state.models
+  }
+}
+
+export default connect(mapStateToProps)(CustomListDesign)
 
 const styles = StyleSheet.create({
   container: {

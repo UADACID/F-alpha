@@ -18,6 +18,7 @@ export default class Profiles extends Component {
 
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
+    this.props.allModels()
   }
 
   componentWillUnmount() {
@@ -39,6 +40,7 @@ export default class Profiles extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <View style={styles.container}>
       <CustomNavbar onBackPress={this.onBackPress}/>
