@@ -7,6 +7,10 @@ export const StartupInfo = (state = initialState, action) => {
       return false
       }
       break;
+  case 'SHOW_INFO': {
+    return true
+    }
+    break;
     default: {
       return state
     }

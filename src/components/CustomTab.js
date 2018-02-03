@@ -23,7 +23,13 @@ const { width, height } = Dimensions.get('window')
 
 class CustomTab extends Component {
 
+  constructor(props){
+    super(props)
+    props.dispatch({type:'SHOW_INFO'})
+  }
+
   componentDidMount(){
+
     setTimeout(()=>{
       this.props.dispatch({type:'HIDE_INFO'})
     }, 10000);

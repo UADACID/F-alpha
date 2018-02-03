@@ -39,14 +39,14 @@ export default class Completed extends Component {
 
   _renderItem = ({item}) => (
     <Card>
-      <ListItem avatar onPress={()=> this.props.toScreen('DetailTransactionHistories')}>
+      <ListItem style={{borderWidth:0}} avatar onPress={()=> this.props.toScreen('DetailTransactionHistories')}>
         <Left>
           <Thumbnail small source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
         </Left>
-        <Body>
+        <Body style={{borderBottomWidth:0}}>
           <Text style={{color:'green'}}>Selesai</Text>
         </Body>
-        <Right>
+        <Right style={{borderBottomWidth:0}}>
           <Text note>13 Jan, 3:43 pm</Text>
         </Right>
       </ListItem>
@@ -74,7 +74,7 @@ export default class Completed extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#f6f6f6",
     padding: 5
   },
 });
