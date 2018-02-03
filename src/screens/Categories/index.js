@@ -7,10 +7,11 @@ import {
   BackHandler,
   StyleSheet,
 } from 'react-native';
-import { Content } from 'native-base'
+import { Content, Button, Icon } from 'native-base'
 
 import { height, width, AppColor } from '../../utils'
-import { ImageSlider, Categories as Category, CustomNavbar, BestSelling, Brand, ModalCategories} from './components'
+import { ImageSlider, Categories as Category, BestSelling, Brand, ModalCategories} from './components'
+import CustomNavbar from '../../components/CustomNavbar'
 
 export default class Categories extends Component {
 
@@ -24,10 +25,14 @@ export default class Categories extends Component {
   }
 
   render() {
-
+    rightComponent = (
+      <Button transparent>
+        <Icon name='cart' style={{fontSize: 30, color: '#fff'}} />
+      </Button>
+    )
     return (
       <View style={styles.container}>
-        <CustomNavbar />
+        <CustomNavbar title='Fifilio' rightComponent={rightComponent}/>
         <Content>
           <ImageSlider />
           <Category navigation={this.props.navigation} title={'Kategori Desain'}/>

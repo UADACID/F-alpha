@@ -93,7 +93,7 @@ class CustomTab extends Component {
 
   render() {
     const { navigationRedux, navigation } = this.props
-    let activeIndex = 0
+    // let activeIndex = 0
     const { index } = navigationRedux.routes[0]
 
     let tabName = this.getActiveTabName(index)
