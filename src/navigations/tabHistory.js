@@ -11,8 +11,9 @@ import Completed from '../containers/Completed'
 
 const tabNavigatorConfig = {
   tabBarPosition: 'top',
-  swipeEnabled: false,
-  animationEnabled: false,
+  swipeEnabled: true,
+  lazy: true,
+  animationEnabled: true,
   tabBarComponent: ({navigation}) => <CustomTabHistory  navigation={navigation} />,
   // tabBarOptions
 }

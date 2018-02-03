@@ -42,10 +42,10 @@ class CustomTab extends Component {
 
   handlePressTab = (title) => {
     // console.log(this.props);
-    const setParamsAction = this.props.navigation.setParams({
-      params: { activeTab: title },
-    })
-    this.props.navigation.dispatch(setParamsAction)
+    // const setParamsAction = this.props.navigation.setParams({
+    //   params: { activeTab: title },
+    // })
+    // this.props.navigation.dispatch(setParamsAction)
     this.props.dispatch(NavigationActions.navigate({ routeName: title }))
   }
 
@@ -76,11 +76,35 @@ class CustomTab extends Component {
     ]).start()
   }
 
+ getActiveTabName = (index) => {
+    switch (index) {
+      case 0:
+        return 'Categories'
+        break;
+      case 3:
+        return 'Histories'
+        break;
+      case 1:
+        return 'Notifications'
+        break;
+      case 2:
+        return 'Settings'
+        break;
+      default:
+    }
+  }
+
   render() {
     // console.log(this.props.navigation);
-    const { navigation } = this.props
-    // console.log(this.props);
-    let activeTab = navigation.state.params ? navigation.state.params.params.activeTab : 'Categories'
+    const { navigationRedux, navigation } = this.props
+    console.log(this.props.navigationRedux);
+    let activeIndex = 0
+    const { index } = navigationRedux.routes[0]
+
+    let tabName = this.getActiveTabName(index)
+
+
+    // let activeTab = navigation.state.params ? navigation.state.params.params.activeTab : 'Categories'
 
     const interpolateRotation = this.animatedValueRotateButton.interpolate({
       inputRange:[0,1],
@@ -100,14 +124,14 @@ class CustomTab extends Component {
               onPress={()=>this.handlePressTab('Categories')}
               iconName='home'
               label='Home'
-              activeTab={activeTab == 'Categories' ? true : false}
+              activeTab={tabName == 'Categories' ? true : false}
             />
             <TabItem
               style={{marginRight:(width/4)/2}}
               onPress={()=>this.handlePressTab('Histories')}
               iconName='ios-repeat-outline'
               label='Histories'
-              activeTab={activeTab == 'Histories' ? true : false}
+              activeTab={tabName == 'Histories' ? true : false}
             />
           </View>
           <View style={{width:width/2, flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
@@ -116,13 +140,13 @@ class CustomTab extends Component {
               onPress={()=>this.handlePressTab('Notifications')}
               iconName='ios-notifications-outline'
               label='Notifications'
-              activeTab={activeTab == 'Notifications' ? true : false}
+              activeTab={tabName == 'Notifications' ? true : false}
             />
             <TabItem
               onPress={()=>this.handlePressTab('Settings')}
               iconName='ios-cog'
               label='Settings'
-              activeTab={activeTab == 'Settings' ? true : false}
+              activeTab={tabName == 'Settings' ? true : false}
             />
           </View>
         </View>
@@ -152,7 +176,8 @@ class CustomTab extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    StartupInfo : state.StartupInfo
+    StartupInfo : state.StartupInfo,
+    navigationRedux : state.nav
   }
 }
 

@@ -16,7 +16,7 @@ import { width, height, AppColor } from '../utils'
 class CustomTabHistory extends Component {
 
   handlePressTab = (title) => {
-    console.log(this.props);
+    // console.log(this.props);
     const setParamsAction = this.props.navigation.setParams({
       params: { activeTabHistory: title },
     })
