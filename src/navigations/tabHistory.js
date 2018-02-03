@@ -14,7 +14,7 @@ const tabNavigatorConfig = {
   swipeEnabled: true,
   lazy: true,
   animationEnabled: true,
-  tabBarComponent: ({navigation}) => <CustomTabHistory  navigation={navigation} />,
+  tabBarComponent: (props) => <CustomTabHistory  {...props} />,
   // tabBarOptions
 }
 

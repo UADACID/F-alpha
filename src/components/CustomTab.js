@@ -41,11 +41,6 @@ class CustomTab extends Component {
   }
 
   handlePressTab = (title) => {
-    // console.log(this.props);
-    // const setParamsAction = this.props.navigation.setParams({
-    //   params: { activeTab: title },
-    // })
-    // this.props.navigation.dispatch(setParamsAction)
     this.props.dispatch(NavigationActions.navigate({ routeName: title }))
   }
 
@@ -94,10 +89,10 @@ class CustomTab extends Component {
     }
   }
 
+
+
   render() {
-    // console.log(this.props.navigation);
     const { navigationRedux, navigation } = this.props
-    console.log(this.props.navigationRedux);
     let activeIndex = 0
     const { index } = navigationRedux.routes[0]
 

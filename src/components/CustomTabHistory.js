@@ -16,19 +16,27 @@ import { width, height, AppColor } from '../utils'
 class CustomTabHistory extends Component {
 
   handlePressTab = (title) => {
-    // console.log(this.props);
-    const setParamsAction = this.props.navigation.setParams({
-      params: { activeTabHistory: title },
-    })
-    this.props.navigation.dispatch(setParamsAction)
     this.props.dispatch(NavigationActions.navigate({ routeName: title }))
-    // this.props.navigation.navigate(title)
+  }
+
+  getActiveTabName = (index) => {
+    switch (index) {
+      case 0:
+        return 'Progress'
+        break;
+      case 1:
+        return 'Completed'
+        break;
+      default:
+
+    }
   }
 
   render() {
     // console.log(this.props);
-    const { navigation } = this.props
-    let activeTab = navigation.state.params ? navigation.state.params.params.activeTabHistory : 'Progress'
+    const { navigationState } = this.props
+    let activeTab = this.getActiveTabName(navigationState.index)
+    // let activeTab = navigation.state.params ? navigation.state.params.params.activeTabHistory : 'Progress'
     return (
       <View style={styles.container}>
         <Header style={[{backgroundColor:AppColor}]} androidStatusBarColor={AppColor}>
