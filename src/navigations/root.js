@@ -11,6 +11,8 @@ import EditProfiles from '../containers/EditProfiles'
 import DetailTransactionHistories from '../containers/DetailTransactionHistories'
 import Models from '../containers/Models'
 import Carts from '../containers/Carts'
+import Designs from '../containers/Designs'
+import Previews from '../containers/Previews'
 
 
 export const AppNavigator = StackNavigator({
@@ -34,6 +36,12 @@ export const AppNavigator = StackNavigator({
   },
   Models : {
     screen : Models
+  },
+  Designs: {
+    screen : Designs
+  },
+  Previews : {
+    screen : Previews
   },
   Carts : {
     screen : Carts

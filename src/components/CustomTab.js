@@ -32,7 +32,7 @@ class CustomTab extends Component {
 
     setTimeout(()=>{
       this.props.dispatch({type:'HIDE_INFO'})
-    }, 10000);
+    }, 5000);
   }
 
   componentWillMount(){
@@ -160,10 +160,10 @@ class CustomTab extends Component {
       </TouchableWithoutFeedback>
       {this.props.StartupInfo ?
         <Animatable.View animation="pulse" easing="ease-in-out-sine" iterationCount="infinite" style={{position:'absolute', bottom:80,width, alignItems:'center'}}>
-          <View style={{backgroundColor:'#ff6c8b', padding:10, borderRadius:20, borderWidth:1, borderColor:AppColor}}>
+          <View style={{backgroundColor:'#ff6c8b', padding:10, borderRadius:20, borderWidth:1, borderColor:'#ff6c8b'}}>
           <Text style={{color:'#fff'}}>Create Your Own Design Here</Text>
           </View>
-          <View style={[styles.triangle, {borderTopColor:AppColor}]} />
+          <View style={[styles.triangle, {borderTopColor:'#ff6c8b'}]} />
         </Animatable.View> : false
       }
       </View>

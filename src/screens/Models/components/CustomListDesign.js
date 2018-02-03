@@ -34,7 +34,7 @@ export default class CustomListDesign extends Component {
   renderItem = (item) => {
     // console.log(item);
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>this.props.toScreen('Designs')}>
           <Card style={{width:width/2.5, height:width/1.5}}>
             <CardItem>
               <Body>
