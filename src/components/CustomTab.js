@@ -41,7 +41,7 @@ class CustomTab extends Component {
   }
 
   handlePressTab = (title) => {
-    console.log(this.props);
+    // console.log(this.props);
     const setParamsAction = this.props.navigation.setParams({
       params: { activeTab: title },
     })
@@ -79,7 +79,7 @@ class CustomTab extends Component {
   render() {
     // console.log(this.props.navigation);
     const { navigation } = this.props
-    console.log(this.props);
+    // console.log(this.props);
     let activeTab = navigation.state.params ? navigation.state.params.params.activeTab : 'Categories'
 
     const interpolateRotation = this.animatedValueRotateButton.interpolate({

@@ -13,7 +13,7 @@ const tabNavigatorConfig = {
   tabBarPosition: 'top',
   swipeEnabled: false,
   animationEnabled: false,
-  tabBarComponent: ({navigation}) => <CustomTabHistory navigation={navigation} />,
+  tabBarComponent: ({navigation}) => <CustomTabHistory  navigation={navigation} />,
   // tabBarOptions
 }
 
