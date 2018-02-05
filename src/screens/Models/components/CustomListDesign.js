@@ -32,29 +32,29 @@ class CustomListDesign extends Component {
 
   _keyExtractor = (item, index) => index;
 
-  renderItem = (item) => {
+  renderItem = ({item}) => {
     // console.log(item);
     return (
-      <TouchableOpacity onPress={()=>this.props.toScreen('Designs')}>
-          <Card style={{width:width/2.5, height:width/1.5}}>
-            <CardItem>
+      <TouchableOpacity activeOpacity={0.8} onPress={()=>this.props.toScreen('Designs')}>
+          <Card>
+            <CardItem style={{width:width/2.5, height:200, }}>
               <Body>
               <ImageBackground
-                resizeMode='contain'
-                style={{width:width/3.5, height:width/2.2, justifyContent:'flex-end', alignItems:'flex-end'}}
-                source={{uri:item.item}}>
-                <View style={{height:30, width:30, justifyContent:'center', alignItems:'center', backgroundColor:'#f7355d', borderRadius:15}}>
-                  <Image
-                    style={{height:20, width:20}}
-                    source={require('../../../../assets/categories/paintbrush.png')}
-                  />
-                </View>
+                resizeMode='cover'
+                style={{width:width/3.5, height:170, justifyContent:'flex-end', alignItems:'flex-end'}}
+                source={{uri:item.modelVariants.length ? item.modelVariants[0].imageUrl : images[0]}}>
               </ImageBackground>
+              <View style={{position:'absolute', bottom:0, right:0, height:30, width:30, justifyContent:'center', alignItems:'center', backgroundColor:'#f7355d', borderRadius:15}}>
+                <Image
+                  style={{height:20, width:20}}
+                  source={require('../../../../assets/categories/paintbrush.png')}
+                />
+              </View>
               </Body>
             </CardItem>
-            <CardItem style={{height:30}}>
+            <CardItem style={{width:width/2.5}}>
               <Body>
-                <Text numberOfLines={1} ellipsizeMode='tail'>NativeBase</Text>
+                <Text numberOfLines={2} ellipsizeMode='tail'>{item.name}</Text>
               </Body>
             </CardItem>
           </Card>
@@ -77,7 +77,7 @@ class CustomListDesign extends Component {
           leftComponent={<Text style={{padding:10, paddingLeft:20}}>Create Your Own Design</Text>}
           rightComponent={rightComponent} />
         <FlatList
-          data={images}
+          data={this.props.models.queryResult.data}
           horizontal={true}
           keyExtractor={this._keyExtractor}
           renderItem={this.renderItem}

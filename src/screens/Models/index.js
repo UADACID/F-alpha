@@ -46,7 +46,7 @@ export default class Profiles extends Component {
       <CustomNavbar onBackPress={this.onBackPress}/>
       <Content>
         <CustomHeader />
-        <CustomListDesign toScreen={this.props.toScreen}/>
+        <CustomListDesign toScreen={this.props.toScreen} {...this.props}/>
         <CustomListPromote />
         <Text onPress={()=>this.props.toScreen('Designs')}>T-Shirt Category</Text>
       </Content>

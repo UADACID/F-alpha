@@ -18,10 +18,10 @@ const { width, height } = Dimensions.get('window')
 
 class Categories extends Component {
 
-  handlePressCategory = () => {
+  handlePressCategory = (id) => {
     // console.log(this.props);
     this.props.hideModal()
-    this.props.toScreen({routeName:'Models'})
+    this.props.toScreen({routeName:'Models', passProps:{categoryId:id}})
   }
 
   _keyExtractor = (item, index) => index;
@@ -30,7 +30,7 @@ class Categories extends Component {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={this.handlePressCategory}>
+        onPress={()=>this.handlePressCategory(item.id)}>
         <Image
           style={{width:width/4, height:width/4}}
           source={{uri:item.imageUrl}}/>
@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     hideModal: () => {dispatch({type:'HIDE_MODAL'})},
     toScreen: ({routeName, passProps})=>{
-      dispatch(NavigationActions.navigate({ routeName: routeName , passProps:{name:'anjay'} }))
+      dispatch(NavigationActions.navigate({ routeName: routeName }))
     }
   }
 }
