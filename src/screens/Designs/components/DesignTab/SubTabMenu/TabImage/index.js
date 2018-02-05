@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
   tabItemContainer : {
     width: width/2,
     height: 40,
-    borderWidth: 1,
+    // borderWidth: 1,
+    borderTopWidth: 1,
     justifyContent:'center',
     alignItems:'center',
     borderColor: '#f6f6f9'
