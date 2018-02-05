@@ -13,7 +13,7 @@ export default class TabItem extends Component {
   render() {
 
     const TabContext = this.props.icon ? (
-      <Image style={{width: 30, height: 30}} source={this.props.icon}/>
+      <Image style={{width: 20, height: 20}} source={this.props.icon}/>
     ) : <View />
 
     const Title = this.props.title ? (
@@ -23,7 +23,7 @@ export default class TabItem extends Component {
     return (
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={this.props.onPress} 
+        onPress={this.props.onPress}
         style={[styles.container, this.props.style]}>
         {TabContext}
         {Title}

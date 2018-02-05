@@ -15,32 +15,33 @@ const stringPath = '../../../../../../assets/'
 class TabMenu extends Component {
 
   changeBackgroundColor = (isActive) => {
-    const backgroundColor = isActive ? '#eeedee' : '#fff'
+    const backgroundColor = isActive ? '#fff' : '#eeedee'
     return {
-      backgroundColor
+      backgroundColor,
+      borderTopWidth:0
     }
   }
 
   render() {
-    const iconColor = `${stringPath}/design/color.png`
-    const iconImage = `${stringPath}/design/image.png`
-    const iconText = `${stringPath}/design/text.png`
     const { activeColorTab, activeImageTab, activeTextTab } = this.props
+    const iconColor = activeColorTab ? require(`${stringPath}/design/color-active.png`) : require(`${stringPath}/design/color-inactive.png`)
+    const iconImage = activeImageTab ? require(`${stringPath}/design/image-active.png`) : require(`${stringPath}/design/image-inactive.png`)
+    const iconText = activeTextTab ? require(`${stringPath}/design/text-active.png`) : require(`${stringPath}/design/text-inactive.png`)
     return (
       <View style={styles.container}>
         <TabItem
           style={[styles.tabItemContainer,this.changeBackgroundColor(activeColorTab)]}
-          icon={require(`${iconColor}`)}
+          icon={iconColor}
           onPress={()=>this.props.onChangeTabBottom('color')}
           />
         <TabItem
           style={[styles.tabItemContainer,this.changeBackgroundColor(activeImageTab)]}
-          icon={require(`${iconImage}`)}
+          icon={iconImage}
           onPress={()=>this.props.onChangeTabBottom('image')}
           />
         <TabItem
           style={[styles.tabItemContainer,this.changeBackgroundColor(activeTextTab)]}
-          icon={require(`${iconText}`)}
+          icon={iconText}
           onPress={()=>this.props.onChangeTabBottom('text')}
           />
       </View>
@@ -72,7 +73,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(TabMenu)
 const styles = StyleSheet.create({
   container: {
     flexDirection:'row',
-    backgroundColor: '#fff'
+    backgroundColor: '#eeedee'
   },
   tabItemContainer : {
     width: width/3,
@@ -80,6 +81,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent:'center',
     alignItems:'center',
-    borderColor: '#f6f6f9'
+    borderColor: '#eeedee'
   }
 });
