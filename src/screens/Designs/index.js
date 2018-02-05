@@ -6,12 +6,35 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
+import { Button, Icon } from 'native-base'
+
+import {DesignBody, DesignTab} from './components'
+import CustomNavbar from '../../components/CustomNavbar'
 
 export default class Designs extends Component {
   render() {
+
+    const leftComponent = (
+      <Button transparent style={styles.headerLeft} onPress={()=>{}}>
+        <Icon name='ios-arrow-back-outline' style={{fontSize: 30, color: '#fff'}} />
+      </Button>
+    )
+
+    const rightComponent = (
+      <Button transparent onPress={()=>{}}>
+        <Text style={styles.textHeaderRight}>Preview</Text>
+      </Button>
+    )
+
     return (
       <View style={styles.container}>
-        <Text onPress={()=>this.props.toScreen('Previews')}>I'm the Designs component</Text>
+        <CustomNavbar
+          title='Design'
+          leftComponent={leftComponent}
+          rightComponent={rightComponent}
+        />
+        <DesignBody />
+        <DesignTab />
       </View>
     );
   }
@@ -20,7 +43,12 @@ export default class Designs extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent:'center',
-    alignItems:'center',
+    backgroundColor: '#fff'
   },
+  textHeaderRight : {
+    color: '#fff'
+  },
+  headerLeft : {
+    paddingRight: 20
+  }
 });

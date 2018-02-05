@@ -4,6 +4,9 @@ import { navReducer } from './navigator'
 import { StartupInfo } from './tabHome'
 import { showModalDashboard } from './Home'
 
+//DESIGNS
+import { activeTabBottom } from './Designs'
+
 import {services} from '../api';
 
 let reducers = R.map(x => x.reducer, services);
@@ -12,7 +15,8 @@ export const appReducer = combineReducers({
   ...reducers,
   nav: navReducer,
   modalDashboard : showModalDashboard,
-  StartupInfo
+  StartupInfo,
+  activeTabBottom
 });
 
 
