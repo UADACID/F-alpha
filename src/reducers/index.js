@@ -5,7 +5,7 @@ import { StartupInfo } from './tabHome'
 import { showModalDashboard } from './Home'
 
 //DESIGNS
-import { activeTabBottom } from './Designs'
+import { activeTabBottom, activeSubTabButtom } from './Designs'
 
 import {services} from '../api';
 
@@ -16,7 +16,8 @@ export const appReducer = combineReducers({
   nav: navReducer,
   modalDashboard : showModalDashboard,
   StartupInfo,
-  activeTabBottom
+  activeTabBottom,
+  activeSubTabButtom
 });
 
 

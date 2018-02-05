@@ -17,7 +17,7 @@ export default class TabItem extends Component {
     ) : <View />
 
     const Title = this.props.title ? (
-      <Text>{this.props.title}</Text>
+      <Text style={this.props.titleStyle}>{this.props.title}</Text>
     ) : <View />
 
     return (

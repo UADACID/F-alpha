@@ -30,12 +30,12 @@ const colors = [
   '#ecf0f1',
 ]
 
-export default class TabColor extends Component {
+export default class TextColor extends Component {
 
   renderColorButton(color, i){
     const backgroundColor = color
     return (
-      <TouchableOpacity key={i} style={{backgroundColor, width:20, height:20, borderRadius:2, margin:5}}>
+      <TouchableOpacity key={i} style={{backgroundColor, width:15, height:15, borderRadius:10, margin:5}}>
 
       </TouchableOpacity>
     )
@@ -44,7 +44,7 @@ export default class TabColor extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Card style={{padding:5}}>
+        <Card>
         <ScrollView horizontal={true}>
           {colors.map((color,i) => this.renderColorButton(color,i))}
         </ScrollView>
