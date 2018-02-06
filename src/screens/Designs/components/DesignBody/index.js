@@ -11,7 +11,21 @@ export default class DesignBody extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
+        <Text style={{padding:5}}>I'm the DesignBody component</Text>
       </View>
     );
   }

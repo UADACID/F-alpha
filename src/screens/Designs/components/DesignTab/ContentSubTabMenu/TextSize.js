@@ -12,7 +12,10 @@ export default class TextSize extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Slider style={styles.slider} thumbTintColor='#fa2b6f'/>
+        <Slider
+          style={styles.slider}
+          thumbTintColor='#fff'
+          minimumTrackTintColor='#fff'/>
       </View>
     );
   }
@@ -20,7 +23,8 @@ export default class TextSize extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    padding: 5,
+    backgroundColor: '#2c2f3470'
   },
   slider : {
     height: 40
