@@ -7,19 +7,40 @@ import {
   Slider,
   StyleSheet,
 } from 'react-native';
+import { connect } from 'react-redux'
 
-export default class TextSize extends Component {
+class TextSize extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Slider
           style={styles.slider}
           thumbTintColor='#fff'
-          minimumTrackTintColor='#fff'/>
+          minimumTrackTintColor='#fff'
+          value={this.props.fontSize}
+          minimumValue={10}
+          maximumValue={300}
+          onValueChange={this.props.onChangeFontSize}/>
       </View>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  const onChangeFontSize = (fontSize) => dispatch({type:"ON_CHANGE_FONT_SIZE", payload:fontSize})
+  return {
+    onChangeFontSize
+  }
+}
+
+const mapStateToProps = (state) => {
+  const {textMenu} = state
+  return {
+    fontSize:textMenu.fontSize
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TextSize)
 
 const styles = StyleSheet.create({
   container: {

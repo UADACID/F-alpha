@@ -9,6 +9,7 @@ import {
   StyleSheet,
   Platform
 } from 'react-native';
+import { connect } from 'react-redux'
 
 const fonts = [
   'After_Shok',
@@ -37,12 +38,15 @@ const fonts = [
   'Sunny Spring Day - TTF',
 ];
 
-export default class TextFont extends Component {
+class TextFont extends Component {
 
   renderFontStyle(font, i){
     const fontFamily = font
     return (
-      <TouchableOpacity key={i} style={styles.textContainer}>
+      <TouchableOpacity
+        key={i}
+        onPress={()=>this.props.onChangeFontFamily(font)} 
+        style={styles.textContainer}>
         <Text style={[{color:'#fff', fontSize:20},Platform.OS == 'ios' ? {} : { fontFamily:font}]}>ABC</Text>
       </TouchableOpacity>
     )
@@ -59,6 +63,14 @@ export default class TextFont extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  const onChangeFontFamily = (fontFamily) => dispatch({type:"ON_CHANGE_FONT_FAMILY", payload:fontFamily})
+  return {
+    onChangeFontFamily
+  }
+}
+
+export default connect(null, mapDispatchToProps)(TextFont)
 const styles = StyleSheet.create({
   container: {
     padding: 5,
