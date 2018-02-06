@@ -12,6 +12,8 @@ import TextColor from './TextColor'
 import TextSize from './TextSize'
 import TextLength from './TextLength'
 
+import ImagePhotos from './ImagePhotos'
+
 class ContentSubTabMenu extends Component {
 
   renderTextContent(){
@@ -44,6 +46,22 @@ class ContentSubTabMenu extends Component {
       }
   }
 
+  renderImageContent(){
+    const { activeSubTabButtom } = this.props
+    switch (activeSubTabButtom) {
+      case 'imageGallery':
+        return (
+          <ImagePhotos />
+        )
+        break;
+      default:
+        return(
+          <View />
+        )
+    }
+
+  }
+
 
   render(){
     const { activeSubTabButtom, activeTabBottom} = this.props
@@ -51,6 +69,9 @@ class ContentSubTabMenu extends Component {
     switch (activeTabBottom) {
       case "text":
         return this.renderTextContent()
+        break;
+      case "image":
+        return this.renderImageContent()
         break;
       default:
         return <View />
