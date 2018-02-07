@@ -12,10 +12,10 @@ import {
 import { connect } from 'react-redux'
 
 const fonts = [
+  'Jura-Reguler',
   'After_Shok',
   'Akashi',
   'Amadeus',
-  'Jura-Reguler',
   'Sofia-Reguler',
   'uni0553-webfont',
   'HBM Razed Bold (personal use only)',
@@ -40,23 +40,24 @@ const fonts = [
 
 class TextFont extends Component {
 
-  renderFontStyle(font, i){
-    const fontFamily = font
+  renderFontStyle({font, i,fontFamily}){
+    // const font
     return (
       <TouchableOpacity
         key={i}
-        onPress={()=>this.props.onChangeFontFamily(font)} 
-        style={styles.textContainer}>
+        onPress={()=>this.props.onChangeFontFamily(font)}
+        style={[styles.textContainer,{backgroundColor:font == fontFamily ? '#f7355d' : null }]}>
         <Text style={[{color:'#fff', fontSize:20},Platform.OS == 'ios' ? {} : { fontFamily:font}]}>ABC</Text>
       </TouchableOpacity>
     )
   }
 
   render() {
+    const {fontFamily} = this.props
     return (
       <View style={styles.container}>
         <ScrollView horizontal={true}>
-          {fonts.map((font,i) => this.renderFontStyle(font,i))}
+          {fonts.map((font,i) => this.renderFontStyle({font,i,fontFamily}))}
         </ScrollView>
       </View>
     );
@@ -70,7 +71,14 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(TextFont)
+const mapStateToProps = ( state ) => {
+  const {fontFamily} = state.textMenu
+  return {
+    fontFamily
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TextFont)
 const styles = StyleSheet.create({
   container: {
     padding: 5,

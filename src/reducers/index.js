@@ -5,7 +5,7 @@ import { StartupInfo } from './tabHome'
 import { showModalDashboard } from './Home'
 
 //DESIGNS
-import { activeTabBottom, activeSubTabButtom, textMenu} from './Designs'
+import { activeTabBottom, activeSubTabButtom, textMenu, multipleTextDragable} from './Designs'
 
 import {services} from '../api';
 
@@ -18,7 +18,8 @@ export const appReducer = combineReducers({
   StartupInfo,
   activeTabBottom,
   activeSubTabButtom,
-  textMenu
+  textMenu,
+  multipleTextDragable
 });
 
 

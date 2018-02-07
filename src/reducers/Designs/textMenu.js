@@ -4,7 +4,7 @@ const { width, height } = Dimensions.get('window')
 const DEFAULT_WIDTH_FONT = width/3
 
 const initialState = {
-  fontFamily:null,
+  fontFamily:'Jura-Reguler',
   fontColor:null,
   fontSize:20,
   fontLength: DEFAULT_WIDTH_FONT
