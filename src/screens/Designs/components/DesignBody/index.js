@@ -47,15 +47,10 @@ class DesignBody extends Component {
   }
 
   render() {
-    console.log(this.props.textMenu);
-    const { textMenu, multipleTextDragable } = this.props
-    const { fontFamily, fontColor, fontSize, fontLength} = textMenu
+    // console.log(this.props.textMenu);
+    const { multipleTextDragable } = this.props
     return (
       <View style={styles.container}>
-        <Text style={{padding:5}}>{textMenu.fontFamily}</Text>
-        <Text style={{padding:5}}>{textMenu.fontColor}</Text>
-        <Text style={{padding:5}}>{textMenu.fontSize}</Text>
-        <Text style={{padding:5}}>{textMenu.fontLength}</Text>
         <Text style={{padding:5}}>{multipleTextDragable.activeIndex}</Text>
 
         <Button onPress={()=>this.props.dispatch({type:'ADD_NEW_TEXT'})}>
@@ -80,53 +75,31 @@ class DesignBody extends Component {
             return (
               <CustomGestures
                 key={i}
-                containerStyle={{width:fontLength, position:'absolute'}}
+                containerStyle={{width:obj.fontLength, position:'absolute'}}
                 containerChildStyle={{borderWidth:2, borderColor:obj.isActive ? 'red' : '#ffffff00'}}
                 onChangeStyle={(event, styles)=> {
-                  this.setState({
-                  styles
-                })}}
+                  // this.setState({
+                  //   styles
+                  // })
+                }}
                 onPressIn={()=>{ this.props.dispatch({type:'CHANGE_OBJECT_CLICKED', payload:i})}}
-                onPress={()=> {alert('aaaa')}}>
-                  <Text style={{padding:5, fontFamily, fontSize, color:fontColor}}>
+                onPress={()=> {}}>
+                  <Text style={{padding:5, fontFamily: obj.fontFamily, fontSize: obj.fontSize, color:obj.fontColor}}>
                     {obj.text}
                   </Text>
               </CustomGestures>
             )
           })
         }
-        {/*<CustomGestures
-          containerStyle={{width:fontLength, position:'absolute'}}
-          containerChildStyle={{borderWidth:2, borderColor:'red'}}
-          onChangeStyle={(event, styles)=> {this.setState({
-            styles
-          })}}
-          onPresItem={()=> {}}>
-            <Text style={{padding:5, fontFamily, fontSize, color:fontColor}}>
-              Fifilio
-            </Text>
-        </CustomGestures>
-        <CustomGestures
-          containerStyle={{width:fontLength, position:'absolute'}}
-          containerChildStyle={{borderWidth:2, borderColor:'red'}}
-          onChangeStyle={(event, styles)=> {this.setState({
-            styles
-          })}}
-          onPresItem={()=> {}}>
-            <Text style={{padding:5, fontFamily, fontSize, color:fontColor}}>
-              Fifilio
-            </Text>
-        </CustomGestures>*/}
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  const { textMenu, multipleTextDragable } = state
+  // console.log(state);
+  const { multipleTextDragable } = state
   return {
-    textMenu,
     multipleTextDragable
   }
 }

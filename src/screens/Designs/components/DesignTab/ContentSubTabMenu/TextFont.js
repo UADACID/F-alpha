@@ -40,12 +40,12 @@ const fonts = [
 
 class TextFont extends Component {
 
-  renderFontStyle({font, i,fontFamily}){
+  renderFontStyle({font, i,fontFamily, multipleTextDragable}){
     // const font
     return (
       <TouchableOpacity
         key={i}
-        onPress={()=>this.props.onChangeFontFamily(font)}
+        onPress={()=>this.props.onChangeFontFamily(font, multipleTextDragable.activeIndex)}
         style={[styles.textContainer,{backgroundColor:font == fontFamily ? '#f7355d' : null }]}>
         <Text style={[{color:'#fff', fontSize:20},Platform.OS == 'ios' ? {} : { fontFamily:font}]}>ABC</Text>
       </TouchableOpacity>
@@ -53,11 +53,11 @@ class TextFont extends Component {
   }
 
   render() {
-    const {fontFamily} = this.props
+    const {fontFamily, multipleTextDragable} = this.props
     return (
       <View style={styles.container}>
         <ScrollView horizontal={true}>
-          {fonts.map((font,i) => this.renderFontStyle({font,i,fontFamily}))}
+          {fonts.map((font,i) => this.renderFontStyle({font,i,fontFamily, multipleTextDragable}))}
         </ScrollView>
       </View>
     );
@@ -65,16 +65,20 @@ class TextFont extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  const onChangeFontFamily = (fontFamily) => dispatch({type:"ON_CHANGE_FONT_FAMILY", payload:fontFamily})
+  const onChangeFontFamily = (fontFamily, indexClicked) => dispatch({type:"CHANGE_FONT_STYLE", payload:{fontFamily, indexClicked}})
   return {
     onChangeFontFamily
   }
 }
 
 const mapStateToProps = ( state ) => {
-  const {fontFamily} = state.textMenu
+  const { multipleTextDragable } = state
+  const style = multipleTextDragable.texts.filter(obj => obj.isActive == true)
+  const fontFamily = style.length ? style[0].fontFamily : ''
+
   return {
-    fontFamily
+    fontFamily,
+    multipleTextDragable
   }
 }
 

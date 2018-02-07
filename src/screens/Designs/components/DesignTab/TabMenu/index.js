@@ -22,11 +22,16 @@ class TabMenu extends Component {
     }
   }
 
+  handleClickTextTab(value){
+    const {texts} = this.props
+    if (texts.length == 0) {
+      this.props.addNewTextForFirst()
+    }
+    this.props.onChangeTabBottom(value)
+  }
+
   render() {
-    const { activeColorTab, activeImageTab, activeTextTab } = this.props
-    const iconColor = activeColorTab ? require(`${stringPath}/design/color-active.png`) : require(`${stringPath}/design/color-inactive.png`)
-    const iconImage = activeImageTab ? require(`${stringPath}/design/image-active.png`) : require(`${stringPath}/design/image-inactive.png`)
-    const iconText = activeTextTab ? require(`${stringPath}/design/text-active.png`) : require(`${stringPath}/design/text-inactive.png`)
+    const { activeColorTab, activeImageTab, activeTextTab, iconColor, iconImage, iconText } = this.props
     return (
       <View style={styles.container}>
         <TabItem
@@ -42,7 +47,7 @@ class TabMenu extends Component {
         <TabItem
           style={[styles.tabItemContainer,this.changeBackgroundColor(activeTextTab)]}
           icon={iconText}
-          onPress={()=>this.props.onChangeTabBottom('text')}
+          onPress={()=>this.handleClickTextTab('text')}
           />
       </View>
     );
@@ -51,20 +56,31 @@ class TabMenu extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   const onChangeTabBottom = (tabName) => dispatch({type:'CHANGE_TAB_BOTTOM_SELECTED', payload:tabName})
+  const addNewTextForFirst = () => dispatch({type:'ADD_NEW_TEXT'})
   return {
-    onChangeTabBottom
+    onChangeTabBottom,
+    addNewTextForFirst
   }
 }
 
 const mapStateToProps = (state) => {
-  let {activeTabBottom} = state
+  let { activeTabBottom, multipleTextDragable} = state
   let activeColorTab = activeTabBottom == 'color' ? true : false
   let activeImageTab = activeTabBottom == 'image' ? true : false
   let activeTextTab = activeTabBottom == 'text' ? true : false
+
+  const iconColor = activeColorTab ? require(`${stringPath}/design/color-active.png`) : require(`${stringPath}/design/color-inactive.png`)
+  const iconImage = activeImageTab ? require(`${stringPath}/design/image-active.png`) : require(`${stringPath}/design/image-inactive.png`)
+  const iconText = activeTextTab ? require(`${stringPath}/design/text-active.png`) : require(`${stringPath}/design/text-inactive.png`)
+
   return {
     activeColorTab,
     activeImageTab,
-    activeTextTab
+    activeTextTab,
+    iconColor,
+    iconImage,
+    iconText,
+    texts : multipleTextDragable.texts
   }
 }
 

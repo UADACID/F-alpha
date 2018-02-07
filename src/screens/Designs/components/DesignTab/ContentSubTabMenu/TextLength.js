@@ -10,6 +10,11 @@ import {
 import { connect } from 'react-redux'
 
 class TextLength extends Component {
+
+  handleOnValueChange = (value) => {
+    this.props.onChangeFontLength(value, this.props.multipleTextDragable.activeIndex)
+  }
+  
   render() {
     return (
       <View style={styles.container}>
@@ -20,23 +25,26 @@ class TextLength extends Component {
           value={this.props.fontLength}
           minimumValue={1}
           maximumValue={300}
-          onValueChange={this.props.onChangeFontLength}/>
+          onValueChange={this.handleOnValueChange}/>
       </View>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  const onChangeFontLength = (fontLength) => dispatch({type:"ON_CHANGE_FONT_LENGTH", payload:fontLength})
+  const onChangeFontLength = (fontLength, indexClicked) => dispatch({type:"CHANGE_FONT_LENGTH", payload:{fontLength, indexClicked}})
   return {
     onChangeFontLength
   }
 }
 
 const mapStateToProps = (state) => {
-  const {textMenu} = state
+  const { multipleTextDragable } = state
+  const style = multipleTextDragable.texts.filter(obj => obj.isActive == true)
+  const fontLength = style.length ? style[0].fontLength : 0
   return {
-    fontLength:textMenu.fontLength
+    multipleTextDragable,
+    fontLength
   }
 }
 

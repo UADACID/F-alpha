@@ -25,12 +25,12 @@ const colors = [
 
 class TextColor extends Component {
 
-  renderColorButton({color, i, onChangeFontColor, isPressed, fontColor}){
+  renderColorButton({color, i, onChangeFontColor, isPressed, fontColor, multipleTextDragable}){
     const backgroundColor = color
     return (
       <TouchableOpacity
         key={i}
-        onPress={()=>onChangeFontColor(color)}
+        onPress={()=>onChangeFontColor(color, multipleTextDragable.activeIndex)}
         style={[{
           backgroundColor,
           width:15,
@@ -44,12 +44,12 @@ class TextColor extends Component {
   }
 
   render() {
-    const { onChangeFontColor, fontColor, isPressed } = this.props
+    const { onChangeFontColor, fontColor, isPressed, multipleTextDragable } = this.props
     return (
       <View style={styles.container}>
         <Card>
         <ScrollView horizontal={true}>
-          {colors.map((color,i) => this.renderColorButton({color,i, onChangeFontColor, isPressed, fontColor}))}
+          {colors.map((color,i) => this.renderColorButton({color,i, onChangeFontColor, isPressed, fontColor, multipleTextDragable}))}
         </ScrollView>
         </Card>
       </View>
@@ -58,7 +58,7 @@ class TextColor extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  const onChangeFontColor = (fontColor) => dispatch({type:"ON_CHANGE_FONT_COLOR", payload:fontColor})
+  const onChangeFontColor = (fontColor, indexClicked) => dispatch({type:"CHANGE_FONT_COLOR", payload:{fontColor, indexClicked}})
   const isPressed = (indexFontColor, fontColor) => {
     if (indexFontColor === fontColor) {
       return {
@@ -77,10 +77,12 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-  const { textMenu } = state
-  const { fontColor } = textMenu
+  const { multipleTextDragable } = state
+  const style = multipleTextDragable.texts.filter(obj => obj.isActive == true)
+  const fontColor = style.length ? style[0].fontColor : ''
   return {
-    fontColor:textMenu.fontColor
+    fontColor:fontColor,
+    multipleTextDragable
   }
 }
 

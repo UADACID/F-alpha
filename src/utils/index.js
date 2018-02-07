@@ -1,5 +1,6 @@
 import { Dimensions } from 'react-native'
 import { getCurrentRouteName, getActionRouteName } from './fixNavigate'
+import { customMutationState, mutationState } from './textMenuReducers'
 
 const { height, width } = Dimensions.get('window')
 const AppColor = '#f7355d'
@@ -10,5 +11,7 @@ export {
   width,
   AppColor,
   getCurrentRouteName,
-  getActionRouteName
+  getActionRouteName,
+  customMutationState,
+  mutationState
 }
