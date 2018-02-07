@@ -1,8 +1,13 @@
+import { Dimensions } from 'react-native'
+
+const { width, height } = Dimensions.get('window')
+const DEFAULT_WIDTH_FONT = width/3
+
 const initialState = {
   fontFamily:null,
   fontColor:null,
-  fontSize:null,
-  fontLength:null
+  fontSize:20,
+  fontLength: DEFAULT_WIDTH_FONT
 }
 
 const textMenu = (state = initialState, action) => {
