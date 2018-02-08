@@ -41,6 +41,17 @@ class TextButton extends Component {
   }
 
   render() {
+    const { textsLength } = this.props
+    let deleteButton = textsLength == 0 ? <View /> : (
+      <Button
+        small
+        transparent
+        onPress={this.doRemovingText}
+        style={styles.buttonRemove}>
+        <Icon name='ios-trash-outline' style={{color:'#fff'}}/>
+      </Button>
+    )
+
     return (
       <View style={styles.container}>
         <Button
@@ -50,13 +61,7 @@ class TextButton extends Component {
           style={styles.buttonAdd}>
           <Icon name='md-add' style={{color:'#fff'}}/>
         </Button>
-        <Button
-          small
-          transparent
-          onPress={this.doRemovingText}
-          style={styles.buttonRemove}>
-          <Icon name='ios-trash-outline' style={{color:'#fff'}}/>
-        </Button>
+        {deleteButton}
       </View>
     );
   }
@@ -77,12 +82,12 @@ const mapDispatchToProps = (dispatch
 const mapStateToProps = ( state ) => {
   const { multipleTextDragable } = state
   // console.log(multipleTextDragable);
-  const textsLength = multipleTextDragable.texts.length
+  const texts = multipleTextDragable.texts.filter(obj => obj.isDeleted != true)
 
   return {
     activeIndex : multipleTextDragable.activeIndex,
     multipleTextDragable,
-    textsLength
+    textsLength : texts.length
   }
 }
 
@@ -95,10 +100,10 @@ const styles = StyleSheet.create({
     padding: 5
   },
   buttonAdd : {
-    marginRight: 20,
     backgroundColor: '#4ecdc4a3'
   },
   buttonRemove : {
+    marginLeft: 20,
     backgroundColor: '#f443368f'
   }
 });
