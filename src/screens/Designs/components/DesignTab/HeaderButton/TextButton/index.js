@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
+  Alert,
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux'
@@ -17,6 +18,18 @@ class TextButton extends Component {
     if (textsLength != 0) {
       removeTextSelected({activeIndex, multipleTextDragable})
     }
+  }
+
+  doRemovingText = () => {
+    Alert.alert(
+      '',
+      'are you sure to delete the selected text',
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => this.handleRemoveTextSelected()},
+      ],
+      { cancelable: false }
+    )
   }
 
   handleAddText = () => {
@@ -36,7 +49,7 @@ class TextButton extends Component {
         <Button
           small
           transparent
-          onPress={this.handleRemoveTextSelected}
+          onPress={this.doRemovingText}
           style={styles.buttonRemove}>
           <Icon name='ios-trash-outline' style={{color:'#fff'}}/>
         </Button>

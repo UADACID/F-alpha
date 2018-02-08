@@ -33,7 +33,7 @@ class ModalTextInput extends Component {
 
   handleDone = () => {
     const { text } = this.state
-    console.log(text);
+    // console.log(text);
     if (text != '') {
       this.props.addNewText(text)
       this.props.onShowTextModal()
@@ -46,7 +46,7 @@ class ModalTextInput extends Component {
   }
 
   render() {
-    console.log(this.state.text);
+    // console.log(this.state.text);
     const leftComponent = (
       <Button
         transparent
@@ -82,6 +82,7 @@ class ModalTextInput extends Component {
                 underlineColorAndroid='#fff'
                 onChangeText={this.onChangeText}
                 autoFocus={true}
+                returnKeyType='none'
                 value={this.state.text}
               />
               {/*<Button

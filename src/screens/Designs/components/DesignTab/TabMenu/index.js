@@ -26,7 +26,7 @@ class TabMenu extends Component {
     const {texts, activeTextTab, activeTabBottom} = this.props
     const textFilter = texts.filter((obj) => obj.isDeleted == false)
     if (textFilter.length == 0) {
-      console.log(activeTabBottom);
+      // console.log(activeTabBottom);
       if (activeTabBottom == 'text') {
           this.props.onChangeTabBottom('')
       }else {
