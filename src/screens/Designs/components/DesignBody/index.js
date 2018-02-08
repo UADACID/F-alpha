@@ -18,6 +18,7 @@ import Layer1Background from './Layer1Background'
 import Layer2ObjectAttachment from './Layer2ObjectAttachment'
 import Layer3HollowImage from './Layer3HollowImage'
 import Layer4DragableArea from './Layer4DragableArea'
+import ModalTextInput from './components/ModalTextInput'
 
 
 // const { width, height } = Dimensions.get('window')
@@ -36,6 +37,7 @@ export default class DesignBody extends Component {
         <Layer2ObjectAttachment />
         <Layer3HollowImage />
         <Layer4DragableArea />
+        <ModalTextInput />
       </View>
     )
   }

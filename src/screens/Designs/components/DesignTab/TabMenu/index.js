@@ -24,12 +24,14 @@ class TabMenu extends Component {
 
   handleClickTextTab(value){
     const {texts, activeTextTab, activeTabBottom} = this.props
-    if (texts.length == 0) {
+    const textFilter = texts.filter((obj) => obj.isDeleted == false)
+    if (textFilter.length == 0) {
       console.log(activeTabBottom);
       if (activeTabBottom == 'text') {
           this.props.onChangeTabBottom('')
       }else {
-        this.props.addNewTextForFirst()
+        this.props.onShowTextModal()
+        // this.props.addNewTextForFirst()
       }
     }
     if (activeTextTab) {
@@ -78,10 +80,12 @@ class TabMenu extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   const onChangeTabBottom = (tabName) => dispatch({type:'CHANGE_TAB_BOTTOM_SELECTED', payload:tabName})
-  const addNewTextForFirst = () => dispatch({type:'ADD_NEW_TEXT'})
+  const onShowTextModal = () => dispatch({type:'SHOW_TEXT_MODAL'})
+  // const addNewTextForFirst = () => dispatch({type:'ADD_NEW_TEXT'})
   return {
     onChangeTabBottom,
-    addNewTextForFirst
+    // addNewTextForFirst,
+    onShowTextModal
   }
 }
 

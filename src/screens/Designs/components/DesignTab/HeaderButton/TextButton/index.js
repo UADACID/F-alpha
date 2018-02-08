@@ -19,13 +19,17 @@ class TextButton extends Component {
     }
   }
 
+  handleAddText = () => {
+    this.props.onShowTextModal()
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Button
           small
           transparent
-          onPress={this.props.addNewText}
+          onPress={this.handleAddText}
           style={styles.buttonAdd}>
           <Icon name='md-add' style={{color:'#fff'}}/>
         </Button>
@@ -43,25 +47,13 @@ class TextButton extends Component {
 
 const mapDispatchToProps = (dispatch
 ) => {
-  const addNewText = () => dispatch({type:'ADD_NEW_TEXT'})
-  const removeTextSelected = (payload) => {
-
-
-    dispatch({type:'REMOVE_TEXT_SELECTED', payload: payload.activeIndex})
-    // setTimeout( () => {
-    //   const { texts } = payload.multipleTextDragable
-    //   // console.log(texts.length);
-    //   for (var i = 0; i < texts.length; i++) {
-    //     const text = texts[i]
-    //     console.log(text);
-    //     dispatch({type:'CHANGE_POSITION', payload:{left:text.left, top:text.top, activeIndex:text.activeIndex}})
-    //   }
-    // }, 2000);
-
-  }
+  // const addNewText = (text) => dispatch({type:'ADD_NEW_TEXT'})
+  const onShowTextModal = () => dispatch({type:'SHOW_TEXT_MODAL'})
+  const removeTextSelected = (payload) => {dispatch({type:'REMOVE_TEXT_SELECTED', payload: payload.activeIndex})}
   return {
-    addNewText,
-    removeTextSelected
+    // addNewText,
+    removeTextSelected,
+    onShowTextModal
   }
 }
 
