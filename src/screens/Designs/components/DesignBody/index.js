@@ -9,135 +9,125 @@ import {
   Dimensions,
   TouchableOpacity
 } from 'react-native';
-import { Button } from 'native-base'
-import { connect } from 'react-redux'
+// import { Button } from 'native-base'
+// import { connect } from 'react-redux'
 // import Gestures from 'react-native-easy-gestures';
-import CustomGestures from './Gestures'
-import NoCustomGestures from './NoGestures'
+// import CustomGestures from './Gestures'
+// import NoCustomGestures from './NoGestures'
+import Layer1Background from './Layer1Background'
+import Layer2ObjectAttachment from './Layer2ObjectAttachment'
+import Layer3HollowImage from './Layer3HollowImage'
+import Layer4DragableArea from './Layer4DragableArea'
 
-const { width, height } = Dimensions.get('window')
 
-const ITEM_DRAGABLE_POSITION = (width / 2) - 50
-const CENTER_X_POSISITION_TEXT = (width/2)-50
-const CENTER_Y_POSISITION_TEXT = (height/3)
+// const { width, height } = Dimensions.get('window')
+//
+// const ITEM_DRAGABLE_POSITION = (width / 2) - 50
+// const CENTER_X_POSISITION_TEXT = (width/2)-50
+// const CENTER_Y_POSISITION_TEXT = (height/3)
 
-const textsDragable = [
-  {
-    text : 'Pratama',
-    fontSize : 20,
-    fontColor : 'black',
-    fontLength : 100,
-    top : 0,
-    left : 0,
-    transform : []
-  },
-  {
-    text : 'Setya',
-    fontSize : 20,
-    fontColor : 'black',
-    fontLength : 100,
-    top : 0,
-    left : 0,
-    transform : []
-  },
-]
 
-class DesignBody extends Component {
+export default class DesignBody extends Component {
 
-  state = {
-    styles : '',
-    selected : false
-  }
-
-  render() {
-    // console.log(this.props.textMenu);
-    const { multipleTextDragable } = this.props
+  render(){
     return (
-      <View style={styles.container}>
-        <Text style={{padding:5}}>{multipleTextDragable.activeIndex}</Text>
-        <Text style={{padding:5}}>{JSON.stringify(this.state.styles)}</Text>
-        <CustomGestures
-          scalable={true}
-          containerStyle={{left:ITEM_DRAGABLE_POSITION, width:100, position:'absolute'}}
-          containerChildStyle={{borderWidth:1, borderColor:this.state.selected ? 'red' : '#00000000'}}
-          onChangeStyle={(event, styles)=> {this.setState({
-            styles
-          })}}
-          onPresIn={()=> { this.setState({selected: !this.state.selected})}}>
-          <Image
-            resizeMode='contain'
-            style={{height:100, width:100}}
-            source={{uri:'https://static.wixstatic.com/media/6a4004_569d1c0eb4bf456eb260332f3d01e6a0~mv2_d_1433_2071_s_2.png/v1/crop/x_0,y_0,w_1433,h_1418/fill/w_334,h_332,al_c,usm_0.66_1.00_0.01/6a4004_569d1c0eb4bf456eb260332f3d01e6a0~mv2_d_1433_2071_s_2.png'}}/>
-        </CustomGestures>
-        <View style={{height, width, position:'absolute'}}>
-        {
-          multipleTextDragable.texts.map((obj,i) => {
-            return (
-              <View style={{left:CENTER_X_POSISITION_TEXT, top: CENTER_Y_POSISITION_TEXT}}>
-              <NoCustomGestures
-                key={i}
-                containerStyle={{width:obj.isDeleted ? 0 : obj.fontLength, position:'absolute' ,top:obj.top, left:obj.left}}
-                containerChildStyle={{borderWidth:2, borderColor:obj.isActive ? '#ffffff00' : '#ffffff00'}}>
-                  <Text style={{padding:5, fontFamily: obj.fontFamily, fontSize: obj.fontSize, color:obj.fontColor}}>
-                    {obj.text}
-                  </Text>
-              </NoCustomGestures>
-              </View>
-            )
-          })
-        }
-        </View>
-        <View style={{height, width, position:'absolute'}}>
-        {
-          multipleTextDragable.texts.map((obj,i) => {
-            return (
-              <View style={{left:CENTER_X_POSISITION_TEXT, top: CENTER_Y_POSISITION_TEXT}}>
-              <CustomGestures
-                key={i}
-                containerStyle={{width:obj.isDeleted ? 0 : obj.fontLength, position:'absolute'}}
-                containerChildStyle={{borderWidth:2, borderColor:obj.isActive ? 'red' : '#ffffff00'}}
-                onChangeStyle={(event, styles)=> {
-                  let { left, top } = styles
-                  this.props.onChangePosition({ left, top, activeIndex:i })
-                  // this.setState({
-                  //   styles
-                  // })
-                }}
-                onPressIn={()=>{ this.props.changeObjectClicked(i)}}
-                onPress={()=> {}}>
-                  <Text style={{padding:5, fontFamily: obj.fontFamily, fontSize: obj.fontSize, color:obj.fontColor, opacity:0}}>
-                    {obj.text}
-                  </Text>
-              </CustomGestures>
-              </View>
-            )
-          })
-        }
-        </View>
-
+      <View>
+        <Layer1Background />
+        <Layer2ObjectAttachment />
+        <Layer3HollowImage />
+        <Layer4DragableArea />
       </View>
-    );
+    )
   }
+  // render() {
+  //   // console.log(this.props.textMenu);
+  //   const { multipleTextDragable } = this.props
+  //   return (
+  //     <View style={styles.container}>
+  //       <Text style={{padding:5}}>{multipleTextDragable.activeIndex}</Text>
+  //       <Text style={{padding:5}}>{JSON.stringify(this.state.styles)}</Text>
+  //       <CustomGestures
+  //         scalable={true}
+  //         containerStyle={{left:ITEM_DRAGABLE_POSITION, width:100, position:'absolute'}}
+  //         containerChildStyle={{borderWidth:1, borderColor:this.state.selected ? 'red' : '#00000000'}}
+  //         onChangeStyle={(event, styles)=> {this.setState({
+  //           styles
+  //         })}}
+  //         onPresIn={()=> { this.setState({selected: !this.state.selected})}}>
+  //         <Image
+  //           resizeMode='contain'
+  //           style={{height:100, width:100}}
+  //           source={{uri:'https://static.wixstatic.com/media/6a4004_569d1c0eb4bf456eb260332f3d01e6a0~mv2_d_1433_2071_s_2.png/v1/crop/x_0,y_0,w_1433,h_1418/fill/w_334,h_332,al_c,usm_0.66_1.00_0.01/6a4004_569d1c0eb4bf456eb260332f3d01e6a0~mv2_d_1433_2071_s_2.png'}}/>
+  //       </CustomGestures>
+  //       <View style={{height, width, position:'absolute'}}>
+  //       {
+  //         multipleTextDragable.texts.map((obj,i) => {
+  //           return (
+  //             <View style={{left:CENTER_X_POSISITION_TEXT, top: CENTER_Y_POSISITION_TEXT}}>
+  //             <NoCustomGestures
+  //               key={i}
+  //               containerStyle={{width:obj.isDeleted ? 0 : obj.fontLength, position:'absolute' ,top:obj.top, left:obj.left}}
+  //               containerChildStyle={{borderWidth:2, borderColor:obj.isActive ? '#ffffff00' : '#ffffff00'}}>
+  //                 <Text style={{padding:5, fontFamily: obj.fontFamily, fontSize: obj.fontSize, color:obj.fontColor}}>
+  //                   {obj.text}
+  //                 </Text>
+  //             </NoCustomGestures>
+  //             </View>
+  //           )
+  //         })
+  //       }
+  //       </View>
+  //       <View style={{height, width, position:'absolute'}}>
+  //       {
+  //         multipleTextDragable.texts.map((obj,i) => {
+  //           return (
+  //             <View style={{left:CENTER_X_POSISITION_TEXT, top: CENTER_Y_POSISITION_TEXT}}>
+  //             <CustomGestures
+  //               key={i}
+  //               containerStyle={{width:obj.isDeleted ? 0 : obj.fontLength, position:'absolute'}}
+  //               containerChildStyle={{borderWidth:2, borderColor:obj.isActive ? 'red' : '#ffffff00'}}
+  //               onChangeStyle={(event, styles)=> {
+  //                 let { left, top } = styles
+  //                 this.props.onChangePosition({ left, top, activeIndex:i })
+  //                 // this.setState({
+  //                 //   styles
+  //                 // })
+  //               }}
+  //               onPressIn={()=>{ this.props.changeObjectClicked(i)}}
+  //               onPress={()=> {}}>
+  //                 <Text style={{padding:5, fontFamily: obj.fontFamily, fontSize: obj.fontSize, color:obj.fontColor, opacity:0}}>
+  //                   {obj.text}
+  //                 </Text>
+  //             </CustomGestures>
+  //             </View>
+  //           )
+  //         })
+  //       }
+  //       </View>
+  //
+  //     </View>
+  //   );
+  // }
 }
-
-const mapDispatchToProps = ( dispatch ) => {
-  const onChangePosition = ({left, top, activeIndex}) => dispatch({type:'CHANGE_POSITION', payload:{left, top, activeIndex}})
-  const changeObjectClicked = (payload) => dispatch({type:'CHANGE_OBJECT_CLICKED', payload})
-  return {
-    onChangePosition,
-    changeObjectClicked
-  }
-}
-
-const mapStateToProps = (state) => {
-  // console.log(state);
-  const { multipleTextDragable } = state
-  return {
-    multipleTextDragable
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DesignBody)
+//
+// const mapDispatchToProps = ( dispatch ) => {
+//   const onChangePosition = ({left, top, activeIndex}) => dispatch({type:'CHANGE_POSITION', payload:{left, top, activeIndex}})
+//   const changeObjectClicked = (payload) => dispatch({type:'CHANGE_OBJECT_CLICKED', payload})
+//   return {
+//     onChangePosition,
+//     changeObjectClicked
+//   }
+// }
+//
+// const mapStateToProps = (state) => {
+//   // console.log(state);
+//   const { multipleTextDragable } = state
+//   return {
+//     multipleTextDragable
+//   }
+// }
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(DesignBody)
 
 const styles = StyleSheet.create({
   container: {
