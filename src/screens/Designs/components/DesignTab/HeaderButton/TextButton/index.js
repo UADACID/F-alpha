@@ -14,13 +14,14 @@ class TextButton extends Component {
 
   handleRemoveTextSelected = () => {
     const { removeTextSelected, activeIndex, textsLength, multipleTextDragable } = this.props
-    
+
     if (textsLength != 0) {
       removeTextSelected({activeIndex, multipleTextDragable})
     }
   }
 
   doRemovingText = () => {
+    console.log(this.props.activeIndex );
     if (this.props.activeIndex != null) {
       Alert.alert(
         '',

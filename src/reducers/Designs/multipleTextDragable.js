@@ -131,11 +131,19 @@ const multipleTextDragable = ( state = initialState, action ) => {
       // console.log(indexClicked);
       let newTexts = state.texts
       newTexts[indexClicked].isDeleted = true
-      newTexts[0].isActive = true
-      // console.log(newTexts);
+      let newTextsFilter = newTexts.filter(obj => obj.isDeleted == false)
+      let newActiveIndex = null
+      if (newTextsFilter.length == 0) {
+        newActiveIndex = null
+      }else{
+        newTexts[0].isActive = true
+        newActiveIndex = 0
+      }
+
+
       const newState = {
         ...state,
-        activeIndex:0,
+        activeIndex:newActiveIndex,
         texts : newTexts
       }
       return newState
