@@ -14,22 +14,25 @@ class TextButton extends Component {
 
   handleRemoveTextSelected = () => {
     const { removeTextSelected, activeIndex, textsLength, multipleTextDragable } = this.props
-    // console.log({ removeTextSelected, activeIndex, textsLength });
+    
     if (textsLength != 0) {
       removeTextSelected({activeIndex, multipleTextDragable})
     }
   }
 
   doRemovingText = () => {
-    Alert.alert(
-      '',
-      'are you sure to delete the selected text',
-      [
-        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        {text: 'OK', onPress: () => this.handleRemoveTextSelected()},
-      ],
-      { cancelable: false }
-    )
+    if (this.props.activeIndex != null) {
+      Alert.alert(
+        '',
+        'are you sure to delete the selected text',
+        [
+          {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+          {text: 'OK', onPress: () => this.handleRemoveTextSelected()},
+        ],
+        { cancelable: false }
+      )
+    }
+
   }
 
   handleAddText = () => {
