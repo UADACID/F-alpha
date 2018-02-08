@@ -69,6 +69,9 @@ class SubTabMenu extends Component {
         );
         break;
       default:
+        return (
+          <View />
+        );
     }
   }
 }

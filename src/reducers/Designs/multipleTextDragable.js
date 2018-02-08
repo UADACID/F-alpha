@@ -1,5 +1,9 @@
+import { Dimensions } from 'react-native'
 import { customMutationState, mutationState } from '../../utils'
-console.log({customMutationState, mutationState});
+// console.log({customMutationState, mutationState});
+const { width, height } = Dimensions.get('window')
+const CENTER_X_POSISITION_TEXT = (width/2)-50
+const CENTER_Y_POSISITION_TEXT = (height/3)
 
 const defaultText = {
   text : 'YOUR TEXT',
@@ -11,7 +15,8 @@ const defaultText = {
   left : 0,
   rotate : '0deg',
   scale: 1,
-  isActive : true
+  isActive : true,
+  isDeleted : false
 }
 
 const initialState = {
@@ -79,6 +84,42 @@ const multipleTextDragable = ( state = initialState, action ) => {
         key:'fontLength',
         value:fontLength
       })
+      return newState
+    }
+    break
+    case 'CHANGE_POSITION':{
+      const { left, top, activeIndex } = action.payload
+      const {texts} = state
+
+      const newArray = texts.map((obj, i) => {
+        if (i == activeIndex) {
+          obj = {...obj, left, top}
+        }else{
+          obj = {...obj}
+        }
+
+        return obj
+      })
+
+      const newState = {
+        activeIndex,
+        texts:newArray
+      }
+
+      return newState
+    }
+    break
+    case 'REMOVE_TEXT_SELECTED':{
+      const indexClicked = action.payload
+      console.log(indexClicked);
+      let newTexts = state.texts
+      newTexts[indexClicked].isDeleted = true
+      newTexts[0].isActive = true
+      const newState = {
+        ...state,
+        activeIndex:0,
+        texts : newTexts
+      }
       return newState
     }
     break

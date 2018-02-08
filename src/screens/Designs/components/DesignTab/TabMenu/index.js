@@ -23,9 +23,31 @@ class TabMenu extends Component {
   }
 
   handleClickTextTab(value){
-    const {texts} = this.props
+    const {texts, activeTextTab, activeTabBottom} = this.props
     if (texts.length == 0) {
-      this.props.addNewTextForFirst()
+      console.log(activeTabBottom);
+      if (activeTabBottom == 'text') {
+          this.props.onChangeTabBottom('')
+      }else {
+        this.props.addNewTextForFirst()
+      }
+    }
+    if (activeTextTab) {
+      return this.props.onChangeTabBottom('')
+    }
+    this.props.onChangeTabBottom(value)
+  }
+
+  handleClickImageTab(value){
+    if (this.props.activeImageTab) {
+      return this.props.onChangeTabBottom('')
+    }
+    this.props.onChangeTabBottom(value)
+  }
+
+  handleClickColor(value){
+    if (this.props.activeColorTab) {
+      return this.props.onChangeTabBottom('')
     }
     this.props.onChangeTabBottom(value)
   }
@@ -37,12 +59,12 @@ class TabMenu extends Component {
         <TabItem
           style={[styles.tabItemContainer,this.changeBackgroundColor(activeColorTab)]}
           icon={iconColor}
-          onPress={()=>this.props.onChangeTabBottom('color')}
+          onPress={()=>this.handleClickColor('color')}
           />
         <TabItem
           style={[styles.tabItemContainer,this.changeBackgroundColor(activeImageTab)]}
           icon={iconImage}
-          onPress={()=>this.props.onChangeTabBottom('image')}
+          onPress={()=>this.handleClickImageTab('image')}
           />
         <TabItem
           style={[styles.tabItemContainer,this.changeBackgroundColor(activeTextTab)]}
@@ -80,6 +102,7 @@ const mapStateToProps = (state) => {
     iconColor,
     iconImage,
     iconText,
+    activeTabBottom,
     texts : multipleTextDragable.texts
   }
 }
