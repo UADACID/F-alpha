@@ -49,7 +49,7 @@ class Layer4DragableArea extends Component {
                 // })
               }}
               onPressIn={()=>{ this.onTapText(i)}}
-              onPress={()=> {}}>
+              onPress={this.props.onShowTextModalEdit}>
                 <Text style={{padding:5, fontFamily: obj.fontFamily, fontSize: obj.fontSize, color:obj.fontColor, opacity:0}}>
                   {obj.text}
                 </Text>
@@ -69,11 +69,13 @@ const mapDispatchToProps = ( dispatch ) => {
   const changeObjectClicked = (payload) => dispatch({type:'CHANGE_OBJECT_CLICKED', payload})
   const clearAllActiveText = () => dispatch({type:'CLEAR_ALL_ACTIVE_TEXT'})
   const onChangeTabBottom = (tabName) => dispatch({type:'CHANGE_TAB_BOTTOM_SELECTED', payload:tabName})
+  const onShowTextModalEdit = () => dispatch({type:'SHOW_TEXT_MODAL_EDIT'})
   return {
     onChangePosition,
     changeObjectClicked,
     clearAllActiveText,
-    onChangeTabBottom
+    onChangeTabBottom,
+    onShowTextModalEdit
   }
 }
 
