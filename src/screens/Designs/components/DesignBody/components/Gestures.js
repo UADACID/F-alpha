@@ -17,7 +17,7 @@ export default class CustomGestures extends Component {
           scalable={this.props.scalable}
           onChange={this.props.onChangeStyle}>
           <TouchableOpacity activeOpacity={.9}
-            onPress={this.props.onPress}
+            onLongPress={this.props.onPress}
             onPressIn={this.props.onPressIn}>
           <View style={this.props.containerChildStyle}>
             {this.props.children}
