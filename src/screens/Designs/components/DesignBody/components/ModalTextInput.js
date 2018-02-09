@@ -47,6 +47,7 @@ class ModalTextInput extends Component {
 
   render() {
     // console.log(this.state.text);
+    // const returnKeyType = this.state.text == '' ? 'none' : 'done'
     const leftComponent = (
       <Button
         transparent
@@ -56,14 +57,14 @@ class ModalTextInput extends Component {
       </Button>
     )
 
-    const rightComponent = (
-      <Button
-        transparent
-        style={{justifyContent:'center', alignItems:'center'}}
-        onPress={this.handleDone}>
-        <Text style={{color:'#fff', fontSize:20}}>done</Text>
-      </Button>
-    )
+    // const rightComponent = (
+    //   <Button
+    //     transparent
+    //     style={{justifyContent:'center', alignItems:'center'}}
+    //     onPress={this.handleDone}>
+    //     <Text style={{color:'#fff', fontSize:20}}>done</Text>
+    //   </Button>
+    // )
     return (
       <View style={styles.container}>
       <Modal
@@ -74,22 +75,21 @@ class ModalTextInput extends Component {
           <TouchableNativeFeedback onPress={this.props.onShowTextModal}>
           <View style={styles.modalContainer}>
             <CustomNavbar
-              leftComponent={leftComponent}
-              rightComponent={rightComponent}/>
+              leftComponent={leftComponent}/>
             <View style={{position:'absolute', bottom:0, flexDirection:'row' }}>
               <TextInput
-                style={{height: 50, width:width, paddingLeft:20, backgroundColor:'#fff'}}
+                style={{height: 50, width:width-75, paddingLeft:20, backgroundColor:'#fff'}}
                 underlineColorAndroid='#fff'
                 onChangeText={this.onChangeText}
                 autoFocus={true}
                 returnKeyType='none'
                 value={this.state.text}
               />
-              {/*<Button
-                style={{width:75, height:50, backgroundColor:'#2ecc71', justifyContent:'center', alignItems:'center'}}
-                onPress={this.props.onShowTextModal}>
+              <Button
+                style={{width:75, height:50, backgroundColor:'#4db6ac', justifyContent:'center', alignItems:'center'}}
+                onPress={this.handleDone}>
                 <Text style={{color:'#fff', fontSize:20}}>done</Text>
-              </Button>*/}
+              </Button>
             </View>
           </View>
           </TouchableNativeFeedback>

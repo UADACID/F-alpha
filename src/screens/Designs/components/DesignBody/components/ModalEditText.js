@@ -53,14 +53,14 @@ class ModalEditText extends Component {
   }
 
   render() {
-    const rightComponent = (
-      <Button
-        transparent
-        style={{justifyContent:'center', alignItems:'center'}}
-        onPress={this.handleDone}>
-        <Text style={{color:'#fff', fontSize:20}}>done</Text>
-      </Button>
-    )
+    // const leftComponent = (
+    //   <Button
+    //     transparent
+    //     style={{justifyContent:'center', alignItems:'center'}}
+    //     onPress={this.props.onShowTextModalEdit}>
+    //     <Text style={{color:'#fff', fontSize:20}}>cancel</Text>
+    //   </Button>
+    // )
     return (
       <View style={styles.container}>
       <Modal
@@ -70,17 +70,20 @@ class ModalEditText extends Component {
         onRequestClose={this.props.onShowTextModalEdit}>
           <TouchableNativeFeedback onPress={this.props.onShowTextModalEdit}>
           <View style={styles.modalContainer}>
-            <CustomNavbar
-              rightComponent={rightComponent}/>
             <View style={{position:'absolute', bottom:0, flexDirection:'row' }}>
               <TextInput
-                style={{height: 50, width:width, paddingLeft:20, backgroundColor:'#fff'}}
+                style={{height: 50, width:width-75, paddingLeft:20, backgroundColor:'#fff'}}
                 underlineColorAndroid='#fff'
                 onChangeText={this.onChangeText}
                 autoFocus={true}
                 returnKeyType='none'
                 value={this.props.text}
               />
+              <Button
+                style={{width:75, height:50, backgroundColor:'#4db6ac', justifyContent:'center', alignItems:'center'}}
+                onPress={this.handleDone}>
+                <Text style={{color:'#fff', fontSize:20}}>done</Text>
+              </Button>
             </View>
           </View>
           </TouchableNativeFeedback>

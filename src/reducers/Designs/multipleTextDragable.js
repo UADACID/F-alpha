@@ -105,12 +105,12 @@ const multipleTextDragable = ( state = initialState, action ) => {
     }
     break
     case 'CHANGE_POSITION':{
-      const { left, top, activeIndex } = action.payload
+      const { left, top, scale, rotate, activeIndex } = action.payload
       const {texts} = state
 
       const newArray = texts.map((obj, i) => {
         if (i == activeIndex) {
-          obj = {...obj, left, top}
+          obj = {...obj, left, top, scale, rotate}
         }else{
           obj = {...obj}
         }

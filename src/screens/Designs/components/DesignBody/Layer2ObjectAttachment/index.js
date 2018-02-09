@@ -21,11 +21,12 @@ class Layer2ObjectAttachment extends Component {
       {
         this.props.multipleTextDragable.texts.map((obj,i) => {
           // console.log('disabled = '+obj.isDeleted);
+          console.log(obj);
           return (
             <View key={i} style={{left:CENTER_X_POSISITION_TEXT, top: CENTER_Y_POSISITION_TEXT}}>
             <NoCustomGestures
               key={i}
-              containerStyle={{width:obj.isDeleted ? 0 : obj.fontLength, position:'absolute' ,top:obj.top, left:obj.left, alignItems:'center'}}
+              containerStyle={{width:obj.isDeleted ? 0 : obj.fontLength, position:'absolute' ,top:obj.top, left:obj.left, alignItems:'center', transform:[{scale:obj.scale},{rotate:obj.rotate}]}}
               containerChildStyle={{borderWidth:2, borderColor:obj.isActive ? '#ffffff00' : '#ffffff00'}}>
                 <Text style={{padding:5, fontFamily: obj.fontFamily, fontSize: obj.fontSize, color:obj.fontColor}}>
                   {obj.text}
