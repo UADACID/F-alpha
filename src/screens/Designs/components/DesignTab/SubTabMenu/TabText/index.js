@@ -23,13 +23,13 @@ class TabText extends Component {
   }
 
   render() {
-    const {
-      activeFont,
-      activeColor,
-      activeSize,
-      activeLength,
-      onChangeSubTabBottom
-    } = this.props
+    const { activeFont, activeColor, activeSize, activeLength, onChangeSubTabBottom, textsLenght } = this.props
+    const barrier = textsLenght == 0 ? (
+      <View style={{position:'absolute', width, height:40, backgroundColor:'#01030485'}}>
+        <Text>{textsLenght}sdsds</Text>
+      </View>
+    ) : false
+
     return (
       <View style={styles.container}>
         <TabItem
@@ -56,6 +56,7 @@ class TabText extends Component {
           onPress={()=>onChangeSubTabBottom('textLength')}
           title='LENGTH'
           />
+        {barrier}
       </View>
     );
   }
@@ -69,17 +70,19 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-  const {activeSubTabButtom} = state
+  const { activeSubTabButtom, multipleTextDragable} = state
   let activeFont = activeSubTabButtom == 'textFont' ? true : false
   let activeColor = activeSubTabButtom == 'textColor' ? true : false
   let activeSize = activeSubTabButtom == 'textSize' ? true : false
   let activeLength = activeSubTabButtom == 'textLength' ? true : false
+  const texts = multipleTextDragable.texts.filter(obj => obj.isDeleted != true)
 
   return {
     activeFont,
     activeColor,
     activeSize,
-    activeLength
+    activeLength,
+    textsLenght : texts.length
   }
 }
 
