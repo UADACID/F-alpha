@@ -15,13 +15,14 @@ import { PersistGate } from 'redux-persist/es/integration/react';
 import configureStore from './src/store'
 const { persistor, store } = configureStore();
 import Main from './src'
+import Loading from './src/components/Loading'
 
 export default class App extends Component<{}> {
   render() {
     return (
       <Provider store={store}>
       <PersistGate
-          loading={<ActivityIndicator />}
+          loading={<Loading />}
           onBeforeLift={()=> console.log()}
           persistor={persistor}>
           <Main />

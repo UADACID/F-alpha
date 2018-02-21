@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   StyleSheet,
   ScrollView
 } from 'react-native';
 import { Card } from 'native-base'
+import FastImage from 'react-native-fast-image'
 
 const colors = [
   '#1abc9c',
@@ -38,10 +38,13 @@ export default class TabColor extends Component {
     return (
       <TouchableOpacity key={i} style={{borderRadius:2, margin:5}}>
       <Card>
-        <Image
-          resizeMode='contain'
+        <FastImage
+          resizeMode={FastImage.resizeMode.contain}
           style={{height:60, width:50}}
-          source={{uri:"https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/utuh-putih.png?alt=media&token=f9999c48-63f8-4c78-8c25-ef1ab788c95a"}}/>
+          source={{
+            uri:"https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/utuh-putih.png?alt=media&token=f9999c48-63f8-4c78-8c25-ef1ab788c95a",
+            priority: FastImage.priority.normal,
+          }}/>
       </Card>
       </TouchableOpacity>
     )
