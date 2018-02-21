@@ -26,7 +26,6 @@ class TabText extends Component {
     const { activeFont, activeColor, activeSize, activeLength, onChangeSubTabBottom, textsLenght } = this.props
     const barrier = textsLenght == 0 ? (
       <View style={{position:'absolute', width, height:40, backgroundColor:'#01030485'}}>
-        <Text>{textsLenght}sdsds</Text>
       </View>
     ) : false
 
