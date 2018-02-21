@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   StyleSheet,
   ScrollView
@@ -36,13 +35,8 @@ export default class TabColor extends Component {
   renderColorButton(color, i){
     const backgroundColor = color
     return (
-      <TouchableOpacity key={i} style={{borderRadius:2, margin:5}}>
-      <Card>
-        <Image
-          resizeMode='contain'
-          style={{height:60, width:50}}
-          source={{uri:"https://image.shutterstock.com/display_pic_with_logo/1110497/709258621/stock-vector-happy-halloween-text-banner-vector-709258621.jpg"}}/>
-      </Card>
+      <TouchableOpacity key={i} style={{backgroundColor, width:20, height:20, borderRadius:2, margin:5}}>
+
       </TouchableOpacity>
     )
   }
@@ -50,9 +44,11 @@ export default class TabColor extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Card style={{padding:5}}>
         <ScrollView horizontal={true}>
           {colors.map((color,i) => this.renderColorButton(color,i))}
         </ScrollView>
+        </Card>
       </View>
     );
   }
