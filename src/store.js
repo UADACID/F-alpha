@@ -1,15 +1,38 @@
-import { createStore, compose } from 'redux';
+import { createStore, compose,  applyMiddleware } from 'redux';
+import { persistStore, persistCombineReducers } from 'redux-persist';
+import storage from 'redux-persist/es/storage';
+import { createLogger } from 'redux-logger';
 
 import middleware from './middlewares';
 
 import { appReducer } from './reducers'
 
-const store = createStore(
-  appReducer,
-  compose(
-    middleware,
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-  )
-);
+const config = {
+    key: 'root',
+    storage,
+    //debug: true //to get useful logging
+};
+// const middleware = [];
+if(__DEV__){ middleware.push(createLogger()); }
+const reducers = persistCombineReducers(config, appReducer);
+const enhancers = [applyMiddleware(...middleware)];
+const persistConfig = { enhancers };
 
-export default store;
+const store = createStore(reducers, undefined, compose(...enhancers));
+const persistor = persistStore(store, persistConfig, () => {
+    //console.log(store.getState());
+});
+const configureStore = () => {
+    return { persistor, store };
+}
+
+export default configureStore;
+
+// const store = createStore(
+//   appReducer,
+//   compose(
+//     middleware,
+//   )
+// );
+//
+// export default store;

@@ -5,15 +5,27 @@
  */
 
 import React, { Component } from 'react'
+import {
+  View,
+  ActivityIndicator,
+} from 'react-native';
 import { Provider } from 'react-redux'
-import store from './src/store'
+import { PersistGate } from 'redux-persist/es/integration/react';
+
+import configureStore from './src/store'
+const { persistor, store } = configureStore();
 import Main from './src'
 
 export default class App extends Component<{}> {
   render() {
     return (
       <Provider store={store}>
+      <PersistGate
+          loading={<ActivityIndicator />}
+          onBeforeLift={()=> console.log()}
+          persistor={persistor}>
           <Main />
+        </PersistGate>
       </Provider>
     );
   }
