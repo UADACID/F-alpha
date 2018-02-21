@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   StyleSheet,
   ScrollView
@@ -31,18 +30,13 @@ const colors = [
   '#ecf0f1',
 ]
 
-export default class TabColor extends Component {
+export default class ChangeModel extends Component {
 
   renderColorButton(color, i){
     const backgroundColor = color
     return (
-      <TouchableOpacity key={i} style={{borderRadius:2, margin:5}}>
-      <Card>
-        <Image
-          resizeMode='contain'
-          style={{height:60, width:50}}
-          source={{uri:"https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/utuh-putih.png?alt=media&token=f9999c48-63f8-4c78-8c25-ef1ab788c95a"}}/>
-      </Card>
+      <TouchableOpacity key={i} style={{backgroundColor, width:20, height:20, borderRadius:2, margin:5}}>
+
       </TouchableOpacity>
     )
   }
@@ -50,9 +44,11 @@ export default class TabColor extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Card style={{padding:5}}>
         <ScrollView horizontal={true}>
           {colors.map((color,i) => this.renderColorButton(color,i))}
         </ScrollView>
+        </Card>
       </View>
     );
   }

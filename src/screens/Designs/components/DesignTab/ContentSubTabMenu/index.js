@@ -14,6 +14,8 @@ import TextLength from './TextLength'
 
 import ImagePhotos from './ImagePhotos'
 
+import ChangeModel from './ChangeModel'
+
 class ContentSubTabMenu extends Component {
 
   renderTextContent(){
@@ -62,6 +64,12 @@ class ContentSubTabMenu extends Component {
 
   }
 
+  renderColorContent(){
+    return(
+      <ChangeModel />
+    )
+  }
+
 
   render(){
     const { activeSubTabButtom, activeTabBottom} = this.props
@@ -72,6 +80,9 @@ class ContentSubTabMenu extends Component {
         break;
       case "image":
         return this.renderImageContent()
+        break;
+      case "color":
+        return this.renderColorContent()
         break;
       default:
         return <View />
