@@ -25,6 +25,23 @@ const initialState = {
 const multipleTextDragable = ( state = initialState, action ) => {
   const { type, payload } = action
   switch (type) {
+
+    case 'ADD_FIRST_TEXT': {
+
+      const newDefaultText = {
+        ...defaultText,
+        fontSize : 12,
+        text:payload
+      }
+
+      // console.log(newDefaultText);
+      const newTexts = state.texts.concat([newDefaultText])
+      const activeIndex = newTexts.length - 1
+      const newState = mutationState({texts:newTexts, activeIndex})
+
+      return newState
+    }
+    break;
     case 'ADD_NEW_TEXT': {
 
       const newDefaultText = {

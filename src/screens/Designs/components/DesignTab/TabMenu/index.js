@@ -30,8 +30,8 @@ class TabMenu extends Component {
       if (activeTabBottom == 'text') {
           this.props.onChangeTabBottom('')
       }else {
-        this.props.onShowTextModal()
-        // this.props.addNewTextForFirst()
+        // this.props.onShowTextModal()
+        this.props.addNewTextForFirst()
       }
     }
     if (activeTextTab) {
@@ -81,10 +81,10 @@ class TabMenu extends Component {
 const mapDispatchToProps = (dispatch) => {
   const onChangeTabBottom = (tabName) => dispatch({type:'CHANGE_TAB_BOTTOM_SELECTED', payload:tabName})
   const onShowTextModal = () => dispatch({type:'SHOW_TEXT_MODAL'})
-  // const addNewTextForFirst = () => dispatch({type:'ADD_NEW_TEXT'})
+  const addNewTextForFirst = () => dispatch({type:'ADD_FIRST_TEXT', payload:'Long Press to Edit'})
   return {
     onChangeTabBottom,
-    // addNewTextForFirst,
+    addNewTextForFirst,
     onShowTextModal
   }
 }
