@@ -32,10 +32,16 @@ const colors = [
 
 export default class ChangeModel extends Component {
 
+  state = {
+    indexSelected : 1
+  }
+
   renderColorButton(color, i){
     const backgroundColor = color
     return (
-      <TouchableOpacity key={i} style={{backgroundColor, width:20, height:20, borderRadius:2, margin:5}}>
+      <TouchableOpacity
+        key={i}
+        style={{backgroundColor, width:20, height:20, borderRadius:2, margin:5}}>
 
       </TouchableOpacity>
     )
@@ -45,7 +51,7 @@ export default class ChangeModel extends Component {
     return (
       <View style={styles.container}>
         <Card style={{padding:5}}>
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {colors.map((color,i) => this.renderColorButton(color,i))}
         </ScrollView>
         </Card>
@@ -58,7 +64,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent:'center',
     alignItems:'center',
-    padding: 10
+    padding: 5
     // flexDirection:'row',
   },
 });

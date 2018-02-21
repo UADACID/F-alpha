@@ -33,18 +33,48 @@ const colors = [
 
 export default class TabColor extends Component {
 
+  state = {
+    indexSelected : 2
+  }
+
+  changeSelected = (indexSelected) => {
+    this.setState({indexSelected})
+  }
+
+  renderSelected(){
+    return (
+      <FastImage
+        resizeMode={FastImage.resizeMode.contain}
+        style={{height:75, width:65}}
+        source={{
+          uri:"https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/utuh-putih.png?alt=media&token=f9999c48-63f8-4c78-8c25-ef1ab788c95a",
+          priority: FastImage.priority.normal,
+        }}/>
+    )
+  }
+
+  renderNotSelected(){
+    return(
+      <FastImage
+        resizeMode={FastImage.resizeMode.contain}
+        style={{height:60, width:50}}
+        source={{
+          uri:"https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/utuh-putih.png?alt=media&token=f9999c48-63f8-4c78-8c25-ef1ab788c95a",
+          priority: FastImage.priority.normal,
+        }}/>
+    )
+  }
+
   renderColorButton(color, i){
     const backgroundColor = color
     return (
-      <TouchableOpacity key={i} style={{borderRadius:2, margin:5}}>
+      <TouchableOpacity
+        key={i}
+        activeOpacity={.9}
+        onPress={()=>this.changeSelected(i)}
+        style={{borderRadius:2, margin:5}}>
       <Card>
-        <FastImage
-          resizeMode={FastImage.resizeMode.contain}
-          style={{height:60, width:50}}
-          source={{
-            uri:"https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/utuh-putih.png?alt=media&token=f9999c48-63f8-4c78-8c25-ef1ab788c95a",
-            priority: FastImage.priority.normal,
-          }}/>
+        {this.state.indexSelected == i ? this.renderSelected() : this.renderNotSelected()}
       </Card>
       </TouchableOpacity>
     )
@@ -53,7 +83,7 @@ export default class TabColor extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {colors.map((color,i) => this.renderColorButton(color,i))}
         </ScrollView>
       </View>
