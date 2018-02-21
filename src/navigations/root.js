@@ -2,6 +2,7 @@ import React from 'react'
 import { Text } from 'react-native'
 import { addNavigationHelpers, StackNavigator } from 'react-navigation'
 import { connect } from 'react-redux'
+import { createReduxBoundAddListener, createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 
 import TabHomeScreen from './tabHome'
 import Logins from '../containers/Logins'
@@ -51,9 +52,16 @@ export const AppNavigator = StackNavigator({
   initialRouteName:'Designs'
 })
 
+createReactNavigationReduxMiddleware(
+  "root",
+  state => state.nav,
+);
+
+const addListener = createReduxBoundAddListener("root");
+
 
 const AppWithNavigationState = ({ dispatch, nav }) => (
-  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
+  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav, addListener })} />
 )
 
 const mapStateToProps = state => {
