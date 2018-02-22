@@ -21,7 +21,7 @@ export default class Designs extends Component {
     )
 
     const rightComponent = (
-      <Button transparent onPress={()=>{}}>
+      <Button transparent onPress={this.props.clearAllMultipleText}>
         <Text style={styles.textHeaderRight}>Preview</Text>
       </Button>
     )

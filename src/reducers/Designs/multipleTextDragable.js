@@ -4,6 +4,8 @@ import { customMutationState, mutationState } from '../../utils'
 const { width, height } = Dimensions.get('window')
 
 const defaultText = {
+  id : 1,
+  productId : null,
   text : 'YOUR TEXT',
   fontFamily : 'Jura-Reguler',
   fontSize : 20,
@@ -27,9 +29,10 @@ const multipleTextDragable = ( state = initialState, action ) => {
   switch (type) {
 
     case 'ADD_FIRST_TEXT': {
-
+      const id = state.texts.length + 1
       const newDefaultText = {
         ...defaultText,
+        id,
         fontSize : 12,
         text:payload
       }
@@ -43,9 +46,10 @@ const multipleTextDragable = ( state = initialState, action ) => {
     }
     break;
     case 'ADD_NEW_TEXT': {
-
+      const id = state.texts.length + 1
       const newDefaultText = {
         ...defaultText,
+        id,
         text:payload
       }
 
@@ -181,6 +185,10 @@ const multipleTextDragable = ( state = initialState, action ) => {
         texts : newTexts
       }
       return newState
+    }
+    break
+    case 'CLEAR_MULTIPLE_TEXT':{
+      return initialState
     }
     break
     default:

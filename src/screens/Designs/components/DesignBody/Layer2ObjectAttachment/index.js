@@ -21,7 +21,7 @@ class Layer2ObjectAttachment extends Component {
       {
         this.props.multipleTextDragable.texts.map((obj,i) => {
           // console.log('disabled = '+obj.isDeleted);
-          console.log(obj);
+          // console.log(obj);
           return (
             <View key={i} style={{left:CENTER_X_POSISITION_TEXT, top: CENTER_Y_POSISITION_TEXT}}>
             <NoCustomGestures

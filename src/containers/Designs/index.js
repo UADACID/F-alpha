@@ -14,6 +14,10 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     toScreen: (routeName)=>{
       dispatch(NavigationActions.navigate({ routeName: routeName }))
+    },
+    //FOR DEV ONLY
+    clearAllMultipleText : () => {
+      dispatch({type:'CLEAR_MULTIPLE_TEXT'})
     }
   }
 }

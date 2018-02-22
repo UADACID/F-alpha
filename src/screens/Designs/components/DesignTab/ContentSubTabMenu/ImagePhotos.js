@@ -31,8 +31,8 @@ export default class ImagePhotos extends Component {
        assetType: 'All',
      })
      .then(r => {
-       console.log(r);
-       console.log(r.edges);
+       // console.log(r);
+       // console.log(r.edges);
        this.setState({ photos: r.edges });
      })
      .catch((err) => {
