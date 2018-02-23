@@ -1,7 +1,6 @@
 import { customMutationState, mutationState } from '../../utils'
 
 const defaultText = {
-  id : 1,
   productId : null,
   text : 'YOUR TEXT',
   fontFamily : 'Jura-Reguler',
@@ -26,10 +25,8 @@ const multipleTextDragable = ( state = initialState, action ) => {
   switch (type) {
 
     case 'ADD_FIRST_TEXT': {
-      const id = state.texts.length + 1
       const newDefaultText = {
         ...defaultText,
-        id,
         fontSize : 12,
         text:payload
       }
@@ -43,10 +40,8 @@ const multipleTextDragable = ( state = initialState, action ) => {
     }
     break;
     case 'ADD_NEW_TEXT': {
-      const id = state.texts.length + 1
       const newDefaultText = {
         ...defaultText,
-        id,
         text:payload
       }
 

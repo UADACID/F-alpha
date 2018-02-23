@@ -83,6 +83,7 @@ class ImagePhotos extends Component {
 const mapDispatchToProps = dispatch => ({
   addNewImage:(payload)=> {
     dispatch({type:'ADD_NEW_IMAGE', payload})
+    dispatch({type:'CLEAR_ALL_ACTIVE_TEXT'})
   }
 })
 

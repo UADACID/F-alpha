@@ -24,6 +24,7 @@ class Layer4DragableArea extends Component {
 
   onTapContainer = () => {
     this.props.clearAllActiveText()
+    this.props.clearAllActiveImage()
   }
 
   onTapText(i, type){

@@ -1,5 +1,4 @@
 const defaultImage = {
-  id : 1,
   productId : null,
   url : null,
   top : 0,
