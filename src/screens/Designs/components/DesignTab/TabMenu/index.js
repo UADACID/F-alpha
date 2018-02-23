@@ -116,7 +116,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(TabMenu)
 const styles = StyleSheet.create({
   container: {
     flexDirection:'row',
-    backgroundColor: '#eeedee'
+    backgroundColor: '#f3f3f3'
   },
   tabItemContainer : {
     width: width/3,

@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent:'center',
     alignItems:'center',
-    padding: 10
+    padding: 5
     // flexDirection:'row',
   },
 });

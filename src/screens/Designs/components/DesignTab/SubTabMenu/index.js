@@ -87,7 +87,7 @@ export default connect(mapStateToProps)(SubTabMenu)
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff'
+    backgroundColor: '#fdfafad1'
     // flex: 1,
   },
 });

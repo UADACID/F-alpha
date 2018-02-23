@@ -22,7 +22,7 @@ export default class Designs extends Component {
 
     const rightComponent = (
       <Button transparent onPress={this.props.clearAllMultipleObj}>
-        <Text style={styles.textHeaderRight}>Preview</Text>
+        <Text style={styles.textHeaderRight}>CLEAR ALL</Text>
       </Button>
     )
 
