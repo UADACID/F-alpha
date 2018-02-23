@@ -1,5 +1,6 @@
 const defaultVariants = [
   {
+    id:1,
     modelId: 1,
     price: 50000,
     imageTransparentUrl: 'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fblue-bolong.png?alt=media&token=234da208-b9c6-4f91-86b4-0f21b9d669ee',
@@ -10,9 +11,10 @@ const defaultVariants = [
     qtySizeL: 40,
     qtySizeXL: 15,
     qtySizeXLL: 10,
-    color: 'blue'
+    color: '#75deff'
   },
   {
+    id:2,
     modelId: 1,
     price: 50000,
     imageTransparentUrl: 'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fgreen-bolong.png?alt=media&token=92925b04-15ef-4304-a49b-d6ee1e7320d7',
@@ -23,9 +25,10 @@ const defaultVariants = [
     qtySizeL: 40,
     qtySizeXL: 15,
     qtySizeXLL: 10,
-    color: 'green'
+    color: '#1ff173'
   },
   {
+    id:3,
     modelId: 1,
     price: 50000,
     imageTransparentUrl: 'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fviolet-bolong.png?alt=media&token=fc3e154d-fac3-4557-9b3f-98e0b887b025',
@@ -36,9 +39,10 @@ const defaultVariants = [
     qtySizeL: 40,
     qtySizeXL: 15,
     qtySizeXLL: 10,
-    color: 'purple'
+    color: '#dad1ff'
   },
   {
+    id:4,
     modelId: 1,
     price: 50000,
     imageTransparentUrl: 'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fyellow-bolong.png?alt=media&token=82792d69-b4f0-48fb-8525-2a16de19d93d',
@@ -49,17 +53,42 @@ const defaultVariants = [
     qtySizeL: 40,
     qtySizeXL: 15,
     qtySizeXLL: 10,
-    color: 'yellow'
+    color: '#f0fd00'
+  },
+  {
+    id:5,
+    modelId: 2,
+    price: 50000,
+    imageTransparentUrl: 'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fyellow-bolong.png?alt=media&token=82792d69-b4f0-48fb-8525-2a16de19d93d',
+    imageUrl:'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fyellow.png?alt=media&token=74162687-743f-478d-914b-6251185d849f',
+    qty: 92,
+    qtySizeS: 38,
+    qtySizeM: 20,
+    qtySizeL: 40,
+    qtySizeXL: 15,
+    qtySizeXLL: 10,
+    color: '#f0fd00'
   }
 ]
 
 const initialState = {
-  activeIndex : 0,
+  activeId : defaultVariants[0].id,
   variants : [...defaultVariants]
 }
 
 const modelVariants = (state = initialState, action ) => {
-  return state
+
+  switch (action.type) {
+    case "CHANGE_SELECTED_MODEL_VARIANT_COLOR":
+      return {
+        ...state,
+        activeId: action.payload
+      }
+      break;
+    default:
+      return state
+  }
+
 }
 
 export default modelVariants

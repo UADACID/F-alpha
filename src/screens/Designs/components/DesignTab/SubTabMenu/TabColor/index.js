@@ -8,6 +8,7 @@ import {
   StyleSheet,
   ScrollView
 } from 'react-native';
+import { connect } from 'react-redux'
 import { Card } from 'native-base'
 import FastImage from 'react-native-fast-image'
 
@@ -31,7 +32,7 @@ const colors = [
   '#ecf0f1',
 ]
 
-export default class TabColor extends Component {
+class TabColor extends Component {
 
   state = {
     indexSelected : 2
@@ -41,55 +42,80 @@ export default class TabColor extends Component {
     this.setState({indexSelected})
   }
 
-  renderSelected(){
+  renderSelected(dataSingleVariant){
     return (
       <FastImage
         resizeMode={FastImage.resizeMode.contain}
         style={{height:75, width:65}}
         source={{
-          uri:"https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/utuh-putih.png?alt=media&token=f9999c48-63f8-4c78-8c25-ef1ab788c95a",
+          uri:dataSingleVariant.imageUrl,
           priority: FastImage.priority.normal,
         }}/>
     )
   }
 
-  renderNotSelected(){
+  renderNotSelected(dataSingleVariant){
     return(
       <FastImage
         resizeMode={FastImage.resizeMode.contain}
         style={{height:60, width:50}}
         source={{
-          uri:"https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/utuh-putih.png?alt=media&token=f9999c48-63f8-4c78-8c25-ef1ab788c95a",
+          uri:dataSingleVariant.imageUrl,
           priority: FastImage.priority.normal,
         }}/>
     )
   }
 
-  renderColorButton(color, i){
-    const backgroundColor = color
+  renderModelImage({model, i, selectedId}){
+    const { modelVariants } = this.props
+    const { variants, activeId } = modelVariants
+    // console.log(model.id);
+    // console.log(variants);
+    const variantFilter = variants.filter(variant => variant.modelId == model.id)
+
+    const variantFilterBySelected = variantFilter.filter(variant => variant.id == activeId)
+    // console.log(variantFilter);
+    const dataSingleVariant = variantFilterBySelected.length == 0 ? variantFilter[0] : variantFilterBySelected[0]
+    // console.log(dataSingleVariant);
+    // const backgroundColor = color
     return (
       <TouchableOpacity
         key={i}
         activeOpacity={.9}
-        onPress={()=>this.changeSelected(i)}
+        onPress={()=>this.props.changeSelectedModel(model.id)}
         style={{borderRadius:2, margin:5}}>
       <Card>
-        {this.state.indexSelected == i ? this.renderSelected() : this.renderNotSelected()}
+        {selectedId == model.id ? this.renderSelected(dataSingleVariant) : this.renderNotSelected(dataSingleVariant)}
       </Card>
       </TouchableOpacity>
     )
   }
 
   render() {
+    const { productModels } = this.props
+    const { selectedId } = productModels
     return (
       <View style={styles.container}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {colors.map((color,i) => this.renderColorButton(color,i))}
+          {productModels.models.map((model,i) => this.renderModelImage({model,i,selectedId}))}
         </ScrollView>
       </View>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    productModels: state.productModels,
+    modelVariants: state.modelVariants
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  changeSelectedModel : (payload) => dispatch({type:'CHANGE_SELECTED_MODEL', payload})
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TabColor)
 
 const styles = StyleSheet.create({
   container: {

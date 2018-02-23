@@ -7,5 +7,5 @@ export {default as showTextModal} from './textModal'
 export {default as showTextModalEdit} from './textModalEdit'
 
 export {default as multipleImageDragable} from './multipleImageDragable'
-export {default as models} from './models'
+export {default as productModels} from './productModels'
 export {default as modelVariants} from './modelVariants'
