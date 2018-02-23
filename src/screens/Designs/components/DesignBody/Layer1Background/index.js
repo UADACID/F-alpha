@@ -34,15 +34,15 @@ const mapStateToProps = state => {
   const modelVariants = state.modelVariants
 
   const { variants, activeId } = modelVariants
-  console.log({ variants, activeId });
+  // console.log({ variants, activeId });
   const productModelsSelectedId = state.productModels.selectedId
-  console.log({productModelsSelectedId});
+  // console.log({productModelsSelectedId});
 
 
   let filterSelectedVariant = variants.filter(variant => variant.modelId == productModelsSelectedId)
   let filterSelectedColorVariant = filterSelectedVariant.filter(variant => variant.id == activeId)
 
-  console.log(filterSelectedColorVariant);
+  // console.log(filterSelectedColorVariant);
   return {
     imageBackground : filterSelectedColorVariant[0].imageUrl
   }
