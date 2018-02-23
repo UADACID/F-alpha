@@ -55,20 +55,50 @@ const defaultVariants = [
     qtySizeXLL: 10,
     color: '#f0fd00'
   },
+
   {
     id:5,
     modelId: 2,
     price: 50000,
-    imageTransparentUrl: 'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fyellow-bolong.png?alt=media&token=82792d69-b4f0-48fb-8525-2a16de19d93d',
-    imageUrl:'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fyellow.png?alt=media&token=74162687-743f-478d-914b-6251185d849f',
+    imageTransparentUrl: 'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fkerah%2Fkerah-ijo-bolong.png?alt=media&token=424ec766-071e-4f1b-b2a7-7f19e6f7eff9',
+    imageUrl:'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fkerah%2Fkerah-ijo.png?alt=media&token=73511a21-0dec-4d22-be5c-f0ec978aae10',
     qty: 92,
     qtySizeS: 38,
     qtySizeM: 20,
     qtySizeL: 40,
     qtySizeXL: 15,
     qtySizeXLL: 10,
-    color: '#f0fd00'
-  }
+    color: '#6ef6a9'
+  },
+  {
+    id:6,
+    modelId: 2,
+    price: 50000,
+    imageTransparentUrl: 'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fkerah%2Fkerah-oren-bolong.png?alt=media&token=1827c919-5601-4692-81ea-013b395dec09',
+    imageUrl:'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fkerah%2Fkerah-oren.png?alt=media&token=737ac90d-88c5-4cec-851b-c7273d24ff53',
+    qty: 92,
+    qtySizeS: 38,
+    qtySizeM: 20,
+    qtySizeL: 40,
+    qtySizeXL: 15,
+    qtySizeXLL: 10,
+    color: '#f9cc6b'
+  },
+  {
+    id:7,
+    modelId: 2,
+    price: 50000,
+    imageTransparentUrl: 'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fkerah%2Fkerah-ungu-bolong.png?alt=media&token=617af371-5eab-42de-8366-e83b8a33db08',
+    imageUrl:'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fkerah%2Fkerah-ungu.png?alt=media&token=57655048-7f33-42ce-8be8-4b20d5b2ce22',
+    qty: 92,
+    qtySizeS: 38,
+    qtySizeM: 20,
+    qtySizeL: 40,
+    qtySizeXL: 15,
+    qtySizeXLL: 10,
+    color: '#e78dff'
+  },
+
 ]
 
 const initialState = {
