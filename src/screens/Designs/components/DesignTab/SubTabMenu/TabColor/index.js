@@ -112,7 +112,11 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  changeSelectedModel : (payload) => dispatch({type:'CHANGE_SELECTED_MODEL', payload})
+  changeSelectedModel : (payload) => {
+    dispatch({type:'CHANGE_SELECTED_MODEL', payload})
+    const modelId = payload
+    dispatch({type:'SET_SELECTED_MODEL_VARIANT', modelId})
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TabColor)

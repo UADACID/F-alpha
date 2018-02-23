@@ -85,6 +85,15 @@ const modelVariants = (state = initialState, action ) => {
         activeId: action.payload
       }
       break;
+
+    case "SET_SELECTED_MODEL_VARIANT":
+      const {variants} = state
+      const { modelId } = action
+      const filterActiveId = variants.filter(variant => variant.modelId == modelId)[0]
+      return {
+        ...state,
+        activeId: filterActiveId.id
+      }
     default:
       return state
   }
