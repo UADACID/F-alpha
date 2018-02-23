@@ -33,6 +33,14 @@ const multipleImageDragable = ( state = initialState, action ) => {
         images:[{...images[0], url, type}]
       }
       break;
+    case 'REMOVE_IMAGE_SELECTED':{
+      const indexClicked = action.payload
+      return {
+        activeIndex:0,
+        images : []
+      }
+    }
+    break
     case "CLEAR_ALL_IMAGE":
       return {
         activeIndex:0,
