@@ -11,11 +11,12 @@ import {
   Dimensions,
   TouchableOpacity
 } from 'react-native';
+import { connect } from 'react-redux'
 import { Button, Icon } from 'native-base'
 
 const { width, height } = Dimensions.get('window')
 
-export default class ImagePhotos extends Component {
+class ImagePhotos extends Component {
 
   state = {
     photos : []
@@ -44,6 +45,7 @@ export default class ImagePhotos extends Component {
   renderItem = ({item}) => {
     return (
       <View style={styles.renderItem}>
+        <TouchableOpacity onPress={()=>this.props.addNewImage({url:item.node.image.uri, type:'gallery'})}>
         <Image
            resizeMode='contain'
            style={{
@@ -52,6 +54,7 @@ export default class ImagePhotos extends Component {
            }}
            source={{ uri: item.node.image.uri }}
          />
+         </TouchableOpacity>
       </View>
     )
   }
@@ -76,6 +79,14 @@ export default class ImagePhotos extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  addNewImage:(payload)=> {
+    dispatch({type:'ADD_NEW_IMAGE', payload})
+  }
+})
+
+export default connect(null,mapDispatchToProps)(ImagePhotos)
 
 const styles = StyleSheet.create({
   container: {

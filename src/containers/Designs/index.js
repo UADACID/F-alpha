@@ -16,8 +16,9 @@ const mapDispatchToProps = ( dispatch ) => {
       dispatch(NavigationActions.navigate({ routeName: routeName }))
     },
     //FOR DEV ONLY
-    clearAllMultipleText : () => {
+    clearAllMultipleObj : () => {
       dispatch({type:'CLEAR_MULTIPLE_TEXT'})
+      dispatch({type:'CLEAR_ALL_IMAGE'})
     }
   }
 }

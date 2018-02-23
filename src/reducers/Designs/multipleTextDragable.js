@@ -1,7 +1,4 @@
-import { Dimensions } from 'react-native'
 import { customMutationState, mutationState } from '../../utils'
-// console.log({customMutationState, mutationState});
-const { width, height } = Dimensions.get('window')
 
 const defaultText = {
   id : 1,
@@ -61,7 +58,7 @@ const multipleTextDragable = ( state = initialState, action ) => {
       return newState
     }
     break;
-    case 'CHANGE_OBJECT_CLICKED':{
+    case 'CHANGE_TEXT_OBJECT_CLICKED':{
       const indexClicked = action.payload
       const newState = mutationState({texts:state.texts, activeIndex : indexClicked})
 
@@ -125,7 +122,7 @@ const multipleTextDragable = ( state = initialState, action ) => {
       return newState
     }
     break
-    case 'CHANGE_POSITION':{
+    case 'CHANGE_POSITION_TEXT':{
       const { left, top, scale, rotate, activeIndex } = action.payload
       const {texts} = state
 

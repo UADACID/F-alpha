@@ -5,3 +5,5 @@ export {default as textMenu} from './textMenu'
 export {default as multipleTextDragable} from './multipleTextDragable'
 export {default as showTextModal} from './textModal'
 export {default as showTextModalEdit} from './textModalEdit'
+
+export {default as multipleImageDragable} from './multipleImageDragable'
