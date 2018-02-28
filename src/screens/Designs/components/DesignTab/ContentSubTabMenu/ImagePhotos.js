@@ -12,9 +12,17 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { connect } from 'react-redux'
+var ImagePicker = require('react-native-image-picker');
 import { Button, Icon } from 'native-base'
 
 const { width, height } = Dimensions.get('window')
+var options = {
+  title: 'Select Avatar',
+  storageOptions: {
+    skipBackup: true,
+    path: 'images'
+  }
+};
 
 class ImagePhotos extends Component {
 
@@ -61,6 +69,32 @@ class ImagePhotos extends Component {
 
   _keyExtractor = (item, index) => index;
 
+  onOpenGalery = () => {
+    ImagePicker.launchImageLibrary(options, (response)  => {
+      // Same code as in above section!
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      }
+      else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      }
+      else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      }
+      else {
+        let source = { uri: response.uri };
+
+        // You can also display the image using data:
+        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+        console.log(source);
+        this.props.addNewImage({url:source.uri, type:'gallery'})
+      }
+    });
+  }
+
 
   render() {
     const { photos } = this.state
@@ -72,7 +106,7 @@ class ImagePhotos extends Component {
           keyExtractor={this._keyExtractor}
           renderItem={this.renderItem}
           />
-        <TouchableOpacity style={styles.iconGridContainer}>
+        <TouchableOpacity onPress={this.onOpenGalery} style={styles.iconGridContainer}>
           <Icon name='md-grid' style={styles.iconGrid}/>
         </TouchableOpacity>
       </View>
