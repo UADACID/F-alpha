@@ -63,9 +63,9 @@ class SubTabMenu extends Component {
         break;
       case 'text':
         return (
-          <Animated.View style={[styles.container,styleAnimatedSlideContainer]}>
+          <View style={[styles.container]}>
             <TabText />
-          </Animated.View>
+          </View>
         );
         break;
       default:

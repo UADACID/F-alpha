@@ -5,6 +5,7 @@ import {
   View,
   Text,
   StyleSheet,
+  ScrollView
 } from 'react-native';
 import { connect } from 'react-redux'
 import { width, height } from '../../../../../utils'
@@ -55,9 +56,10 @@ class TabMenu extends Component {
   }
 
   render() {
-    const { activeColorTab, activeImageTab, activeTextTab, iconColor, iconImage, iconText } = this.props
+    const { activeColorTab, activeImageTab, activeTextTab, iconColor, iconImage, iconText, iconClear } = this.props
     return (
       <View style={styles.container}>
+      <ScrollView horizontal={true}>
         <TabItem
           style={[styles.tabItemContainer,this.changeBackgroundColor(activeColorTab)]}
           icon={iconColor}
@@ -73,6 +75,12 @@ class TabMenu extends Component {
           icon={iconText}
           onPress={()=>this.handleClickTextTab('text')}
           />
+        <TabItem
+          style={[styles.tabItemContainer]}
+          icon={iconClear}
+          onPress={this.props.clearAllMultipleObj}
+          />
+      </ScrollView>
       </View>
     );
   }
@@ -82,10 +90,16 @@ const mapDispatchToProps = (dispatch) => {
   const onChangeTabBottom = (tabName) => dispatch({type:'CHANGE_TAB_BOTTOM_SELECTED', payload:tabName})
   const onShowTextModal = () => dispatch({type:'SHOW_TEXT_MODAL'})
   const addNewTextForFirst = () => dispatch({type:'ADD_FIRST_TEXT', payload:'Long Press to Edit'})
+  const clearAllMultipleObj = () => {
+    dispatch({type:'CLEAR_MULTIPLE_TEXT'})
+    dispatch({type:'CLEAR_ALL_IMAGE'})
+  }
+
   return {
     onChangeTabBottom,
     addNewTextForFirst,
-    onShowTextModal
+    onShowTextModal,
+    clearAllMultipleObj
   }
 }
 
@@ -98,6 +112,7 @@ const mapStateToProps = (state) => {
   const iconColor = activeColorTab ? require(`${stringPath}/design/color-active.png`) : require(`${stringPath}/design/color-inactive.png`)
   const iconImage = activeImageTab ? require(`${stringPath}/design/image-active.png`) : require(`${stringPath}/design/image-inactive.png`)
   const iconText = activeTextTab ? require(`${stringPath}/design/text-active.png`) : require(`${stringPath}/design/text-inactive.png`)
+  const iconClear = activeTextTab ? require(`${stringPath}/design/color.png`) : require(`${stringPath}/design/color.png`)
 
   return {
     activeColorTab,
@@ -106,6 +121,7 @@ const mapStateToProps = (state) => {
     iconColor,
     iconImage,
     iconText,
+    iconClear,
     activeTabBottom,
     texts : multipleTextDragable.texts
   }
