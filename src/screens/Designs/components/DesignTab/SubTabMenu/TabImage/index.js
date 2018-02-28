@@ -7,9 +7,19 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux'
+var ImagePicker = require('react-native-image-picker');
+
 import TabItem from '../../components/TabItem'
 import { width, height } from '../../../../../../utils'
 const stringPath = '../../../../../../../assets/'
+
+var options = {
+  title: 'Select Avatar',
+  storageOptions: {
+    skipBackup: true,
+    path: 'images'
+  }
+};
 
 
 
@@ -22,6 +32,32 @@ class TabImage extends Component {
     }
   }
 
+  onOpenCamera = () => {
+    this.props.onChangeSubTabBottom('imageOpenCamera')
+    ImagePicker.launchCamera(options, (response)  => {
+      // Same code as in above section!
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      }
+      else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      }
+      else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      }
+      else {
+        let source = { uri: response.uri };
+
+        // You can also display the image using data:
+        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+        console.log(source);
+      }
+    });
+  }
+
   render() {
     const { activeImageGallery, onChangeSubTabBottom } = this.props
     // const iconColor = activeColorTab ? require(`${stringPath}/design/color-active.png`) : require(`${stringPath}/design/color-inactive.png`)
@@ -32,7 +68,7 @@ class TabImage extends Component {
         <TabItem
           style={styles.tabItemContainer}
           icon={require(`${iconPhotoCamera}`)}
-          onPress={()=>onChangeSubTabBottom('imageOpenCamera')}/>
+          onPress={this.onOpenCamera}/>
         <TabItem
           style={[styles.tabItemContainer]}
           icon={iconGallery}
