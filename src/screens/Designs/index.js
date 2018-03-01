@@ -12,8 +12,31 @@ import {DesignBody, DesignTab} from './components'
 import CustomNavbar from '../../components/CustomNavbar'
 
 export default class Designs extends Component {
-  render() {
+  // static navigationOptions = { title: 'Design', header: null };
+  static navigationOptions = ({ navigation }) => {
+    const params = navigation.state.params || {};
+    const func = () => alert('not yet');
+    const onPreviewPress = params.onPreviewPress || func
 
+    return {
+      headerTitle: 'Design',
+      headerRight: (
+        <Button transparent style={{paddingRight:20}} onPress={onPreviewPress}>
+          <Text style={styles.textHeaderRight}>PREVIEW</Text>
+        </Button>
+      ),
+    };
+  };
+
+  componentWillMount() {
+    this.props.navigation.setParams({ onPreviewPress: this.onPreviewPress });
+  }
+
+  onPreviewPress = () => {
+    this.props.toScreen('Previews')
+  }
+
+  render() {
     const leftComponent = (
       <Button transparent style={styles.headerLeft} onPress={()=>{}}>
         <Icon name='ios-arrow-back-outline' style={{fontSize: 30, color: '#fff'}} />
@@ -21,18 +44,18 @@ export default class Designs extends Component {
     )
 
     const rightComponent = (
-      <Button transparent onPress={this.props.clearAllMultipleObj}>
-        <Text style={styles.textHeaderRight}>CLEAR ALL</Text>
+      <Button transparent onPress={this.onPreviewPress}>
+        <Text style={styles.textHeaderRight}>PREVIEW</Text>
       </Button>
     )
 
     return (
       <View style={styles.container}>
-        <CustomNavbar
+        {/*<CustomNavbar
           title='Design'
           leftComponent={leftComponent}
           rightComponent={rightComponent}
-        />
+        />*/}
         <DesignBody />
         <DesignTab />
       </View>

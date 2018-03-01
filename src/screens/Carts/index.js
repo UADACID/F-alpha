@@ -12,6 +12,10 @@ import CustomNavbar from '../../components/CustomNavbar'
 
 export default class Carts extends Component {
 
+  static navigationOptions = ({ navigation }) => ({
+    headerTitle:'Carts'
+  });
+
   state = {
     showKeyboard : false
   }
@@ -46,7 +50,7 @@ export default class Carts extends Component {
     )
     return (
       <View style={styles.container}>
-        <CustomNavbar title="Carts"  leftComponent={leftComponent}/>
+        {/*<CustomNavbar title="Carts"  leftComponent={leftComponent}/>*/}
         <Content>
           <List>
             <ListItem avatar>

@@ -13,7 +13,7 @@ const mapDispatchToProps = ( dispatch ) => {
       return true;
     },
     toScreen: (routeName)=>{
-      dispatch(NavigationActions.navigate({ routeName: routeName }))
+      dispatch(NavigationActions.navigate({ routeName: routeName, params: {userId:'wkwkwkwk'} }))
     },
     //FOR DEV ONLY
     clearAllMultipleObj : () => {
