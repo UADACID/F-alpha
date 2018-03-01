@@ -1,5 +1,5 @@
 import { NavigationActions } from 'react-navigation'
-import { AppNavigator } from '../../navigations/root'
+import { AppNavigator } from '../../navigations'
 import { getCurrentRouteName, getActionRouteName } from '../../utils'
 
 const firstAction = AppNavigator.router.getActionForPathAndParams('Logins');

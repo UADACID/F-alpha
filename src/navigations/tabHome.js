@@ -4,7 +4,6 @@ import CustomTab from '../components/CustomTab'
 import Categories from '../containers/Categories'
 import Settings from '../containers/Settings'
 import Notifications from '../containers/Notifications'
-// import Histories from '../containers/Histories'
 import tabHistory from './tabHistory'
 
 const tabBarOptions = {
@@ -43,7 +42,6 @@ const tabs = TabNavigator({
   Histories : {
     screen : tabHistory
   }
-  // iki masuk kandidat tersangka
 },tabNavigatorConfig)
 
 export default tabs

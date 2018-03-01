@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux'
 import { AppColor } from './utils'
-import AppNavigator  from './navigations/root'
+import AppNavigator  from './navigations'
 
 class Main extends Component {
   render() {

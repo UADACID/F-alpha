@@ -11,7 +11,6 @@ const tabNavigatorConfig = {
   animationEnabled: true,
   useNativeDriver:true,
   tabBarComponent: (props) => <CustomTabHistory  {...props} />,
-  // tabBarOptions
 }
 
 const tabHistory = TabNavigator({
