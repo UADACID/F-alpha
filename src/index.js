@@ -17,14 +17,12 @@ class Main extends Component {
       <View style={{flex:1}}>
         <StatusBar
           backgroundColor={AppColor}
-          barStyle="light-content"
-        />
+          barStyle="light-content"/>
         <AppNavigator />
       </View>
     );
   }
 }
-
 
 export default Main
 
