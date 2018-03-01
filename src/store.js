@@ -12,7 +12,7 @@ const config = {
     storage,
     //debug: true //to get useful logging
 };
-// const middleware = [];
+
 if(__DEV__){ middleware.push(createLogger()); }
 const reducers = persistCombineReducers(config, appReducer);
 const enhancers = [applyMiddleware(...middleware)];
@@ -27,12 +27,3 @@ const configureStore = () => {
 }
 
 export default configureStore;
-
-// const store = createStore(
-//   appReducer,
-//   compose(
-//     middleware,
-//   )
-// );
-//
-// export default store;

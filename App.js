@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react'
 import {
   View,
@@ -21,7 +15,7 @@ export default class App extends Component<{}> {
   render() {
     return (
       <Provider store={store}>
-      <PersistGate
+        <PersistGate
           loading={<Loading />}
           onBeforeLift={()=> console.log()}
           persistor={persistor}>

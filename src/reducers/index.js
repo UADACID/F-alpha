@@ -1,11 +1,15 @@
 import R from 'ramda';
-// import { combineReducers } from 'redux'
 import { navReducer } from './navigator'
 import { StartupInfo } from './tabHome'
 import { showModalDashboard } from './Home'
 
 //DESIGNS
-import { activeTabBottom, activeSubTabButtom, textMenu, multipleTextDragable, showTextModal, showTextModalEdit, multipleImageDragable, productModels, modelVariants} from './Designs'
+import {
+  activeTabBottom, activeSubTabButtom,
+  textMenu, multipleTextDragable,
+  showTextModal, showTextModalEdit,
+  multipleImageDragable, productModels,
+  modelVariants} from './Designs'
 
 import {services} from '../api';
 
@@ -22,7 +26,6 @@ export const appReducer = {
   multipleTextDragable,
   showTextModal,
   showTextModalEdit,
-
   multipleImageDragable,
   productModels,
   modelVariants
