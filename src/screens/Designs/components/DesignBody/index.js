@@ -31,11 +31,18 @@ import ModalEditText from './components/ModalEditText'
 
 export default class DesignBody extends Component {
 
+  onGetRefs = () => {
+     // this.refs.zxc.getRefs();
+     // console.log(this.refs.zxc.wrappedInstance.refs);
+     return this.refs.zxc.wrappedInstance.refs
+     // alert('sssss')
+  }
+
   render(){
     return (
       <View>
         <Layer1Background />
-        <Layer2ObjectAttachment />
+        <Layer2ObjectAttachment ref="zxc" />
         <Layer3HollowImage />
         <Layer4DragableArea />
         <ModalTextInput />

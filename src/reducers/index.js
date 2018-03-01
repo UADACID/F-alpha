@@ -9,7 +9,7 @@ import {
   textMenu, multipleTextDragable,
   showTextModal, showTextModalEdit,
   multipleImageDragable, productModels,
-  modelVariants} from './Designs'
+  modelVariants, refItemDragable} from './Designs'
 
 import {services} from '../api';
 
@@ -20,6 +20,7 @@ export const appReducer = {
   nav: navReducer,
   modalDashboard : showModalDashboard,
   StartupInfo,
+
   activeTabBottom,
   activeSubTabButtom,
   textMenu,
@@ -28,7 +29,8 @@ export const appReducer = {
   showTextModalEdit,
   multipleImageDragable,
   productModels,
-  modelVariants
+  modelVariants,
+  refItemDragable
 };
 
 

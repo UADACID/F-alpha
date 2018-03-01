@@ -12,8 +12,12 @@ const mapDispatchToProps = ( dispatch ) => {
       dispatch(NavigationActions.back());
       return true;
     },
-    toScreen: (routeName)=>{
-      dispatch(NavigationActions.navigate({ routeName: routeName, params: {userId:'wkwkwkwk'} }))
+    toScreen: (routeName, params)=>{
+      dispatch(NavigationActions.navigate({ routeName: routeName, params }))
+    },
+    clearBorder : () => {
+      dispatch({type:'CLEAR_ALL_ACTIVE_TEXT'})
+      dispatch({type:'CLEAR_ALL_ACTIVE_IMAGE'})
     },
     //FOR DEV ONLY
     clearAllMultipleObj : () => {
@@ -25,8 +29,10 @@ const mapDispatchToProps = ( dispatch ) => {
 
 
 const mapStateToProps = (state, ownProps) => {
+  // console.log(state);
   return {
-    nav:state.nav
+    nav:state.nav,
+    refItemDragable: state.refItemDragable
   }
 }
 
