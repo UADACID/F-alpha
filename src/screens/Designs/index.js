@@ -10,6 +10,7 @@ import { Button, Icon } from 'native-base'
 import { takeSnapshot } from "react-native-view-shot";
 
 import {DesignBody, DesignTab} from './components'
+import ModalOverlay from  '../../components/ModalOverlay'
 import CustomNavbar from '../../components/CustomNavbar'
 
 export default class Designs extends Component {
@@ -29,73 +30,76 @@ export default class Designs extends Component {
   };
 
   componentWillMount() {
+    // console.log(this.props);
     this.props.navigation.setParams({ onPreviewPress: this.onPreviewPress });
   }
 
   onPreviewPress = () => {
-     let chidlRef = this.refs.abc.onGetRefs();
-     // console.log(chidlRef);
 
-     // console.log(this.refs.modelBody);
-     chidlRef.modelBody = this.refs.modelBody
-     // console.log(chidlRef);
-     // return
-     const filterRemoveRef = this.refAdapter(chidlRef)
+    const { modelVariants } = this.props
+    const { activeId, variants } = modelVariants
 
-     if (filterRemoveRef.length <= 1) {
-       return alert('you have not done the model design')
-     }
+    // console.log(variantSelected);
+    // return
+    this.props.showOverlay()
+    this.props.clearBorder()
+    setTimeout(()=>{
+      let chidlRef = this.refs.abc.onGetRefs();
+      let filterSelected = variants.filter(obj => obj.id == activeId)
 
-     // console.log(filterRemoveRef);
+      const variantSelected = filterSelected[0]
+       // console.log(chidlRef);
+
+       // console.log(this.refs.modelBody);
+      chidlRef.modelBody = this.refs.modelBody
+       // console.log(chidlRef);
+       // return
+      const filterRemoveRef = this.refAdapter(chidlRef)
+
+      if (filterRemoveRef.length <= 1) {
+         return alert('you have not done the model design')
+      }
+
+       // console.log(filterRemoveRef);
       var promises = filterRemoveRef.map((ref) => {
-          // //console.log(refSnapshot);
-          return new Promise((resolve, reject) => {
-            takeSnapshot(ref.value, {
-              format: "png",
-              quality: 0.3,
-              result: "file",
-            })
-            .then(
-              uri => {
-                resolve({
-                  uri,
-                  key:ref.key
-                });
+            // //console.log(refSnapshot);
+            return new Promise((resolve, reject) => {
+              takeSnapshot(ref.value, {
+                format: "png",
+                quality: 0.3,
+                result: "file",
+              })
+              .then(
+                uri => {
+                  console.log('ke snapshot');
+                  resolve({
+                    uri,
+                    key:ref.key
+                  });
 
-              },
-              error => {
-                console.log(err);
-                reject();
-              }
-            );
+                },
+                error => {
+                  console.log(err);
+                  reject();
+                }
+              );
+          });
         });
-      });
 
-      Promise.all(promises)
-      .then(res => {
-      // console.log(res);
-      const params = res
-      this.props.toScreen('Previews', params)
-        // this.createMultipeImage({obj:res})
-        // resolved(true)
-        // this.props.navigator.push({name:'TestingPreview', props:{images:res}})
-      })
-      .catch(err => {
-        // rejected(true)
-      })
-  }
+        Promise.all(promises)
+        .then(res => {
+        console.log(res);
+        this.props.hideOverlay()
+        this.props.toScreen({routeName:'Previews', params:{images:res, variantSelected}})
+        // return
+          // const params = uri
+          // this.props.toScreen({routeName:'Previews', params})
 
-  handleSnapshot = (payload) => {
-
-    return new Promise((resolve, reject) => {
-      takeSnapshot(payload, {
-         format: "png",
-         quality: 0.3,
-         result: "file",
-       }).then(uri => {
-          resolve(uri)
-       });
-    })
+        })
+        .catch(err => {
+          // rejected(true)
+        })
+    }, 100);
 
   }
 
@@ -131,15 +135,11 @@ export default class Designs extends Component {
 
     return (
       <View style={styles.container}>
-        {/*<CustomNavbar
-          title='Design'
-          leftComponent={leftComponent}
-          rightComponent={rightComponent}
-        />*/}
         <View ref="modelBody" collapsable={false}>
           <DesignBody ref='abc'/>
         </View>
         <DesignTab />
+        <ModalOverlay />
       </View>
     );
   }

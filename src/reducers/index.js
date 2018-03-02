@@ -3,6 +3,9 @@ import { navReducer } from './navigator'
 import { StartupInfo } from './tabHome'
 import { showModalDashboard } from './Home'
 
+//MODAL OVERLAY
+import modalOverlay from './ModalOverlay'
+
 //DESIGNS
 import {
   activeTabBottom, activeSubTabButtom,
@@ -30,7 +33,9 @@ export const appReducer = {
   multipleImageDragable,
   productModels,
   modelVariants,
-  refItemDragable
+  refItemDragable,
+
+  modalOverlay
 };
 
 

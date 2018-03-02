@@ -6,7 +6,7 @@ const defaultVariants = [
     imageTransparentUrl: 'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fblue-bolong.png?alt=media&token=234da208-b9c6-4f91-86b4-0f21b9d669ee',
     imageUrl:'https://firebasestorage.googleapis.com/v0/b/crud-1e50d.appspot.com/o/variants%2Fblue.png?alt=media&token=441b1b52-1bf5-41a3-a6e8-8f4078e8a754',
     qty: 102,
-    qtySizeS: 38,
+    qtySizeS: 0,
     qtySizeM: 20,
     qtySizeL: 40,
     qtySizeXL: 15,

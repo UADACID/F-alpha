@@ -5,8 +5,9 @@ import {
   View,
   BackHandler,
   StyleSheet,
+  Text,
 } from 'react-native';
-import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text , Button, Icon, Footer} from 'native-base';
+import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Button, Icon, Footer} from 'native-base';
 import { AppColor, width, height } from '../../utils'
 import CustomNavbar from '../../components/CustomNavbar'
 
@@ -103,11 +104,11 @@ export default class Carts extends Component {
             </ListItem>
           </List>
         </Content>
-        <Footer>
-          <Button style={{width, height:60, backgroundColor:'#dae9ef', justifyContent:'center'}}>
-            <Text style={{color:'#000'}}>Checkout</Text>
+          <Button style={styles.buttonCheckOut}>
+            <Text style={{fontWeight:'100', fontSize:20}}>
+              CHECKOUT
+            </Text>
           </Button>
-        </Footer>
       </View>
     );
   }
@@ -120,4 +121,13 @@ const styles = StyleSheet.create({
     // justifyContent:'center',
     // alignItems:'center',
   },
+  buttonCheckOut : {
+    position: 'absolute',
+    width: width,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom:0,
+    backgroundColor: '#dae9ef'
+  }
 });

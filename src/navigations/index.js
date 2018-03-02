@@ -14,7 +14,9 @@ import Models from '../containers/Models'
 import Carts from '../containers/Carts'
 import Designs from '../containers/Designs'
 import Previews from '../containers/Previews'
-
+import { transitionConfig } from '../utils'
+// console.log(transitionConfig());
+const transition = transitionConfig()
 const navigationOptions = {
   headerMode:'float',
   initialRouteName:'Designs',
@@ -28,7 +30,7 @@ const navigationOptions = {
     },
     headerTintColor:'#ffffff'
   },
-  transitionConfig: () => ({})
+  transitionConfig: () => (transition)
 }
 
 export const AppNavigator = StackNavigator({

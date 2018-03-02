@@ -12,13 +12,16 @@ const mapDispatchToProps = ( dispatch ) => {
       dispatch(NavigationActions.back());
       return true;
     },
-    toScreen: (routeName, params)=>{
-      dispatch(NavigationActions.navigate({ routeName: routeName, params }))
+    toScreen: ({routeName, params})=>{
+      console.log({routeName, params});
+      dispatch(NavigationActions.navigate({ routeName: routeName, params}))
     },
     clearBorder : () => {
       dispatch({type:'CLEAR_ALL_ACTIVE_TEXT'})
       dispatch({type:'CLEAR_ALL_ACTIVE_IMAGE'})
     },
+    showOverlay: () => dispatch({type:"SHOW_OVERLAY"}),
+    hideOverlay: () => dispatch({type:"HIDE_OVERLAY"}),
     //FOR DEV ONLY
     clearAllMultipleObj : () => {
       dispatch({type:'CLEAR_MULTIPLE_TEXT'})
@@ -32,7 +35,8 @@ const mapStateToProps = (state, ownProps) => {
   // console.log(state);
   return {
     nav:state.nav,
-    refItemDragable: state.refItemDragable
+    refItemDragable: state.refItemDragable,
+    modelVariants: state.modelVariants
   }
 }
 
