@@ -33,7 +33,7 @@
     "redux-persist": "^5.9.1",
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
-    "rn-spinner": "^0.3.2"
+    "rn-spinner": "git+https://github.com/UADACID/rn-spinner.git"
   },
   "devDependencies": {
     "babel-jest": "22.1.0",

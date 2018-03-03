@@ -10,7 +10,7 @@ const defaultVariants = [
     qtySizeM: 20,
     qtySizeL: 40,
     qtySizeXL: 15,
-    qtySizeXLL: 10,
+    qtySizeXXL: 10,
     color: '#75deff'
   },
   {
@@ -24,7 +24,7 @@ const defaultVariants = [
     qtySizeM: 20,
     qtySizeL: 40,
     qtySizeXL: 15,
-    qtySizeXLL: 10,
+    qtySizeXXL: 10,
     color: '#1ff173'
   },
   {
@@ -38,7 +38,7 @@ const defaultVariants = [
     qtySizeM: 20,
     qtySizeL: 40,
     qtySizeXL: 15,
-    qtySizeXLL: 10,
+    qtySizeXXL: 10,
     color: '#dad1ff'
   },
   {
@@ -52,7 +52,7 @@ const defaultVariants = [
     qtySizeM: 20,
     qtySizeL: 40,
     qtySizeXL: 15,
-    qtySizeXLL: 10,
+    qtySizeXXL: 10,
     color: '#f0fd00'
   },
 
@@ -67,7 +67,7 @@ const defaultVariants = [
     qtySizeM: 20,
     qtySizeL: 40,
     qtySizeXL: 15,
-    qtySizeXLL: 10,
+    qtySizeXXL: 10,
     color: '#6ef6a9'
   },
   {
@@ -81,7 +81,7 @@ const defaultVariants = [
     qtySizeM: 20,
     qtySizeL: 40,
     qtySizeXL: 15,
-    qtySizeXLL: 10,
+    qtySizeXXL: 10,
     color: '#f9cc6b'
   },
   {
@@ -95,7 +95,7 @@ const defaultVariants = [
     qtySizeM: 20,
     qtySizeL: 40,
     qtySizeXL: 15,
-    qtySizeXLL: 10,
+    qtySizeXXL: 10,
     color: '#e78dff'
   },
 

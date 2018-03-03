@@ -13,7 +13,7 @@ const mapDispatchToProps = ( dispatch ) => {
       return true;
     },
     toScreen: ({routeName, params})=>{
-      console.log({routeName, params});
+      // console.log({routeName, params});
       dispatch(NavigationActions.navigate({ routeName: routeName, params}))
     },
     clearBorder : () => {

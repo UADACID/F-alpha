@@ -14,6 +14,8 @@ import {
   multipleImageDragable, productModels,
   modelVariants, refItemDragable} from './Designs'
 
+import { orderReducer } from './Carts'
+
 import {services} from '../api';
 
 let reducers = R.map(x => x.reducer, services);
@@ -35,7 +37,9 @@ export const appReducer = {
   modelVariants,
   refItemDragable,
 
-  modalOverlay
+  modalOverlay,
+
+  orderReducer
 };
 
 

@@ -14,14 +14,24 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     toScreen: (routeName)=>{
       dispatch(NavigationActions.navigate({ routeName: routeName }))
+    },
+    addToCart:(payload) => {
+      // console.log('asdasdasdasd');
+      // console.log(payload);
+      dispatch({type:"ADD_ORDER", payload})
     }
   }
 }
 
 
 const mapStateToProps = (state, ownProps) => {
+
+  const { selectedId, models } = state.productModels
+  const filterModelName = models.filter(model => model.id == selectedId)
   return {
-    nav:state.nav
+    nav:state.nav,
+    productModels:state.productModels,
+    modelName : filterModelName[0]
   }
 }
 

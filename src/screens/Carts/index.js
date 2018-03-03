@@ -8,6 +8,10 @@ import {
   Text,
 } from 'react-native';
 import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Button, Icon, Footer} from 'native-base';
+import Spinner from 'rn-spinner';
+
+import CartList from './components/CartList'
+import CheckoutButton from './components/CheckoutButton'
 import { AppColor, width, height } from '../../utils'
 import CustomNavbar from '../../components/CustomNavbar'
 
@@ -49,68 +53,85 @@ export default class Carts extends Component {
         <Icon name='arrow-back' style={{color:'#fff'}} />
       </Button>
     )
+
     return (
       <View style={styles.container}>
-        {/*<CustomNavbar title="Carts"  leftComponent={leftComponent}/>*/}
-        <Content>
-          <List>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
-              </Left>
-              <Body>
-                <Text>Kumar Pratik</Text>
-                <Text note>Doing what you like will always keep you happy . .</Text>
-              </Body>
-              <Right>
-                <Text note>3:43 pm</Text>
-              </Right>
-            </ListItem>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
-              </Left>
-              <Body>
-                <Text>Kumar Pratik</Text>
-                <Text note>Doing what you like will always keep you happy . .</Text>
-              </Body>
-              <Right>
-                <Text note>3:43 pm</Text>
-              </Right>
-            </ListItem>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
-              </Left>
-              <Body>
-                <Text>Kumar Pratik</Text>
-                <Text note>Doing what you like will always keep you happy . .</Text>
-              </Body>
-              <Right>
-                <Text note>3:43 pm</Text>
-              </Right>
-            </ListItem>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
-              </Left>
-              <Body>
-                <Text>Kumar Pratik</Text>
-                <Text note>Doing what you like will always keep you happy . .</Text>
-              </Body>
-              <Right>
-                <Text note>3:43 pm</Text>
-              </Right>
-            </ListItem>
-          </List>
-        </Content>
-          <Button style={styles.buttonCheckOut}>
-            <Text style={{fontWeight:'100', fontSize:20}}>
-              CHECKOUT
-            </Text>
-          </Button>
+        <CartList />
+        <Footer style={styles.footer}>
+          <CheckoutButton/>
+        </Footer>
       </View>
-    );
+    )
+    // return (
+    //   <View style={styles.container}>
+    //     {/*<CustomNavbar title="Carts"  leftComponent={leftComponent}/>*/}
+    //     <Content>
+    //
+    //       <List>
+    //         <ListItem avatar>
+    //           <Left>
+    //             <Thumbnail source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
+    //           </Left>
+    //           <Body>
+    //           <Spinner
+    //             max={10000}
+    //             min={0}
+    //             height={20}
+    //             width={90}
+    //             default={100}
+    //             onNumChange={(num)=>{console.log(num)}}
+    //             color="#0073b2"
+    //             numColor="#0A69FE"/>
+    //           </Body>
+    //           <Right>
+    //             <Text note>3:43 pm</Text>
+    //           </Right>
+    //         </ListItem>
+    //         <ListItem avatar>
+    //           <Left>
+    //             <Thumbnail source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
+    //           </Left>
+    //           <Body>
+    //             <Text>Kumar Pratik</Text>
+    //             <Text note>Doing what you like will always keep you happy . .</Text>
+    //           </Body>
+    //           <Right>
+    //             <Text note>3:43 pm</Text>
+    //           </Right>
+    //         </ListItem>
+    //         <ListItem avatar>
+    //           <Left>
+    //             <Thumbnail source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
+    //           </Left>
+    //           <Body>
+    //             <Text>Kumar Pratik</Text>
+    //             <Text note>Doing what you like will always keep you happy . .</Text>
+    //           </Body>
+    //           <Right>
+    //             <Text note>3:43 pm</Text>
+    //           </Right>
+    //         </ListItem>
+    //         <ListItem avatar>
+    //           <Left>
+    //             <Thumbnail source={{ uri: 'https://www.allamericanspa.co.uk/wp-content/uploads/2017/02/profile-pictures.png' }} />
+    //           </Left>
+    //           <Body>
+    //             <Text>Kumar Pratik</Text>
+    //             <Text note>Doing what you like will always keep you happy . .</Text>
+    //           </Body>
+    //           <Right>
+    //             <Text note>3:43 pm</Text>
+    //           </Right>
+    //         </ListItem>
+    //       </List>
+    //     </Content>
+    //       <Button style={styles.buttonCheckOut}>
+    //         <Text style={{fontWeight:'100', fontSize:20}}>
+    //           CHECKOUT
+    //         </Text>
+    //       </Button>
+    //   </View>
+    // );
   }
 }
 
@@ -129,5 +150,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     bottom:0,
     backgroundColor: '#dae9ef'
+  },
+  footer: {
+    height: 50,
   }
 });

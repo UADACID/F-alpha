@@ -4356,9 +4356,9 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
 
-rn-spinner@^0.3.2:
+"rn-spinner@git+https://github.com/UADACID/rn-spinner.git":
   version "0.3.2"
-  resolved "https://registry.yarnpkg.com/rn-spinner/-/rn-spinner-0.3.2.tgz#792fad395be1e8d13d2e6c90f5e4166821c46a7f"
+  resolved "git+https://github.com/UADACID/rn-spinner.git#f6b817071b22ea491acfe144ea191470ac1e9172"
 
 rndm@1.2.0:
   version "1.2.0"

@@ -17,7 +17,8 @@ const mapDispatchToProps = ( dispatch ) => {
       })
       dispatch(resetAction);
       return true;
-    }
+    },
+    // removeOrder : (payload) => dispatch({type:'REMOVE_ORDER', payload})
   }
 }
 

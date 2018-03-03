@@ -57,6 +57,7 @@ export default class Designs extends Component {
       const filterRemoveRef = this.refAdapter(chidlRef)
 
       if (filterRemoveRef.length <= 1) {
+        this.props.hideOverlay()
          return alert('you have not done the model design')
       }
 

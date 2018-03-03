@@ -9,7 +9,7 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import { Button, Card, CardItem, Content } from 'native-base'
+import { Button, Card, CardItem, Content, Footer } from 'native-base'
 
 const { width, height } = Dimensions.get('window')
 
@@ -19,7 +19,31 @@ export default class Previews extends Component {
     headerTitle:'Preview',
   });
 
-  onPressAddToCart = () => {
+  onPressAddToCart = (additionalTotalCost) => {
+
+    const { state } = this.props.navigation
+    const { name } = this.props.modelName
+    const { images, variantSelected } = state.params
+    const { qtySizeS, qtySizeM, qtySizeL, qtySizeXL, qtySizeXXL, price } = variantSelected
+
+    // alert(JSON.stringify({ qtySizeS, qtySizeM, qtySizeL, qtySizeXL, qtySizeXXL, price, additionalTotalCost, name }))
+    const payload = {
+      title:name,
+      images,
+      qtySizeS,
+      qtySizeM,
+      qtySizeL,
+      qtySizeXL,
+      qtySizeXXL,
+      valueOfSizeS:0,
+      valueOfSizeM:0,
+      valueOfSizeL:0,
+      valueOfSizeXL:0,
+      valueOfSizeXXL:0,
+      price:additionalTotalCost
+    }
+    
+    this.props.addToCart(payload)
     this.props.toScreen('Carts')
   }
 
@@ -44,8 +68,14 @@ export default class Previews extends Component {
   render(){
     const { state } = this.props.navigation
     const { images, variantSelected } = state.params
+    // console.log(this.props.productModels);
+    // const filte  rModelName = this.props.productModels.filter(model => model.id == variantSelected.modelId)
+    // const modelName = filterModelName[0]
+
     console.log({ images, variantSelected });
     const { qtySizeS, qtySizeM, qtySizeL, qtySizeXL, qtySizeXXL, price } = variantSelected
+    console.log('--------');
+    console.log(variantSelected);
 
     const filterTextAttachment = this.filterItemAdapter(images,'text')
     const numberOfTextAttachment = filterTextAttachment.length
@@ -73,6 +103,10 @@ export default class Previews extends Component {
                 />
             </Card>
           </View>
+          <Card>
+            <CardItem header>
+              <Text style={{fontWeight:'bold', alignSelf:'center', fontSize:15}}>{this.props.modelName.name}</Text>
+            </CardItem>
           <View>
             <Text style={{alignSelf:'center'}}>
               SIZE AVAILABLE
@@ -86,16 +120,19 @@ export default class Previews extends Component {
             </View>
           </View>
           <View>
-            <Text style={{alignSelf:'center', color:'#000'}}>
+            <Text style={{alignSelf:'center', color:'#000', padding:10}}>
               Rp. {additionalTotalCost}
             </Text>
           </View>
+          </Card>
         </Content>
-        <Button style={styles.button} onPress={this.onPressAddToCart}>
+        <Footer style={{backgroundColor:'#ffffff'}}>
+        <Button style={styles.button} onPress={()=>this.onPressAddToCart(additionalTotalCost)}>
           <Text style={{fontWeight:'100', fontSize:20}}>
             ADD TO CART
           </Text>
         </Button>
+        </Footer>
       </View>
     )
   }
