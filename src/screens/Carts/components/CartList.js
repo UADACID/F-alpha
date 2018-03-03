@@ -25,7 +25,7 @@ class CartList extends Component {
   }
 
   renderEmptyCart = () => (
-    <Text style={{alignSelf:'center', fontSize:25, fontWeight:'bold', padding:40}}>your shopping cart is empty</Text>
+    <Text style={{alignSelf:'center', fontSize:20, fontWeight:'bold', padding:40}}>shopping cart is empty</Text>
   )
 
   render() {

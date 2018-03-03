@@ -14,12 +14,15 @@ import Models from '../containers/Models'
 import Carts from '../containers/Carts'
 import Designs from '../containers/Designs'
 import Previews from '../containers/Previews'
+import Transactions from '../containers/Transactions'
 import { transitionConfig } from '../utils'
+
+
 // console.log(transitionConfig());
 const transition = transitionConfig()
 const navigationOptions = {
   headerMode:'float',
-  initialRouteName:'Designs',
+  initialRouteName:'Transactions',
   navigationOptions : {
     headerStyle: {
       backgroundColor: '#f7355d'
@@ -63,6 +66,9 @@ export const AppNavigator = StackNavigator({
   },
   Carts : {
     screen : Carts
+  },
+  Transactions : {
+    screen : Transactions
   }
 },navigationOptions)
 
