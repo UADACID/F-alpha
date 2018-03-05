@@ -15,6 +15,10 @@ import Carts from '../containers/Carts'
 import Designs from '../containers/Designs'
 import Previews from '../containers/Previews'
 import Transactions from '../containers/Transactions'
+import Payments from '../containers/Payments'
+
+//under development
+// import PaymentsStackNavigator from './tabPayment'
 import { transitionConfig } from '../utils'
 
 
@@ -22,7 +26,7 @@ import { transitionConfig } from '../utils'
 const transition = transitionConfig()
 const navigationOptions = {
   headerMode:'float',
-  initialRouteName:'Transactions',
+  initialRouteName:'Payments',
   navigationOptions : {
     headerStyle: {
       backgroundColor: '#f7355d'
@@ -69,7 +73,13 @@ export const AppNavigator = StackNavigator({
   },
   Transactions : {
     screen : Transactions
-  }
+  },
+  Payments: {
+    screen : Payments,
+    navigationOptions: {
+      title:'Select Payments',
+    }
+  },
 },navigationOptions)
 
 createReactNavigationReduxMiddleware(
