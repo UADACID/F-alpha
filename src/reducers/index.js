@@ -16,6 +16,8 @@ import {
 
 import { orderReducer } from './Carts'
 
+import { paymentsReducer } from './Payments'
+
 import {services} from '../api';
 
 let reducers = R.map(x => x.reducer, services);
@@ -39,7 +41,9 @@ export const appReducer = {
 
   modalOverlay,
 
-  orderReducer
+  orderReducer,
+
+  paymentsReducer
 };
 
 

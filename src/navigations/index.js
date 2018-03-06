@@ -16,6 +16,7 @@ import Designs from '../containers/Designs'
 import Previews from '../containers/Previews'
 import Transactions from '../containers/Transactions'
 import Payments from '../containers/Payments'
+import PaymentDetails from '../containers/PaymentDetails'
 
 //under development
 // import PaymentsStackNavigator from './tabPayment'
@@ -73,6 +74,9 @@ export const AppNavigator = StackNavigator({
   },
   Transactions : {
     screen : Transactions
+  },
+  PaymentDetails : {
+    screen : PaymentDetails
   },
   Payments: {
     screen : Payments,

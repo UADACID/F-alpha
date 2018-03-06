@@ -10,7 +10,7 @@ import { Button, Icon } from 'native-base'
 import { takeSnapshot } from "react-native-view-shot";
 
 import {DesignBody, DesignTab} from './components'
-import ModalOverlay from  '../../components/ModalOverlay'
+// import ModalOverlay from  '../../components/ModalOverlay'
 import CustomNavbar from '../../components/CustomNavbar'
 
 export default class Designs extends Component {
@@ -140,7 +140,6 @@ export default class Designs extends Component {
           <DesignBody ref='abc'/>
         </View>
         <DesignTab />
-        <ModalOverlay />
       </View>
     );
   }
