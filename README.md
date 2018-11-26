@@ -6,3 +6,7 @@
 [mydeals-deeplink](http://www.myboost.id/mydeals)
 [home-deeplink](http://www.myboost.id/home)
 [example-deeplink](https://www.google.com)
+
+[new-example-deeplink](mychat://mychat/chat/Eric)
+
+
